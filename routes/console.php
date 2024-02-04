@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Artisan;
 
 hallo reda we gehts es dir ?
 wah mklha mafhmtkch ajmi ahmed hhhhhhhhhhhhh
-|
 */
 
 Artisan::command('inspire', function () {
