@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\utilisateur;
+use App\Models\etudient;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UtilisateurController extends Controller
+class EtudientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class UtilisateurController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(utilisateur $utilisateur)
+    public function show(etudient $etudient)
     {
         //
     }
@@ -43,7 +43,7 @@ class UtilisateurController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(utilisateur $utilisateur)
+    public function edit(etudient $etudient)
     {
         //
     }
@@ -51,7 +51,7 @@ class UtilisateurController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, utilisateur $utilisateur)
+    public function update(Request $request, etudient $etudient)
     {
         //
     }
@@ -59,7 +59,7 @@ class UtilisateurController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(utilisateur $utilisateur)
+    public function destroy(etudient $etudient)
     {
         //
     }

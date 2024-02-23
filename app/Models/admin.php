@@ -5,8 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class etudientsInfo extends Model
+class admin extends Model
 {
     use HasFactory;
-    protected $fillabel =["nom","prenom","date","dateNaissance"];
+
+    protected $fillable =["id_admin","nom","prenom","telephone","addresse"];
+    protected $primaryKey="id_admin";
+
 }
