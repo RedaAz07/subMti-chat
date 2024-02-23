@@ -11,7 +11,7 @@ class annance extends Model
     use HasFactory;
     protected $fillable =["id_annance","id_admin","contenu","file"];
     protected $primaryKey="id_annance";
-
+    public $incrementing = true ;
 
     public function admin(){
         return $this->belongsTo(admin::class,'admin_id');

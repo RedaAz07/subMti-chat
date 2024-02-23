@@ -11,9 +11,9 @@ class utilisateur extends Model
     use HasFactory;
 
 
-    protected $fillable =["id_utilisatuer","email","password","newPassword","type","id_admin","id_formateur","id_etudient"];
-    protected $primaryKey="id_utilisatuer";
-
+    protected $fillable =["id_utilisateur","email","password","newPassword","type","id_admin","id_formateur","id_etudient"];
+    protected $primaryKey="id_utilisateur";
+    public $incrementing = true ;
     public function message(){
         return $this->hasMany(message::class,'message_id');
 }

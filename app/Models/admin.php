@@ -12,6 +12,8 @@ class admin extends Model
 
     protected $fillable =["id_admin","nom","prenom","telephone","addresse"];
     protected $primaryKey="id_admin";
+    public $incrementing = true ;
+
 
     public function annance(){
         return $this->hasMany(annance::class,'annance_id');
