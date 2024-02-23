@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->bigInteger("id_admin");
-            $table->primary("id_admin");
-            $table->string("nom");
-            $table->string("prenom");
-            $table->string("telephone");
-            $table->string("addresse");
-
-
+        Schema::create('groupes', function (Blueprint $table) {
+            $table->bigInteger('id_groupe');
+            $table->primary('id_groupe');
+            $table->bigInteger('id_filiere');
+            $table->integer('num_groupe');
             $table->timestamps();
+            $table->foreign('id_filiere')->references('id_filiere')->on('filieres')->cascadeOnDelete;
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('groupes');
     }
 };

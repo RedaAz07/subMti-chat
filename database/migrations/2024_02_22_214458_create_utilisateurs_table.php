@@ -12,23 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('utilisateurs', function (Blueprint $table) {
-            $table->bigInteger("id_utilisatuer ");
+            $table->bigInteger("id_utilisateur");
+            $table->primary("id_utilisateur");
 
-
-            $table->unsignedBigInteger('id_admin');
-            $table->unsignedBigInteger('id_formateur');
-            $table->unsignedBigInteger('id_etudient');
+            $table->bigInteger('id_admin');
+            $table->bigInteger('id_formateur');
+            $table->bigInteger('id_etudient');
 
 
 
             $table->string("email");
-            $table->strung("password");
+            $table->string("password");
             $table->string("newPassword");
             $table->string("type");
 
-            
+
             $table->foreign("id_admin")->references("id_admin")->on("admins")->coscadeOnDelete();
-            $table->foreign("id_formateur")->references("id_formateur")->on("fourmateurs")->coscadeOnDelete();
+            $table->foreign("id_formateur")->references("id_formateur")->on("formateurs")->coscadeOnDelete();
             $table->foreign("id_etudient")->references("id_etudient")->on("etudients")->coscadeOnDelete();
 
 

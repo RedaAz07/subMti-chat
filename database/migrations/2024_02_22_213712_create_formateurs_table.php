@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigInteger("id_formateur");
             $table->primary("id_formateur");
             $table->string("nom");
-            $table->strung("prenom");
+            $table->string("prenom");
             $table->string("telephone");
             $table->string("addresse");
 

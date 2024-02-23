@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date("dateNaissance");
 
 
-            $table->strung("prenom");
+            $table->string("prenom");
             $table->string("telephone");
             $table->string("addresse");
 
