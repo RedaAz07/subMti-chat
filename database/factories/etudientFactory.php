@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\utilisateur;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,12 +18,14 @@ class etudientFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_etudient' =>fake()->unique()->numberBetween(1, 1000),
             "nom"=>fake()->firstName(),
             "prenom"=>fake()->lastName(),
             "dateNaissance"=>fake()->date($format = 'Y-m-d', $max = 'now'),
             'telephone' => fake()->phoneNumber(),
             'addresse' => fake()->address(),
+
+            'id_utilisateur' => utilisateur::inRandomOrder()->first()->id_utilisateur,
+
 
             'CIN' => fake()->regexify('[A-Z][0-9]{6}'),
 

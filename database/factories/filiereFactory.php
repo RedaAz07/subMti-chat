@@ -26,7 +26,6 @@ class filiereFactory extends Factory
 
 
 
-            'id_filiere' =>fake()->unique()->numberBetween(1, 1000),
 
 
 

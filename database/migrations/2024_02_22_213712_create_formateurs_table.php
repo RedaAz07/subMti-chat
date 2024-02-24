@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('formateurs', function (Blueprint $table) {
-            $table->bigInteger("id_formateur");
-            $table->primary("id_formateur");
+            $table->id('id_formateur');
+
+            $table->unsignedBigInteger('id_utilisateur');
+
+
             $table->string("nom");
             $table->string("prenom");
             $table->string("telephone");
@@ -22,6 +25,8 @@ return new class extends Migration
 
 
             $table->timestamps();
+            $table->foreign("id_utilisateur")->references("id_utilisateur")->on("utilisateurs")->coscadeOnDelete();
+
         });
     }
 

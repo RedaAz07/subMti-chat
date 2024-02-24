@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->bigInteger("id_admin");
-            $table->primary("id_admin");
+            $table->id('id_admin');
+
+            $table->unsignedBigInteger('id_utilisateur');
+
             $table->string("nom");
             $table->string("prenom");
             $table->string("telephone");
@@ -21,6 +23,9 @@ return new class extends Migration
 
 
             $table->timestamps();
+
+            $table->foreign("id_utilisateur")->references("id_utilisateur")->on("utilisateurs")->coscadeOnDelete();
+
         });
     }
 

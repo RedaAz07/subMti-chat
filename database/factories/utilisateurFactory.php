@@ -6,6 +6,7 @@ use App\Models\admin;
 use App\Models\etudient;
 
 use App\Models\formateur;
+use App\Models\utilisateur;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -24,13 +25,11 @@ class utilisateurFactory extends Factory
             'password' => fake()->regexify('[A-Za-z0-9@#$%^&+=]{8}'),
 
 
-            'id_admin' => admin::inRandomOrder()->first()->id_admin,
-            'id_formateur' => formateur::inRandomOrder()->first()->id_formateur,
-            'id_etudient' => etudient::inRandomOrder()->first()->id_etudient,
+            // 'id_admin' => admin::inRandomOrder()->first()->id_admin,
+            // 'id_formateur' => formateur::inRandomOrder()->first()->id_formateur,
+            // 'id_etudient' => etudient::inRandomOrder()->first()->id_etudient,
 
 
-
-                'id_utilisateur' =>fake()->unique()->numberBetween(1, 1000),
 
             "type"=>fake()->name(),
 

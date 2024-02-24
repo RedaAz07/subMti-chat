@@ -29,7 +29,6 @@ class groupeFactory extends Factory
 
 
 
-            'id_groupe' =>fake()->unique()->numberBetween(1, 1000),
 
 
 

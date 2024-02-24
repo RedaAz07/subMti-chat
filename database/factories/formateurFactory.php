@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\utilisateur;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,13 +20,15 @@ class formateurFactory extends Factory
         return [
             "nom"=>fake()->firstName(),
             "prenom"=>fake()->lastName(),
-        
+
 
 
             'telephone' => fake()->phoneNumber(),
             'addresse' => fake()->address(),
 
-            'id_formateur' =>fake()->unique()->numberBetween(1, 1000),
+            'id_utilisateur' => utilisateur::inRandomOrder()->first()->id_utilisateur,
+
+
 
 
 

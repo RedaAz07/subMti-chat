@@ -18,7 +18,6 @@ class annanceFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_annance' =>fake()->unique()->numberBetween(1, 1000),
             'id_admin' => admin::inRandomOrder()->first()->id_admin,
 
 

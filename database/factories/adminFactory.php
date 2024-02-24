@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\admin;
+use App\Models\utilisateur;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +19,10 @@ class adminFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_admin' =>fake()->unique()->numberBetween(1, 1000),
             "nom"=>fake()->firstName(),
             "prenom"=>fake()->lastName(),
+
+            'id_utilisateur' => utilisateur::inRandomOrder()->first()->id_utilisateur,
 
             'telephone' => fake()->phoneNumber(),
             'addresse' => fake()->address(),
