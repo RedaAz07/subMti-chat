@@ -2,20 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\annance;
+use App\Models\message;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class annanceTableSeeder extends Seeder
+class messageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
+        message::factory(100)->create();
 
-
-
-        annance::factory(5)->create();
     }
 }

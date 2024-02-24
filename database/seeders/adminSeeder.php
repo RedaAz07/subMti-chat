@@ -2,20 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\annance;
+use App\Models\admin;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class annanceTableSeeder extends Seeder
+class adminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
+        admin::factory(1)->create();
 
-
-
-        annance::factory(5)->create();
     }
 }

@@ -10,9 +10,10 @@ class admin extends Model
 {
     use HasFactory;
 
-    protected $fillable =["id_admin","nom","prenom","telephone","addresse"];
+    protected $fillable =["nom","prenom","telephone","addresse"];
     protected $primaryKey="id_admin";
-    public $incrementing = true ;
+
+
 
 
     public function annance(){

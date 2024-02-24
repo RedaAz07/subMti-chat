@@ -17,13 +17,14 @@ class adminFactory extends Factory
     public function definition(): array
     {
         return [
+            'id_admin' =>fake()->unique()->numberBetween(1, 1000),
             "nom"=>fake()->firstName(),
             "prenom"=>fake()->lastName(),
 
             'telephone' => fake()->phoneNumber(),
             'addresse' => fake()->address(),
 
-           
+
 
 
 

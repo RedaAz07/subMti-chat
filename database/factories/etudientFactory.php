@@ -17,6 +17,7 @@ class etudientFactory extends Factory
     public function definition(): array
     {
         return [
+            'id_etudient' =>fake()->unique()->numberBetween(1, 1000),
             "nom"=>fake()->firstName(),
             "prenom"=>fake()->lastName(),
             "dateNaissance"=>fake()->date($format = 'Y-m-d', $max = 'now'),

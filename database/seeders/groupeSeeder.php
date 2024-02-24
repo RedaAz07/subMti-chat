@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\etudientsInfo;
+use App\Models\groupe;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class etudientsInfoSeeder extends Seeder
+class groupeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-            etudientsInfo::factory(100)->create();
+        groupe::factory(5)->create();
 
-}
+    }
 }

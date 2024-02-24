@@ -11,7 +11,6 @@ class filiere extends Model
     use HasFactory;
     protected $fillable =["id_filiere","id_formateur","id_etudient","nom_filiere"];
     protected $primaryKey="id_filiere";
-    public $incrementing = true ;
     public function groupe(){
         return $this->hasMany(groupe::class,'groupe_id');
 }

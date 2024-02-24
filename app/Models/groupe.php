@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Model;
 class groupe extends Model
 {
     use HasFactory;
-    protected $fillable =["num_groupe","id_filiere","num_groupe"];
-    protected $primaryKey="num_groupe";
-    public $incrementing = true ;
+    protected $fillable =["id_groupe","id_filiere","num_groupe"];
+    protected $primaryKey="id_groupe";
+
     public function filiere(){
         return $this->belongsTo(filiere::class,'filiere_id');
 }

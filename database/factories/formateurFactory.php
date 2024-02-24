@@ -19,10 +19,13 @@ class formateurFactory extends Factory
         return [
             "nom"=>fake()->firstName(),
             "prenom"=>fake()->lastName(),
+        
+
 
             'telephone' => fake()->phoneNumber(),
             'addresse' => fake()->address(),
 
+            'id_formateur' =>fake()->unique()->numberBetween(1, 1000),
 
 
 

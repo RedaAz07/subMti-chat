@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class etudient extends Model
 {
     use HasFactory;
-    public $incrementing = true ;
     protected $fillable =["id_etudient","nom","prenom","telephone","addresse","CIN","dateNaissance"];
     protected $primaryKey="id_etudient";
 

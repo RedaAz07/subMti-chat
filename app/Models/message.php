@@ -11,7 +11,7 @@ class message extends Model
     use HasFactory;
     protected $fillable =["id_message","id_utilisateur","contenu","file"];
     protected $primaryKey="id_message";
-    public $incrementing = true ;
+
     public function utilisateur(){
         return $this->belongsTo(utilisateur::class,'utilisateur_id');
 }

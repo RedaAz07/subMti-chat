@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\etudient;
+use App\Models\formateur;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +19,14 @@ class filiereFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_formateur' => formateur::factory()->create()->id_formateur,
-            'id_etudient' => etudient::factory()->create()->id_etudient,
 
+
+            'id_formateur' => formateur::inRandomOrder()->first()->id_formateur,
+            'id_etudient' => etudient::inRandomOrder()->first()->id_etudient,
+
+
+
+            'id_filiere' =>fake()->unique()->numberBetween(1, 1000),
 
 
 
