@@ -18,11 +18,13 @@ class messageFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_utilisateur' => utilisateur::inRandomOrder()->first()->id_utilisateur,
+     
+
+            'id_utilisateur' => utilisateur::factory()->create()->id_utilisateur,
+
             "contenu"=>fake()->text(),
             "file"=>fake()->text(),
 
-            'id_message' =>fake()->unique()->numberBetween(1, 1000),
 
 
 

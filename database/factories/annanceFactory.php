@@ -18,9 +18,8 @@ class annanceFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_admin' => admin::inRandomOrder()->first()->id_admin,
 
-
+            'id_admin' => admin::factory()->create()->id_admin,
 
 
             "contenu"=>fake()->text(),

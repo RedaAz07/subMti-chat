@@ -12,6 +12,6 @@ class filiere extends Model
     protected $fillable =["id_filiere","id_formateur","id_etudient","nom_filiere"];
     protected $primaryKey="id_filiere";
     public function groupe(){
-        return $this->hasMany(groupe::class,'groupe_id');
+        return $this->hasMany(groupe::class,'id_groupe');
 }
 }

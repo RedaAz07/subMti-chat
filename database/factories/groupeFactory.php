@@ -25,7 +25,7 @@ class groupeFactory extends Factory
 
 
 
-            'id_filiere' => filiere::inRandomOrder()->first()->id_filiere,
+            'id_filiere' => filiere::factory()->create()->id_filiere,
 
 
 

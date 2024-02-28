@@ -9,10 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 class formateur extends Model
 {
     use HasFactory;
-    protected $fillable =["id_formateur","nom","prenom","telephone","addresse"];
+    protected $fillable =["id_utilisateur","nom","prenom","telephone","addresse"];
     protected $primaryKey="id_formateur";
 
     public function groupe(){
-        return $this->hasMany(groupe::class,'groupe_id');
+        return $this->hasMany(groupe::class,'id_groupe');
     }
 }

@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->id('id_admin');
-
-            $table->unsignedBigInteger('id_utilisateur');
+        Schema::create('super_admins', function (Blueprint $table) {
+            $table->id("id_superAdmin");
 
             $table->string("nom");
             $table->string("prenom");
@@ -24,16 +22,7 @@ return new class extends Migration
             $table->string("CIN");
             $table->date("dateNaissance");
 
-
             $table->timestamps();
-
-
-            $table->unsignedBigInteger('id_superAdmin');
-
-            $table->foreign("id_superAdmin")->references("id_superAdmin")->on("super_admins")->coscadeOnDelete();
-
-            $table->foreign("id_utilisateur")->references("id_utilisateur")->on("utilisateurs")->coscadeOnDelete();
-
         });
     }
 
@@ -42,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('super_admins');
     }
 };

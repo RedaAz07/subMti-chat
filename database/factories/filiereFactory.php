@@ -21,11 +21,12 @@ class filiereFactory extends Factory
         return [
 
 
-            'id_formateur' => formateur::inRandomOrder()->first()->id_formateur,
-            'id_etudient' => etudient::inRandomOrder()->first()->id_etudient,
+           
 
 
 
+            'id_formateur' => formateur::factory()->create()->id_formateur,
+            'id_etudient' => etudient::factory()->create()->id_etudient,
 
 
 

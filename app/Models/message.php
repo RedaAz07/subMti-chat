@@ -13,7 +13,7 @@ class message extends Model
     protected $primaryKey="id_message";
 
     public function utilisateur(){
-        return $this->belongsTo(utilisateur::class,'utilisateur_id');
+        return $this->belongsTo(utilisateur::class,'id_utilisateur');
 }
 
 }

@@ -15,13 +15,13 @@ class groupe extends Model
     protected $primaryKey="id_groupe";
 
     public function filiere(){
-        return $this->belongsTo(filiere::class,'filiere_id');
+        return $this->belongsTo(filiere::class,'id_filier');
 }
 
 
 
 public function etudient(){
-    return $this->hasMany(etudient::class,'etudient_id');
+    return $this->hasMany(etudient::class,'id_etudinet');
 }
 
 public function formateur(){

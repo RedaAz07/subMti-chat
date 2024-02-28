@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\message;
+use App\Models\utilisateur;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -12,7 +13,12 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+       return view("message.index",[
+
+        "messages"=>message::all(),
+        "utilisateurs"=>utilisateur::all(),
+
+       ]);
     }
 
     /**
@@ -20,16 +26,47 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        return view("message.index",[
+
+            "messages"=>message::all()
+           ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
+
+    public function fetch()
+    {
+        // Retrieve messages from the database
+        $messages = message::orderBy('created_at')->get();
+
+        // Return the messages as a JSON response
+        return response()->json(['messages' => $messages]);
+    }
+
+
+
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "contenu"=>"string|required",
+            "file"=>"required",
+
+        ]);
+        $requestData=$request->all();
+        $requestData["file"] =$request->file("file")->store("message","public") ;
+        $requestData["id_utilisateur"]=session('id_utilisateur');
+        message::create($requestData);
+        return redirect("message");
+        message::create($requestData);
+        return redirect("message");
+        message::create($request->post());
+        return redirect()->route("message.index");
     }
+
+
+
+
 
     /**
      * Display the specified resource.

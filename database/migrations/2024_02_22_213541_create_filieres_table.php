@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('filieres', function (Blueprint $table) {
             $table->id('id_filiere');
-            $table->unsignedBigInteger('id_formateur');
-            $table->unsignedBigInteger('id_etudient');
+
             $table->string('nom_filiere');
             $table->timestamps();
-            $table->foreign('id_formateur')->references('id_formateur')->on('formateurs')->cascadeOnDelete;
-            $table->foreign('id_etudient')->references('id_etudient')->on('etudients')->cascadeOnDelete;
+
+
+            $table->unsignedBigInteger('id_classe');
+            $table->foreign('id_classe')->references('id_classe')->on('classes')->cascadeOnDelete;
+
         });
     }
 

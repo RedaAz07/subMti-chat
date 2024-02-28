@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\EtudientController;
+use App\Http\Controllers\UtilisateurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +25,36 @@ Route::get('/', function () {
 
 
 
+Route::match(['get', 'post'], '/user/profile', function () {
+
+});
+
+
+
+
+
+
+
+Route::match(["get","post"],"login.login",[loginController::class,"login"])->name("login.login");
+Route::match(["get","post"],"login.show",[loginController::class,"show"])->name("login.show");
+
+
+Route::match(["get","post"],"login.page1",[loginController::class,"page1"])->name("login.page1");
+
+
+Route::match(["get","post"],"login.logout",[loginController::class,"logout"])->name("login.logout");
+
+
+
+Route::resource('/message', MessageController::class);
+
+
+Route::get('/messages', 'MessageController@fetch')->name('messages.fetch');
+
+
+// export the data
+Route::get('/export-data', [EtudientController::class, 'exportData'])->name('export.data');
+
+// emport a new data
+
+Route::get('/import-data', [UtilisateurController::class, 'importData'])->name('import.data');

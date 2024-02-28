@@ -22,7 +22,8 @@ class adminFactory extends Factory
             "nom"=>fake()->firstName(),
             "prenom"=>fake()->lastName(),
 
-            'id_utilisateur' => utilisateur::inRandomOrder()->first()->id_utilisateur,
+
+            'id_utilisateur' => utilisateur::factory()->create()->id_utilisateur,
 
             'telephone' => fake()->phoneNumber(),
             'addresse' => fake()->address(),

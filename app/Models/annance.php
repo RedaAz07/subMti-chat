@@ -14,6 +14,6 @@ class annance extends Model
 
 
     public function admin(){
-        return $this->belongsTo(admin::class,'admin_id');
+        return $this->belongsTo(admin::class,'id_admin');
 }
 }

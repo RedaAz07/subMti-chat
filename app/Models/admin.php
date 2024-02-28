@@ -10,13 +10,13 @@ class admin extends Model
 {
     use HasFactory;
 
-    protected $fillable =["nom","prenom","telephone","addresse"];
+    protected $fillable =["id_utilisateur","nom","prenom","telephone","addresse"];
     protected $primaryKey="id_admin";
 
 
 
 
     public function annance(){
-        return $this->hasMany(annance::class,'annance_id');
+        return $this->hasMany(annance::class,'id_annance');
 }
 }

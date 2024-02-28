@@ -23,6 +23,12 @@ return new class extends Migration
             $table->string("addresse");
 
 
+            $table->string("CIN");
+            $table->date("dateNaissance");
+
+
+
+
 
             $table->timestamps();
             $table->foreign("id_utilisateur")->references("id_utilisateur")->on("utilisateurs")->coscadeOnDelete();

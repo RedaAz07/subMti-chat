@@ -24,7 +24,8 @@ class etudientFactory extends Factory
             'telephone' => fake()->phoneNumber(),
             'addresse' => fake()->address(),
 
-            'id_utilisateur' => utilisateur::inRandomOrder()->first()->id_utilisateur,
+
+            'id_utilisateur' => utilisateur::factory()->create()->id_utilisateur,
 
 
             'CIN' => fake()->regexify('[A-Z][0-9]{6}'),
