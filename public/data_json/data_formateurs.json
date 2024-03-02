@@ -1,0 +1,66 @@
+[
+    {
+        "nom": "Lucas",
+        "prenom": "Alexander",
+        "CIN": "F4515534",
+        "dateNaissance": "1945-09-25",
+        "telephone": "(315)379-6541x469",
+        "addresse": "915 Everett Curve\nBrockport, IL 40481"
+    },
+    {
+        "nom": "Palmer",
+        "prenom": "Haley",
+        "CIN": "D9111363",
+        "dateNaissance": "2003-11-14",
+        "telephone": "(465)794-3597x08890",
+        "addresse": "26583 Lamb Alley Suite 451\nLeonburgh, CT 49829"
+    },
+    {
+        "nom": "Wise",
+        "prenom": "Mark",
+        "CIN": "B7996490",
+        "dateNaissance": "1943-05-12",
+        "telephone": "+1-279-388-4870x79631",
+        "addresse": "07261 Simpson Passage Suite 698\nAngelamouth, MD 67137"
+    },
+    {
+        "nom": "Navarro",
+        "prenom": "Jessica",
+        "CIN": "P3734171",
+        "dateNaissance": "1954-08-23",
+        "telephone": "001-781-969-1286x07667",
+        "addresse": "78360 Jeremy Ferry Apt. 385\nNew Michelleview, PA 23400"
+    },
+    {
+        "nom": "Quinn",
+        "prenom": "Jared",
+        "CIN": "F1240799",
+        "dateNaissance": "1980-04-04",
+        "telephone": "415.643.8524",
+        "addresse": "41895 Cassandra Vista Suite 991\nPort Shawn, TN 14550"
+    },
+    {
+        "nom": "Gray",
+        "prenom": "Annette",
+        "CIN": "O7345069",
+        "dateNaissance": "1972-03-14",
+        "telephone": "+1-582-853-6376x924",
+        "addresse": "495 Kelly Falls\nWest Leslieside, KY 49441"
+    },
+    {
+        "nom": "Davis",
+        "prenom": "Meredith",
+        "CIN": "U4913730",
+        "dateNaissance": "1991-10-14",
+        "telephone": "857.693.7539",
+        "addresse": "6627 Jenny Drive Suite 545\nAngelville, AR 12635"
+    },
+    {
+        "nom": "Anderson",
+        "prenom": "Robert",
+        "CIN": "F2195140",
+        "dateNaissance": "1987-10-21",
+        "telephone": "001-485-285-0364x293",
+        "addresse": "2537 Micheal Mission\nNew Lisa, PW 35091"
+    }
+]

@@ -15,9 +15,6 @@ class utilisateur extends Model
     protected $fillable =["email","password","newPassword","type","id_admin","id_formateur","id_etudient"];
 
 
-    protected $primaryKey = 'id_utilisateur';
-
-
     public function getAuthIdentifier()
     {
         return $this->email; // Replace with the appropriate column name

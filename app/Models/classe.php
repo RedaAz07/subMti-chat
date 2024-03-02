@@ -8,11 +8,11 @@ use App\Models\formateur;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class groupe extends Model
+class classe extends Model
 {
     use HasFactory;
-    protected $fillable =["id_groupe","id_filiere","num_groupe"];
-    protected $primaryKey="id_groupe";
+    protected $fillable =["id_classe","id_filiere","num_classe"];
+    protected $primaryKey="id_classe";
 
     public function filiere(){
         return $this->belongsTo(filiere::class,'id_filier');

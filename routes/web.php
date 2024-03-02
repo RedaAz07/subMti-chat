@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\EtudientController;
+use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\UtilisateurController;
 
 /*
@@ -36,7 +38,7 @@ Route::match(['get', 'post'], '/user/profile', function () {
 
 
 Route::match(["get","post"],"login.login",[loginController::class,"login"])->name("login.login");
-Route::match(["get","post"],"login.show",[loginController::class,"show"])->name("login.show");
+Route::match(["get","post"],"login",[loginController::class,"show"])->name("login");
 
 
 Route::match(["get","post"],"login.page1",[loginController::class,"page1"])->name("login.page1");
@@ -46,15 +48,31 @@ Route::match(["get","post"],"login.logout",[loginController::class,"logout"])->n
 
 
 
-Route::resource('/message', MessageController::class);
+Route::resource('/message', MessageController::class)->middleware("auth");
 
 
 Route::get('/messages', 'MessageController@fetch')->name('messages.fetch');
 
 
-// export the data
-Route::get('/export-data', [EtudientController::class, 'exportData'])->name('export.data');
+// export the data from  etudeient _data.jsone to Acc_etudient.jsno
+Route::get('/export-data-etud', [EtudientController::class, 'exportData'])->name('export.data');
 
+// import  the data from  etudeient _data.jsone to tables utilisateur and etudeint
+Route::get('/exportDataTOtableEtudient', [EtudientController::class, 'exportDataTOtableEtudient']);
+
+// export   the data from  etudeient _data.jsone to tables utilisateur and formateur and Acc fornateur .json
+Route::get('/exportDataformateur', [FormateurController::class, 'exportDataformateur']);
+//the same things for the asmin
+Route::get('/exportDataadmin', [AdminController::class, 'exportDataadmin']);
+
+
+/*
+
+Route::get('/export-data-formateur', [FormateurController::class, 'exportData'])->name('export.data');
 // emport a new data
 
-Route::get('/import-data', [UtilisateurController::class, 'importData'])->name('import.data');
+Route::get('/import-data-etud', [UtilisateurController::class, 'importData'])->name('import.data');
+
+
+Route::get('/import-data-formateur', [UtilisateurController::class, 'importDataf'])->name('import.data');
+*/

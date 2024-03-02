@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id('id_admin');
 
-            $table->unsignedBigInteger('id_utilisateur');
+          
 
             $table->string("nom");
             $table->string("prenom");
@@ -23,16 +23,20 @@ return new class extends Migration
 
             $table->string("CIN");
             $table->date("dateNaissance");
+            $table->string("role");
 
 
             $table->timestamps();
 
 
-            $table->unsignedBigInteger('id_superAdmin');
 
-            $table->foreign("id_superAdmin")->references("id_superAdmin")->on("super_admins")->coscadeOnDelete();
+            $table->unsignedBigInteger('id');
+ $table->foreign("id")->references("id")->on("utilisateurs")->coscadeOnDelete();
 
-            $table->foreign("id_utilisateur")->references("id_utilisateur")->on("utilisateurs")->coscadeOnDelete();
+
+
+
+
 
         });
     }

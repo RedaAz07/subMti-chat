@@ -1,0 +1,23 @@
+[
+    {
+        "nom": "Stewart",
+        "prenom": "William",
+        "CIN": "F6536927",
+        "email": "StewartWilliamF6536927admin@submti.com",
+        "password": "StewartF65369273"
+    },
+    {
+        "nom": "Boyd",
+        "prenom": "Christopher",
+        "CIN": "M3954517",
+        "email": "BoydChristopherM3954517admin@submti.com",
+        "password": "BoydM39545172"
+    },
+    {
+        "nom": "Bennett",
+        "prenom": "Jennifer",
+        "CIN": "N1952118",
+        "email": "BennettJenniferN1952118admin@submti.com",
+        "password": "BennettN19521181"
+    }
+]

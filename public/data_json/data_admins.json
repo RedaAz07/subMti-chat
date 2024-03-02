@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "nom": "Stewart",
+        "prenom": "William",
+        "CIN": "F6536927",
+        "dateNaissance": "1969-08-22",
+        "telephone": "3239756777",
+        "addresse": "5931 Lisa Drive\nRobertside, RI 11367"
+    },
+    {
+        "id": 2,
+        "nom": "Boyd",
+        "prenom": "Christopher",
+        "CIN": "M3954517",
+        "dateNaissance": "1943-05-03",
+        "telephone": "+1-745-956-5165x3818",
+        "addresse": "USNS Evans\nFPO AE 42136"
+    },
+    {
+        "id": 3,
+        "nom": "Bennett",
+        "prenom": "Jennifer",
+        "CIN": "N1952118",
+        "dateNaissance": "1997-09-18",
+        "telephone": "798-639-9546",
+        "addresse": "48612 Robert Drive\nLarsenfort, DE 32963"
+    }
+]

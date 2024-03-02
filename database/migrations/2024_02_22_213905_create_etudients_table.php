@@ -15,7 +15,7 @@ return new class extends Migration
 
             $table->id('id_etudient');
 
-            $table->unsignedBigInteger('id_utilisateur');
+            $table->unsignedBigInteger('id');
 
 
             $table->string("nom");
@@ -28,7 +28,14 @@ return new class extends Migration
             $table->string("addresse");
 
             $table->timestamps();
-            $table->foreign("id_utilisateur")->references("id_utilisateur")->on("utilisateurs")->coscadeOnDelete();
+            $table->foreign("id")->references("id")->on("utilisateurs")->coscadeOnDelete();
+
+
+
+
+            $table->unsignedBigInteger('id_classe');
+
+            $table->foreign("id_classe")->references("id_classe")->on("classes")->coscadeOnDelete();
 
         });
     }

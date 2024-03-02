@@ -17,25 +17,20 @@ class formateurFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            "nom"=>fake()->firstName(),
-            "prenom"=>fake()->lastName(),
+
+            return [
+                "nom"=>fake()->firstName(),
+                "prenom"=>fake()->lastName(),
+                "dateNaissance"=>fake()->date($format = 'Y-m-d', $max = 'now'),
+                'telephone' => fake()->phoneNumber(),
+                'addresse' => fake()->address(),
 
 
-
-            'telephone' => fake()->phoneNumber(),
-            'addresse' => fake()->address(),
-
-            'id_utilisateur' => utilisateur::inRandomOrder()->first()->id_utilisateur,
+                'id' => utilisateur::factory()->create(),
 
 
+                'CIN' => fake()->regexify('[A-Z][0-9]{6}'),
 
-
-
-
-
-
-        ];
-
+ ];
     }
 }

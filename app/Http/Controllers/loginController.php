@@ -22,15 +22,16 @@ class loginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
 
-        if (Auth::attempt([
-            'email' => $credentials['email'], // Use 'email' from validation
-            'password' => $credentials['password'],
-        ])) {
+$email=$request->email;
+$password=$request->password;
+
+$credentials=["email"=>$email,"password"=>$password];
+
+
+
+
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('message.index');
         }
@@ -44,7 +45,7 @@ class loginController extends Controller
         session()->flush();
         Auth::logout();
 
-        return redirect()->route('login.show');
+        return redirect()->route('login');
     }
 
 

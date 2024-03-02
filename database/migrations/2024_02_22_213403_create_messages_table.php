@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id('id_message');
-            $table->unsignedBigInteger('id_utilisateur');
+            $table->unsignedBigInteger('id');
             $table->string('contenu');
             $table->string('file');
             $table->timestamps();
-            $table->foreign('id_utilisateur')->references('id_utilisateur')->on('utilisateurs')->cascadeOnDelete;
+            $table->foreign('id')->references('id')->on('utilisateurs')->cascadeOnDelete;
         });
     }
 
@@ -27,5 +27,14 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('messages');
+    }
+
+
+
+
+
+    public function findprof (){
+        $classes = classe::all();
+
     }
 };

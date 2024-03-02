@@ -25,7 +25,7 @@ class etudientFactory extends Factory
             'addresse' => fake()->address(),
 
 
-            'id_utilisateur' => utilisateur::factory()->create()->id_utilisateur,
+            'id' => utilisateur::factory()->create(),
 
 
             'CIN' => fake()->regexify('[A-Z][0-9]{6}'),

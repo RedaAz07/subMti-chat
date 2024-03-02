@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('formateurs', function (Blueprint $table) {
             $table->id('id_formateur');
 
-            $table->unsignedBigInteger('id_utilisateur');
+            $table->unsignedBigInteger('id');
 
 
             $table->string("nom");
@@ -31,7 +31,7 @@ return new class extends Migration
 
 
             $table->timestamps();
-            $table->foreign("id_utilisateur")->references("id_utilisateur")->on("utilisateurs")->coscadeOnDelete();
+            $table->foreign("id")->references("id")->on("utilisateurs")->coscadeOnDelete();
 
         });
     }

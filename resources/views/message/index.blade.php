@@ -10,6 +10,12 @@
 
 </head>
 <body>
+
+
+@auth
+@if (auth()->user()->type === "etudient" )
+
+
 <!-- Your HTML template -->
 <form action="{{route("login.logout")}}" method="post">@csrf
 
@@ -21,6 +27,17 @@
     <!-- Messages will be displayed here -->
     @foreach ($messages as $message)
         <li>
+
+
+            <form action="{{route("message.destroy",["message"=>$message])}}" method="post" >
+                @method("DELETE")
+                @csrf
+                <input type="submit" class="btn btn-danger" value="delete" onclick=" return confirm('are you sure ??')">
+
+        </form>
+
+     
+
             {{ $message->utilisateur->etudiant->nom }}
             <h1>{{ $message->contenu }}</h1>
             <img src="{{ asset("storage/".$message->file) }}" alt="">
@@ -89,6 +106,10 @@
     // Fetch new messages every 5 econds
     setInterval(fetchNewMessages, 1000);
 </script>
+
+
+@endif
+@endauth
 
 </body>
 </html>

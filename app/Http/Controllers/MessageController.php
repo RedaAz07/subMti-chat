@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\facades\Auth;
 use App\Models\message;
 use App\Models\utilisateur;
 use Illuminate\Http\Request;
@@ -55,7 +56,8 @@ class MessageController extends Controller
         ]);
         $requestData=$request->all();
         $requestData["file"] =$request->file("file")->store("message","public") ;
-        $requestData["id_utilisateur"]=session('id_utilisateur');
+        $requestData["id"]=auth::user()->id;
+
         message::create($requestData);
         return redirect("message");
         message::create($requestData);
@@ -97,6 +99,7 @@ class MessageController extends Controller
      */
     public function destroy(message $message)
     {
-        //
+        $message->delete();
+        return redirect()->route("message.index");
     }
 }

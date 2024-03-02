@@ -20,11 +20,11 @@ return new class extends Migration
 
 
 
-            $table->unsignedBigInteger('id_formateur');
-            $table->unsignedBigInteger('id_etudient');
 
-            $table->foreign('id_formateur')->references('id_formateur')->on('formateurs')->cascadeOnDelete;
-            $table->foreign('id_etudient')->references('id_etudient')->on('etudients')->cascadeOnDelete;
+            $table->unsignedBigInteger('id_niveau');
+
+
+            $table->foreign('id_niveau')->references('id_niveau')->on('niveaux')->cascadeOnDelete;
         });
     }
 
