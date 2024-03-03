@@ -12,9 +12,6 @@
 <body>
 
 
-@auth
-@if (auth()->user()->type === "etudient" )
-
 
 <!-- Your HTML template -->
 <form action="{{route("login.logout")}}" method="post">@csrf
@@ -22,6 +19,37 @@
     <button type="submit">log out</button>
 
     </form>
+
+
+
+
+
+
+
+@auth
+
+
+
+
+@foreach ($formateurs as $formateur)
+    @if (auth()->user()->etudient && auth()->user()->etudient->id_classe === $formateur->classes)
+        {{ $formateur->nom }}
+    @endif
+@endforeach
+
+
+
+
+
+
+
+
+
+@if (auth()->user()->type === "etudient" )
+
+
+
+
 
 <ul id="messages-container">
     <!-- Messages will be displayed here -->
@@ -36,7 +64,7 @@
 
         </form>
 
-     
+
 
             {{ $message->utilisateur->etudiant->nom }}
             <h1>{{ $message->contenu }}</h1>
@@ -44,6 +72,7 @@
         </li>
     @endforeach
 </ul>
+
 
 <!-- Form to send new messages -->
 

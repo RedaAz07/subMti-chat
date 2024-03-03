@@ -10,7 +10,7 @@ class admin extends Model
 {
     use HasFactory;
 
-    protected $fillable =["id_utilisateur","nom","prenom","telephone","addresse"];
+    protected $fillable =["id","nom","prenom","telephone","addresse","CIN","dateNaissance"];
     protected $primaryKey="id_admin";
 
 

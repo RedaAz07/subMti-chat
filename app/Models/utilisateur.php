@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\message;
 use App\Models\etudient;
+use App\Models\formateur;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -12,13 +13,8 @@ class utilisateur extends Model
     use HasFactory;
 
 
-    protected $fillable =["email","password","newPassword","type","id_admin","id_formateur","id_etudient"];
+    protected $fillable =["email","password","newPassword","type",];
 
-
-    public function getAuthIdentifier()
-    {
-        return $this->email; // Replace with the appropriate column name
-    }
 
 
     public function message(){
@@ -26,10 +22,22 @@ class utilisateur extends Model
 }
 
 
-public function etudiant()
+public function etudient()
 {
     return $this->hasOne(etudient::class, 'id_etudient');
 }
 
+
+
+public function formateur()
+{
+    return $this->hasOne(formateur::class, 'id_formateur');
+}
+
+
+public function admin()
+{
+    return $this->hasOne(admin::class, 'id_admin');
+}
 
 }

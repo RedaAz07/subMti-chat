@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\facades\Auth;
+use App\Models\classe;
+use App\Models\niveau;
+use App\Models\filiere;
 use App\Models\message;
+use App\Models\formateur;
 use App\Models\utilisateur;
 use Illuminate\Http\Request;
+use Illuminate\Support\facades\Auth;
 
 class MessageController extends Controller
 {
@@ -17,6 +21,13 @@ class MessageController extends Controller
        return view("message.index",[
 
         "messages"=>message::all(),
+        "formateurs"=>formateur::all(),
+        "filieres"=>filiere::all(),
+        "niveuax"=>niveau::all(),
+        "classe"=>classe::all(),
+
+
+
         "utilisateurs"=>utilisateur::all(),
 
        ]);

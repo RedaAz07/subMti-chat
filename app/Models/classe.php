@@ -2,29 +2,37 @@
 
 namespace App\Models;
 
-use App\Models\etudient;
+use App\Models\niveau;
 use App\Models\filiere;
+use App\Models\etudient;
 use App\Models\formateur;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class classe extends Model
 {
     use HasFactory;
-    protected $fillable =["id_classe","id_filiere","num_classe"];
+    protected $fillable =["num_groupe","id_niveau"];
     protected $primaryKey="id_classe";
 
-    public function filiere(){
-        return $this->belongsTo(filiere::class,'id_filier');
+
+
+    public function niveau(){
+        return $this->belongsTo(niveau::class,'id_niveau');
 }
+
+
+public function formateur()
+{
+    return $this->belongsToMany(formateur::class, 'classe_formateur', 'id_classe', 'id_formateur','id_classe','id_formateur');
+}
+
 
 
 
 public function etudient(){
-    return $this->hasMany(etudient::class,'id_etudinet');
+    return $this->hasMany(etudient::class,'id_etudient');
 }
 
-public function formateur(){
-    return $this->hasMany(formateur::class,'formateur_id');
-}
+
 }

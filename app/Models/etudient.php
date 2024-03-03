@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\classe;
 use App\Models\groupe;
 use App\Models\utilisateur;
 use Illuminate\Database\Eloquent\Model;
@@ -14,8 +15,8 @@ class etudient extends Model
     protected $primaryKey="id_etudient";
 
 
-    public function groupe(){
-        return $this->belongsTo(groupe::class,'id_groupe');
+    public function classe(){
+        return $this->belongsTo(classe::class,'id_classe');
 }
 
 public function utiliateur(){

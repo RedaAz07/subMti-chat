@@ -3,15 +3,21 @@
 namespace App\Models;
 
 use App\Models\groupe;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\niveau;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class filiere extends Model
 {
     use HasFactory;
-    protected $fillable =["id_filiere","id_formateur","id_etudient","nom_filiere"];
+    protected $fillable =["nom_filiere"];
     protected $primaryKey="id_filiere";
-    public function groupe(){
-        return $this->hasMany(groupe::class,'id_groupe');
-}
+
+
+
+    public function niveaux()
+    {
+        return $this->belongsToMany(niveau::class, 'filiere_niveau', 'id_filiere', 'id_niveau','id_filiere','id_niveau')
+           ;
+    }
 }
