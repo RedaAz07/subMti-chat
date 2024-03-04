@@ -76,3 +76,6 @@ Route::get('/import-data-etud', [UtilisateurController::class, 'importData'])->n
 
 Route::get('/import-data-formateur', [UtilisateurController::class, 'importDataf'])->name('import.data');
 */
+
+
+Route::get('/messages', [MessageController::class, 'fetch'])->name('messages.fetch');

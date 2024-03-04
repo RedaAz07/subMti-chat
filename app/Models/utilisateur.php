@@ -15,7 +15,7 @@ class utilisateur extends Model
 
     protected $fillable =["email","password","newPassword","type",];
 
-
+    protected $primaryKey = 'id';
 
     public function message(){
         return $this->hasMany(message::class,'id_message');

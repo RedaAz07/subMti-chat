@@ -46,15 +46,6 @@ class MessageController extends Controller
 
 
 
-    public function fetch()
-    {
-        // Retrieve messages from the database
-        $messages = message::orderBy('created_at')->get();
-
-        // Return the messages as a JSON response
-        return response()->json(['messages' => $messages]);
-    }
-
 
 
 
@@ -75,7 +66,23 @@ class MessageController extends Controller
         return redirect("message");
         message::create($request->post());
         return redirect()->route("message.index");
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
