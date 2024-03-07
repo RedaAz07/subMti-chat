@@ -18,6 +18,11 @@ class loginController extends Controller
         return view("login.show");
     }
 
+    public function etudient()
+    {
+        return view("message.etudient");
+    }
+
 
 
     public function login(Request $request)
@@ -48,12 +53,6 @@ $credentials=["email"=>$email,"password"=>$password];
         return redirect()->route('login');
     }
 
-
-
-    public function page1()
-    {
-        return view("login.page1");
-    }
 
     /**
      * Display the specified resource.

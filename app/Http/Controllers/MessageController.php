@@ -6,6 +6,8 @@ use App\Models\classe;
 use App\Models\niveau;
 use App\Models\filiere;
 use App\Models\message;
+use App\Models\etudient;
+use App\Models\actualite;
 use App\Models\formateur;
 use App\Models\utilisateur;
 use Illuminate\Http\Request;
@@ -25,6 +27,10 @@ class MessageController extends Controller
         "filieres"=>filiere::all(),
         "niveuax"=>niveau::all(),
         "classe"=>classe::all(),
+        "etudients"=>etudient::all(),
+        "actualites"=>actualite::all(),
+
+
 
 
 
@@ -40,7 +46,9 @@ class MessageController extends Controller
     {
         return view("message.index",[
 
-            "messages"=>message::all()
+            "messages"=>message::all(),
+            "etudients"=>etudient::all()
+
            ]);
     }
 

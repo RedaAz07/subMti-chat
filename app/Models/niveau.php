@@ -15,7 +15,7 @@ class niveau extends Model
     protected $primaryKey="id_niveau";
 
 
-    public function filiers()
+    public function filiere()
     {
         return $this->belongsToMany(filiere::class, 'filiere_niveau', 'id_niveau', 'id_filiere','id_niveau','id_filiere')
            ;

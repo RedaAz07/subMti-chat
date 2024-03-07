@@ -3,21 +3,21 @@
         "nom": "Stewart",
         "prenom": "William",
         "CIN": "F6536927",
-        "email": "StewartWilliamF6536927admin@submti.com",
+        "email": "StewartWilliamF6536927admin@supMti.com",
         "password": "StewartF65369273"
     },
     {
         "nom": "Boyd",
         "prenom": "Christopher",
         "CIN": "M3954517",
-        "email": "BoydChristopherM3954517admin@submti.com",
+        "email": "BoydChristopherM3954517admin@supMti.com",
         "password": "BoydM39545172"
     },
     {
         "nom": "Bennett",
         "prenom": "Jennifer",
         "CIN": "N1952118",
-        "email": "BennettJenniferN1952118admin@submti.com",
+        "email": "BennettJenniferN1952118admin@supMti.com",
         "password": "BennettN19521181"
     }
 ]

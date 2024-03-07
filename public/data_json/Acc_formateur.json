@@ -3,56 +3,56 @@
         "nom": "Lucas",
         "prenom": "Alexander",
         "CIN": "F4515534",
-        "email": "LucasAlexander@submti.com",
+        "email": "LucasAlexander@supMti.com",
         "password": "LucasF45155348"
     },
     {
         "nom": "Palmer",
         "prenom": "Haley",
         "CIN": "D9111363",
-        "email": "PalmerHaley@submti.com",
+        "email": "PalmerHaley@supMti.com",
         "password": "PalmerD91113634"
     },
     {
         "nom": "Wise",
         "prenom": "Mark",
         "CIN": "B7996490",
-        "email": "WiseMark@submti.com",
+        "email": "WiseMark@supMti.com",
         "password": "WiseB79964902"
     },
     {
         "nom": "Navarro",
         "prenom": "Jessica",
         "CIN": "P3734171",
-        "email": "NavarroJessica@submti.com",
+        "email": "NavarroJessica@supMti.com",
         "password": "NavarroP37341717"
     },
     {
         "nom": "Quinn",
         "prenom": "Jared",
         "CIN": "F1240799",
-        "email": "QuinnJared@submti.com",
+        "email": "QuinnJared@supMti.com",
         "password": "QuinnF12407993"
     },
     {
         "nom": "Gray",
         "prenom": "Annette",
         "CIN": "O7345069",
-        "email": "GrayAnnette@submti.com",
+        "email": "GrayAnnette@supMti.com",
         "password": "GrayO73450699"
     },
     {
         "nom": "Davis",
         "prenom": "Meredith",
         "CIN": "U4913730",
-        "email": "DavisMeredith@submti.com",
+        "email": "DavisMeredith@supMti.com",
         "password": "DavisU49137305"
     },
     {
         "nom": "Anderson",
         "prenom": "Robert",
         "CIN": "F2195140",
-        "email": "AndersonRobert@submti.com",
+        "email": "AndersonRobert@supMti.com",
         "password": "AndersonF21951401"
     }
 ]

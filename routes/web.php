@@ -18,7 +18,7 @@ use App\Http\Controllers\UtilisateurController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,16 +32,23 @@ Route::match(['get', 'post'], '/user/profile', function () {
 });
 
 
-
+*/
 
 
 
 
 Route::match(["get","post"],"login.login",[loginController::class,"login"])->name("login.login");
+
+
+
 Route::match(["get","post"],"login",[loginController::class,"show"])->name("login");
 
 
-Route::match(["get","post"],"login.page1",[loginController::class,"page1"])->name("login.page1");
+Route::match(["get","post"],"etudient",[loginController::class,"etudient"])->name("etudient");
+
+
+
+
 
 
 Route::match(["get","post"],"login.logout",[loginController::class,"logout"])->name("login.logout");
@@ -55,7 +62,7 @@ Route::get('/messages', 'MessageController@fetch')->name('messages.fetch');
 
 
 // export the data from  etudeient _data.jsone to Acc_etudient.jsno
-Route::get('/export-data-etud', [EtudientController::class, 'exportData'])->name('export.data');
+//Route::get('/export-data-etud', [EtudientController::class, 'exportData'])->name('export.data');
 
 // import  the data from  etudeient _data.jsone to tables utilisateur and etudeint
 Route::get('/exportDataTOtableEtudient', [EtudientController::class, 'exportDataTOtableEtudient']);
@@ -79,3 +86,14 @@ Route::get('/import-data-formateur', [UtilisateurController::class, 'importDataf
 
 
 Route::get('/messages', [MessageController::class, 'fetch'])->name('messages.fetch');
+
+
+
+
+
+
+
+
+
+Route::resource('/etudient', EtudientController::class);
+
