@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\annance;
+use App\Models\actualite;
 use Illuminate\Http\Request;
 
-class AnnanceController extends Controller
+class ActualiteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class AnnanceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(annance $annance)
+    public function show(actualite $actualite)
     {
         //
     }
@@ -42,7 +42,7 @@ class AnnanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(annance $annance)
+    public function edit(actualite $actualite)
     {
         //
     }
@@ -50,7 +50,7 @@ class AnnanceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, annance $annance)
+    public function update(Request $request, actualite $actualite)
     {
         //
     }
@@ -58,7 +58,7 @@ class AnnanceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(annance $annance)
+    public function destroy(actualite $actualite)
     {
         //
     }

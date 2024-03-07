@@ -79,31 +79,38 @@
 
             <nav>
 <!---------------------------------------------------- link homa kola formateurs bohdo ------------------------------------------------------>
-@foreach ($formateurs as $formateur)
-    @foreach ($formateur->classes as $class)
-        @foreach ($class->etudient as $etudiant)
-            @auth
-                @if (auth()->user()->id === $etudiant->id_etudient)
+
+
+
+
+@foreach ($etudients as $etudiant)
+    @auth
+        @if (auth()->user()->id === $etudiant->id_etudient)
+            @foreach ($formateurs as $formateur)
+                @foreach ($formateur->classes as $class)
+
                     @foreach ($class->niveau->filiere as $filiere)
-                        @if ($etudiant->classe->id_classe === $class->id_classe &&
-                            $etudiant->classe->niveau->id_niveau === $class->niveau->id_niveau &&
-                            $filiere->id_filiere === $etudiant->classe->niveau->filiere->id_filiere)
-                            <a href="#" class="link">
-                                <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                                <div class="description">
-                                    <span id="active-span">{{ $formateur->nom }}</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </a>
-                        @endif
-                    @endforeach
-                @endif
-            @endauth
-        @endforeach
-    @endforeach
+                    @foreach ($etudiant->classe->niveau->filiere as $item)
+
+                    @if ($etudiant->classe->id_classe === $class->id_classe &&
+                        $etudiant->classe->niveau->id_niveau === $class->niveau->id_niveau && $filiere->id_filiere == $item->id_filiere)
+
+                                    <a href="#" class="link">
+                                        <img src="{{ asset('img/man.png') }}" class="img-teacher">
+                                        <div class="description">
+                                            <span id="active-span">{{ $formateur->nom }}</span>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                        </div>
+                                    </a>
+
+                                @endif
+                            @endforeach
+                        @endforeach
+                @endforeach
+            @endforeach
+        @endif
+    @endauth
 @endforeach
-
-
 
 
 
@@ -285,27 +292,20 @@
                             <span id="active-span">groupe SUPMTI</span>
                         </a>
                     </div>
-                    <div class="groupes">
-                        <a href="" class="links ">
 
 
-                            <img src="{{asset("img/group.png")}}" alt="" class="img-group">
-
-                            @foreach ($etudients as $etudient)
-                         @auth
-
-                         @if ($etudient->id_etudient === auth()->user()->id)
-
-                         <span id="active-span">  {{$etudient->classe->num_groupe}}</span>
-
-                                    @endif
-
-                                    @endauth
-                                    @endforeach
-
-
-                        </a>
-                    </div>
+                    @foreach ($etudients as $etudient)
+    @auth
+        @if ($etudient->id_etudient === auth()->user()->id)
+            <div class="groupes">
+                <a href="#" class="links" id="group-{{ $etudient->classe->num_groupe }}">
+                    <img src="{{ asset("img/group.png") }}" alt="" class="img-group">
+                    <span id="active-span">{{ $etudient->classe->num_groupe }}</span>
+                </a>
+            </div>
+        @endif
+    @endauth
+@endforeach
 
                 </div>
             <section>
@@ -326,6 +326,60 @@
             </aside>
         </div>
 </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Add event listeners to group links
+            const groupLinks = document.querySelectorAll(".links");
+            groupLinks.forEach(function (link) {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+
+                    // Get the group id from the link id
+                    const groupId = link.id.split("-")[1];
+
+                    // Fetch messages associated with the user's group via AJAX
+                    fetch(`/get-messages?groupId=${groupId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Update the chat area with the retrieved messages
+                            const chatContainer = document.querySelector(".chat-container");
+                            chatContainer.innerHTML = ''; // Clear previous messages
+                            data.forEach(message => {
+                                chatContainer.innerHTML += `
+                                    <div class="chat incoming">
+                                        <div class="details">
+                                            <p>${message.contenu}</p>
+                                            <img src="${message.file}" alt="" width="50px">
+                                            <img src="{{ asset("img/list.png") }}" alt="" id="imgList" data-dropdown-toggle="dropdown${message.id_message}">
+                                            <div id="dropdown${message.id_message}" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Error fetching messages:', error);
+                        });
+                });
+            });
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+
+
 </body>
 </html>

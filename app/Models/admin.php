@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\annance;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+use App\Models\actualite;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class admin extends Model
 {
@@ -16,7 +17,7 @@ class admin extends Model
 
 
 
-    public function annance(){
-        return $this->hasMany(annance::class,'id_annance');
+    public function Actualite(){
+        return $this->hasMany(actualite::class,'id_actualite');
 }
 }

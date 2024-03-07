@@ -91,9 +91,11 @@ Route::get('/messages', [MessageController::class, 'fetch'])->name('messages.fet
 
 
 
+Route::get('/messages', [MessageController::class, 'show_classe'])->name('show_classe');
 
 
 
 
 Route::resource('/etudient', EtudientController::class);
+
 

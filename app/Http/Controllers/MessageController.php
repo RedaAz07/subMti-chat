@@ -26,7 +26,7 @@ class MessageController extends Controller
         "formateurs"=>formateur::all(),
         "filieres"=>filiere::all(),
         "niveuax"=>niveau::all(),
-        "classe"=>classe::all(),
+        "classes"=>classe::all(),
         "etudients"=>etudient::all(),
         "actualites"=>actualite::all(),
 
