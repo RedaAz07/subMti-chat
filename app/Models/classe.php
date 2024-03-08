@@ -6,6 +6,7 @@ use App\Models\niveau;
 use App\Models\filiere;
 use App\Models\etudient;
 use App\Models\formateur;
+use App\Models\messageClasse;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -34,5 +35,9 @@ public function etudient(){
     return $this->hasMany(etudient::class,'id_etudient');
 }
 
+
+public function messageClasses(){
+    return $this->hasMany(messageClasse::class,'id');
+}
 
 }

@@ -99,3 +99,5 @@ Route::get('/messages', [MessageController::class, 'show_classe'])->name('show_c
 Route::resource('/etudient', EtudientController::class);
 
 
+
+Route::match(["get", "post"], "/message.groupe/{groupId}", [MessageController::class, "groupe"])->name("message.groupe");

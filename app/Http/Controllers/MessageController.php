@@ -123,9 +123,17 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(message $message)
-    {
-        $message->delete();
-        return redirect()->route("message.index");
-    }
+
+public function groupe($groupId)
+{
+    return view("message.groupe",[
+        "groupId"=>$groupId,
+        "etudients"=>etudient::all(),
+        "messages"=>message::all(),
+
+    ]);
 }
+
+
+}
+

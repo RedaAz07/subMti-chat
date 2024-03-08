@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\classe;
 use App\Models\groupe;
 use App\Models\utilisateur;
+use App\Models\messageClasse;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -25,5 +26,9 @@ public function utiliateur(){
 
 
 
+
+public function messageClasse(){
+    return $this->hasMany(messageClasse::class,'id');
+}
 
 }
