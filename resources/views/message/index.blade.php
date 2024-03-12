@@ -13,6 +13,13 @@
 <!---------------------------------------------------- header ------------------------------------------------------>
 
 
+{{--                        etudient page                  --}}
+@auth
+
+@if (auth()->user()->type==="etudient")
+
+
+
     <header>
         <div class="left-section">
             <img src="{{ asset('img/vg0CZ05S.jpg') }}">
@@ -63,6 +70,7 @@
 
 <!----------------------------- container li jam3 la page kamla mn ghir lheader howa had  content-area------------------------------------------------------>
 <div class="content-area">
+
     <!---------------------------------------------------- left-sidebar  -- jiha lisrya ----------------------------------------------------->
         <div class="left-sidebar">
 <!---------------------------------------------------- had fix-container howa li jame3 h1 d formateurs o recherch barre  ------------------------------------------------------>
@@ -85,17 +93,14 @@
 
 @foreach ($etudients as $etudiant)
     @auth
-        @if (auth()->user()->id === $etudiant->id_etudient)
+        @if (auth()->user()->id === $etudiant->id)
             @foreach ($formateurs as $formateur)
                 @foreach ($formateur->classes as $class)
 
-                    @foreach ($class->niveau->filiere as $filiere)
-                    @foreach ($etudiant->classe->niveau->filiere as $item)
+                        @if ($etudiant->classe->id_classe === $class->id_classe &&
+                        $etudiant->classe->niveau->id_niveau === $class->niveau->id_niveau && $etudiant->classe->niveau->id_filiere== $class->niveau->id_filiere)
 
-                    @if ($etudiant->classe->id_classe === $class->id_classe &&
-                        $etudiant->classe->niveau->id_niveau === $class->niveau->id_niveau && $filiere->id_filiere == $item->id_filiere)
-
-                                    <a href="#" class="link">
+                                    <a href="{{route("messageformateur.show_form",["id_for"=>$formateur->id_formateur ])}}" class="link">
                                         <img src="{{ asset('img/man.png') }}" class="img-teacher">
                                         <div class="description">
                                             <span id="active-span">{{ $formateur->nom }}</span>
@@ -103,9 +108,8 @@
                                         </div>
                                     </a>
 
-                                @endif
-                            @endforeach
-                        @endforeach
+                        @endif
+
                 @endforeach
             @endforeach
         @endif
@@ -299,7 +303,7 @@
                         @if ($etudient->id_etudient === auth()->user()->id)
                             <div class="groupes">
 
-                                <a href="{{ Route("message.groupe",["groupId"=> $etudient->classe->id_classe]) }}" class="links" >
+                             <a href="{{route("messageClasse.index")}}" class="links" >
 
 
                                     <img src="{{ asset("img/group.png") }}" alt="" class="img-group">
@@ -329,6 +333,65 @@
         </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@endif
+{{--        page formateur                             --}}
+
+@foreach ($formateurs as $formateur)
+
+
+@if (auth()->user()->id === $formateur->utilisateur->id)
+
+
+@foreach ($formateur->classes as $item)
+
+
+
+{{$item->num_groupe}}
+
+{{$item->niveau->niveau}}
+
+{{$item->niveau->id_filiere}}
+
+@foreach ($filieres as $filiere)
+
+@if ($item->niveau->id_filiere===$filiere->id_filiere)
+
+
+{{$filiere->nom_filiere}}
+@endif
+
+
+@endforeach
+
+@endforeach
+
+
+@endif
+@endforeach
+
+
+
+
+
+@endauth
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 

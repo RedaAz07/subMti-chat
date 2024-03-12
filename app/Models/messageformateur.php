@@ -2,25 +2,25 @@
 
 namespace App\Models;
 
-use App\Models\classe;
 use App\Models\etudient;
+use App\Models\formateur;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class messageClasse extends Model
+class messageformateur extends Model
 {
-    protected $fillable =["file","contenu","id_etudient","id_classe"];
-
+    protected $fillable =["id_formateur","id_etudient","contenu","file"];
     use HasFactory;
 
-    protected $table = 'messageClasses';
+
+
     public function etudient(){
         return $this->belongsTo(etudient::class,'id_etudient');
 }
 
 
-public function classe(){
-    return $this->belongsTo(classe::class,'id_classe');
+public function formateur(){
+    return $this->belongsTo(formateur::class,'id_formateur');
 }
 
 

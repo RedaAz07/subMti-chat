@@ -4,7 +4,9 @@ namespace App\Models;
 
 use App\Models\classe;
 use App\Models\groupe;
+use App\Models\utilisateur;
 use app\models\message_groupe;
+use App\Models\messageformateur;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -20,6 +22,21 @@ class formateur extends Model
     {
         return $this->belongsToMany(classe::class, 'classe_formateur', 'id_formateur', 'id_classe','id_formateur','id_classe');
     }
+
+
+
+    public function utilisateur(){
+        return $this->belongsTo(utilisateur::class,'id');
+    }
+
+
+
+
+
+    public function messageformateur(){
+        return $this->hasMany(messageformateur::class,'id');
+}
+
 
 
 

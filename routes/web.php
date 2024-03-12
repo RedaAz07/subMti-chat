@@ -7,6 +7,8 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\EtudientController;
 use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\UtilisateurController;
+use App\Http\Controllers\messageClasseController;
+use App\Http\Controllers\MessageformateurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,8 +98,47 @@ Route::get('/messages', [MessageController::class, 'show_classe'])->name('show_c
 
 
 
+
+
+
+
+
+
+
+
+
+Route::get('/messageformateur/show_form/{id_for}', [MessageformateurController::class, 'show_form'])->name('messageformateur.show_form');
+
+
+
+Route::match(["get","post"],"/messageformateur",[MessageformateurController::class,"store"])->name("messageformateur.store");
+
+
+
+
+
+
+
+
+
+
+
+
+Route::resource('/messageformateur', MessageformateurController::class);
+
+
+
+
+
+
+
+
 Route::resource('/etudient', EtudientController::class);
 
 
 
-Route::match(["get", "post"], "/message.groupe/{groupId}", [MessageController::class, "groupe"])->name("message.groupe");
+Route::resource('/messageClasse', messageClasseController::class);
+
+
+
+Route::match(["get", "post"], "/messageClasse.groupe/{groupId}", [messageClasseController::class, "groupe"])->name("messageClasse.groupe");

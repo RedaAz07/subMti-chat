@@ -20,15 +20,28 @@ class etudient extends Model
         return $this->belongsTo(classe::class,'id_classe');
 }
 
-public function utiliateur(){
+
+
+public function utilisateur(){
     return $this->belongsTo(utilisateur::class,'id');
 }
-
-
 
 
 public function messageClasse(){
     return $this->hasMany(messageClasse::class,'id');
 }
+
+
+
+
+
+public function messageformateur(){
+    return $this->hasMany(messageformateur::class,'id');
+}
+
+
+
+
+
 
 }

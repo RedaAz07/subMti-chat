@@ -1,7 +1,4 @@
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +46,18 @@
 </a>
     </div>
 </div>
-            <span id="nom"><strong>ELMAHDI</strong></span>
+@auth
+    @foreach ($etudients as $etudient)
+    @if ($etudient->id_etudient===auth()->user()->id)
+
+
+    <span id="nom"><strong>{{ $etudient->nom .  $etudient->prenom}}</strong></span>
+    @endif
+    @endforeach
+
+@endauth
+
+
         </div>
     </header>
                     <!----------------------------------------------------fin header ------------------------------------------------------>
@@ -73,16 +81,21 @@
             <nav>
 <!---------------------------------------------------- link homa kola formateurs bohdo ------------------------------------------------------>
 
+
+
+
 @foreach ($etudients as $etudiant)
     @auth
         @if (auth()->user()->id === $etudiant->id_etudient)
             @foreach ($formateurs as $formateur)
                 @foreach ($formateur->classes as $class)
-                    @if ($etudiant->classe->id_classe == $class->id_classe &&
-                        $etudiant->classe->niveau->id_niveau == $class->niveau->id_niveau)
-                        @foreach ($class->niveau->filiere as $filiere)
-                            @foreach ($etudiant->classe->niveau->filiere as $item)
-                                @if ($filiere->id_filiere == $item->id_filiere)
+
+                    @foreach ($class->niveau->filiere as $filiere)
+                    @foreach ($etudiant->classe->niveau->filiere as $item)
+
+                    @if ($etudiant->classe->id_classe === $class->id_classe &&
+                        $etudiant->classe->niveau->id_niveau === $class->niveau->id_niveau && $filiere->id_filiere == $item->id_filiere)
+
                                     <a href="#" class="link">
                                         <img src="{{ asset('img/man.png') }}" class="img-teacher">
                                         <div class="description">
@@ -90,10 +103,10 @@
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                         </div>
                                     </a>
+
                                 @endif
                             @endforeach
                         @endforeach
-                    @endif
                 @endforeach
             @endforeach
         @endif
@@ -212,7 +225,6 @@
 
 
 
-
 </div>
 <!---------------------------------------------------- fin chat-container ------------------------------------------------------>
 
@@ -280,68 +292,46 @@
                             <span id="active-span">groupe SUPMTI</span>
                         </a>
                     </div>
-                    <div class="groupes">
-                        <a href="" class="links ">
 
 
-                            <img src="{{asset("img/group.png")}}" alt="" class="img-group">
+                    @foreach ($etudients as $etudient)
+                    @auth
+                        @if ($etudient->id_etudient === auth()->user()->id)
+                            <div class="groupes">
 
-                            @foreach ($etudients as $etudient)
-                         @auth
-
-                         @if ($etudient->id_etudient === auth()->user()->id)
-
-                         <span id="active-span">  {{$etudient->classe->num_groupe}}</span>
-
-                                    @endif
-
-                                    @endauth
-                                    @endforeach
+                             <a href="{{route("messageClasse.index")}}" class="links" >
 
 
-                        </a>
-                    </div>
-
+                                    <img src="{{ asset("img/group.png") }}" alt="" class="img-group">
+                                    <span id="active-span">{{ $etudient->classe->num_groupe }}</span>
+                                </a>
+                            </div>
+                        @endif
+                    @endauth
+                @endforeach
                 </div>
             <section>
                 <h2 class="annance"><strong>annances</strong></h2>
+
+
+                @foreach ($actualites as $actualite)
+
+
                 <div class="annances-container">
                     <a href="" class="annances ">
-                        <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
-                    </a>
-                </div>
-                <div class="annances-container">
-                    <a href="" class="annances ">
-                        <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
-                    </a>
-                </div>
-                <div class="annances-container">
-                    <a href="" class="annances ">
-                        <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
-                    </a>
-                </div>
-                <div class="annances-container">
-                    <a href="" class="annances ">
-                        <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
-                    </a>
-                </div>
-                <div class="annances-container">
-                    <a href="" class="annances ">
-                        <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
-                    </a>
-                </div>
-                <div class="annances-container">
-                    <a href="" class="annances ">
-                        <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
+                        <span id="active-span">{{$actualite->contenu}}</span>
                     </a>
                 </div>
 
-
+                @endforeach
                 </section>
             </aside>
         </div>
 </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+
+
 </body>
 </html>
-@endsection
