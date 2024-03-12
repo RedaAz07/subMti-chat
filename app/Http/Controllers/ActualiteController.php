@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\actualite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ActualiteController extends Controller
 {
@@ -12,7 +13,6 @@ class ActualiteController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -20,7 +20,8 @@ class ActualiteController extends Controller
      */
     public function create()
     {
-        //
+        return view('actualites.create', ['actualites' => actualite::all()]);
+
     }
 
     /**
@@ -28,7 +29,24 @@ class ActualiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'contenu' => 'string|required',
+            'file' => 'required',
+
+        ]);
+        $requestData = $request->all();
+        $requestData['file'] = $request->file('file')->store('actualite', 'public');
+        $requestData['id_admin'] = Auth::user()->id;
+
+        actualite::create($requestData);
+
+        return redirect()->route('actualites.create');
+        actualite::create($requestData);
+
+        return redirect()->route('actualites.create');
+        actualite::create($request->post());
+
+        return redirect()->route('actualites.create');
     }
 
     /**

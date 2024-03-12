@@ -174,15 +174,29 @@ nav{
 
 
 }
+
+.groupes{
+
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    height: 35vh;
+
+}
+.annances-container{
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    height: 65vh;
+    padding-bottom: 24px;
+    padding-right: 10px;
+    padding-top: 10px;
+
+
+}
 section{
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding-right: 10px;
     background: #F8FAFC;
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    padding-bottom: 80px;
     height: 100vh;
 }
 .fix-groupe-container h2{
