@@ -316,7 +316,8 @@ section .annance {
     box-shadow: 0 0 17px 10px rgb(0 0 0 / 5%);
 }
 .annances span{
-font-size: 15px;}
+font-size: 15px;
+word-wrap: break-word;}
 .links i {
 padding-right: 5px;
 }

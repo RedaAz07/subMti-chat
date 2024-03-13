@@ -300,15 +300,22 @@ section .annance {
     margin-bottom: 8px;
     margin-left: 14px;
     box-shadow: 0 0 17px 10px rgb(0 0 0 / 5%);
+    max-width: 320px;
+
 }
 .annances span{
-font-size: 15px;}
+    width: 100%;
+font-size: 15px;
+word-wrap: break-word;
+}
 .links i {
 padding-right: 5px;
 }
 
 #active-span {
     font-weight: 500;
+    word-wrap: break-word;
+
 }
 .link:hover{
     background-color: rgba(0, 0, 0, 0.05);
