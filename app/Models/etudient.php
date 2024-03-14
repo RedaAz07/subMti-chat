@@ -6,6 +6,7 @@ use App\Models\classe;
 use App\Models\groupe;
 use App\Models\utilisateur;
 use App\Models\messageClasse;
+use App\Models\adminEtudMessages;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -40,7 +41,9 @@ public function messageformateur(){
 }
 
 
-
+public function adminEtudMessages(){
+    return $this->hasMany(adminEtudMessages::class,'id');
+}
 
 
 

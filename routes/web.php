@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\adminEtudMessages;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\loginController;
@@ -9,6 +10,8 @@ use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\UtilisateurController;
 use App\Http\Controllers\messageClasseController;
 use App\Http\Controllers\MessageformateurController;
+use App\Http\Controllers\AdminEtudMessagesController;
+use App\Http\Controllers\AdminProfMessagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,24 +109,35 @@ Route::get('/messages', [MessageController::class, 'show_classe'])->name('show_c
 
 
 
-
+// message entre formateur et etudient
 Route::get('/messageformateur/show_form/{id_for}', [MessageformateurController::class, 'show_form'])->name('messageformateur.show_form');
 
 
 
 Route::match(["get","post"],"/messageformateur",[MessageformateurController::class,"store"])->name("messageformateur.store");
 
+// message admin et etudients
+
+
+Route::get('/adminEtudMessages/showEtuds/{id_etud}', [AdminEtudMessagesController::class, 'showEtuds'])
+    ->name('adminEtudMessages.showEtuds');
 
 
 
+Route::match(["get","post"],"/adminEtudMessages",[AdminEtudMessagesController::class,"store"])->name("adminEtudMessages.store");
+
+
+// message admin formateur
+
+Route::get('/adminProfMessages/index/{id_form}', [AdminProfMessagesController::class, 'index'])
+    ->name('adminProfMessages.index');
 
 
 
+Route::match(["get","post"],"/adminProfMessages",[AdminProfMessagesController::class,"store"])->name("adminProfMessages.store");
 
 
-
-
-
+/////////////////////////////////////////////////////////////////
 Route::resource('/messageformateur', MessageformateurController::class);
 
 

@@ -7,6 +7,7 @@ use App\Models\groupe;
 use App\Models\utilisateur;
 use app\models\message_groupe;
 use App\Models\messageformateur;
+use App\Models\adminProfMessages;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -36,6 +37,19 @@ class formateur extends Model
     public function messageformateur(){
         return $this->hasMany(messageformateur::class,'id');
 }
+
+
+
+
+
+
+public function adminProfMessages(){
+    return $this->hasMany(adminProfMessages::class,'id');
+}
+
+
+
+
 
 
 

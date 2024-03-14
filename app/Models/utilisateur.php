@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\admin;
 use App\Models\message;
 use App\Models\etudient;
 use App\Models\formateur;
@@ -33,11 +34,10 @@ public function formateur()
 {
     return $this->hasOne(formateur::class, 'id_formateur');
 }
-
-
 public function admin()
 {
-    return $this->hasOne(admin::class, 'id_admin');
+    return $this->hasOne(admin::class, 'id', 'id');
 }
+
 
 }
