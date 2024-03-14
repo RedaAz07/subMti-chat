@@ -15,6 +15,20 @@ use Illuminate\Support\facades\Auth;
 
 class FormateurController extends Controller
 {
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> d468491c8ae6fa6832ad2f5b04819c4ec1ac580c
     public function exportDataformateur()
     {
 

@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class classe extends Model
 {
     use HasFactory;
-    protected $fillable =["num_groupe","id_niveau"];
+    protected $fillable =["num_groupe","id_niveau","id_filiere"];
     protected $primaryKey="id_classe";
 
 
@@ -30,6 +30,11 @@ public function formateur()
 
 
 
+
+
+public function filiere(){
+    return $this->belongsTo(filiere::class,'id_filiere');
+}
 
 public function etudient(){
     return $this->hasMany(etudient::class,'id_etudient');

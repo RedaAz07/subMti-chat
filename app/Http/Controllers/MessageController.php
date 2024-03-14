@@ -135,5 +135,12 @@ public function groupe($groupId)
 }
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> d468491c8ae6fa6832ad2f5b04819c4ec1ac580c
 }
 
