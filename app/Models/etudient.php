@@ -20,7 +20,7 @@ class etudient extends Model
         return $this->belongsTo(classe::class,'id_classe');
 }
 
-public function utiliateur(){
+public function utilisateur(){
     return $this->belongsTo(utilisateur::class,'id');
 }
 

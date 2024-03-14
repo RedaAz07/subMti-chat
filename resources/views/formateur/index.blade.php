@@ -44,7 +44,20 @@
         <a href="#" class="block px-4 py-2 text-xl text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">log out</a>
     </div>
 </div>
-            <span id="nom"><strong>ELMAHDI</strong></span>
+@auth
+
+
+
+
+    @foreach ($formateurs as $formateur)
+    @if ($formateur->utilisateur->id ===auth()->user()->id)
+
+
+    <span id="nom"><strong>{{ $formateur->nom .  $formateur->prenom}}</strong></span>
+    @endif
+    @endforeach
+
+@endauth
         </div>
     </header>
                     <!----------------------------------------------------fin header ------------------------------------------------------>
@@ -75,94 +88,7 @@
                     <p>Lorem ipsum dolor sit consectetur elit.</p>
                     </div>
                 </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>reda anniz</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>reda anniz</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>reda anniz</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>reda anniz</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>reda anniz</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>ahmed sayeh</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>fahed benbali</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>chadli belkassem</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>chadli belkassem</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>chadli belkassem</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>chadli belkassem</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
+
             </nav>
         </div>
         <!---------------------------------------------------- fin left-sidebar------------------------------------------------------>
@@ -278,42 +204,37 @@
                         <span id="active-span">groupe SUPMTI</span>
                     </a>
                 </div>
+
+
+
+
+
+              @auth
+@foreach ($formateurs as $formateur)
+
+
+@if (->utilisateur->id === auth()->user()->id)
+
+@foreach ($formateur->classes as $class)
+
+if
+
+
+
                 <div>
                     <a href="" class="links ">
                         <img src="{{asset("img/group.png")}}" alt="" class="img-group">
                         <span id="active-span">DD101</span>
                     </a>
                 </div>
-                <div>
-                    <a href="" class="links ">
-                        <img src="{{asset("img/group.png")}}" alt="" class="img-group">
-                        <span id="active-span">DD101</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="" class="links ">
-                        <img src="{{asset("img/group.png")}}" alt="" class="img-group">
-                        <span id="active-span">DD101</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="" class="links ">
-                        <img src="{{asset("img/group.png")}}" alt="" class="img-group">
-                        <span id="active-span">DD101</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="" class="links ">
-                        <img src="{{asset("img/group.png")}}" alt="" class="img-group">
-                        <span id="active-span">DD101</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="" class="links ">
-                        <img src="{{asset("img/group.png")}}" alt="" class="img-group">
-                        <span id="active-span">DD101</span>
-                    </a>
-                </div>
+
+                @endforeach
+                @endif
+                @endforeach
+                @endauth
+
+
+
 
 
             </div>

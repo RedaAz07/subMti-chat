@@ -382,6 +382,7 @@ main {
     /* --------------main-content-------------- */
     .main-content{
         flex-basis: 60%;
+        width: 320px;
         /* padding: 35px 15px; */
         background-color: #FFFFFF;
         height: 100vh;
@@ -391,6 +392,7 @@ main {
         /* border-radius: 15px; */
         /* scrollbar-width: thin; */
         z-index: 0;
+        position: relative;
     }
 
 
@@ -413,8 +415,8 @@ main {
     background-color: #F8FAFC;
     margin-top: 597px;
     padding: 16px 0px;
-    position: fixed;
-    width: 840px;
+    position: absolute;
+    width: 100%;
     z-index: 999999999999;
 
 
@@ -639,7 +641,8 @@ border-radius: 18px 18px 18px 18px;
 
     }
         .message-container {
-        margin-top: 548px;
+            margin-top: 597px;
+            position: absolute;
         width: 100%;
     }
 
@@ -663,7 +666,9 @@ border-radius: 18px 18px 18px 18px;
 
     }
     .message-container {
-        margin-top: 548px;
+        margin-top: 597px;
+        position: absolute;
+
         width: 100%;
     }
 
