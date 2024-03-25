@@ -122,6 +122,14 @@ Route::get('/adminEtudMessages/showEtuds/{id_etud}', [AdminEtudMessagesControlle
 
 
 
+    Route::get('/adminEtudMessages/showLastAdminMessage/{id_etud}', [AdminEtudMessagesController::class, 'showLastAdminMessage'])
+    ->name('adminEtudMessages.showLastAdminMessage');
+
+
+
+
+
+
 Route::match(["get","post"],"/adminEtudMessages/admin",[AdminEtudMessagesController::class,"store"])->name("adminEtudMessages/admin.store");
 
 //----->  etudient

@@ -950,7 +950,7 @@
                             <img src="{{ asset('img/man.png') }}" class="img-teacher">
                             <div class="discription">
                             <span id="active-span">{{ $formateur->nom ." ". $formateur->prenom }}</span>
-                            <p>Lorem ipsum dolor sit consectetur elit.</p>
+                            <p>{{$messaaa}}</p>
                             </div>
                         </a>
 
