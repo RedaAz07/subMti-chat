@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\classe;
-use App\Models\niveau;
-use App\Models\filiere;
-use App\Models\message;
-use App\Models\etudient;
 use App\Models\actualite;
+use App\Models\classe;
+use App\Models\etudient;
+use App\Models\filiere;
 use App\Models\formateur;
+use App\Models\message;
+use App\Models\niveau;
 use App\Models\utilisateur;
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\Auth;
@@ -20,23 +20,19 @@ class MessageController extends Controller
      */
     public function index()
     {
-       return view("message.index",[
+        return view('message.index', [
 
-        "messages"=>message::all(),
-        "formateurs"=>formateur::all(),
-        "filieres"=>filiere::all(),
-        "niveuax"=>niveau::all(),
-        "classes"=>classe::all(),
-        "etudients"=>etudient::all(),
-        "actualites"=>actualite::all(),
+            'messages' => message::all(),
+            'formateurs' => formateur::all(),
+            'filieres' => filiere::all(),
+            'niveuax' => niveau::all(),
+            'classes' => classe::all(),
+            'etudients' => etudient::all(),
+            'actualites' => actualite::all(),
 
+            'utilisateurs' => utilisateur::all(),
 
-
-
-
-        "utilisateurs"=>utilisateur::all(),
-
-       ]);
+        ]);
     }
 
     /**
@@ -44,57 +40,36 @@ class MessageController extends Controller
      */
     public function create()
     {
-        return view("message.index",[
+        return view('message.index', [
 
-            "messages"=>message::all(),
-            "etudients"=>etudient::all()
+            'messages' => message::all(),
+            'etudients' => etudient::all(),
 
-           ]);
+        ]);
     }
-
-
-
-
-
 
     public function store(Request $request)
     {
         $request->validate([
-            "contenu"=>"string|required",
-            "file"=>"required",
+            'contenu' => 'string|required',
+            'file' => 'required',
 
         ]);
-        $requestData=$request->all();
-        $requestData["file"] =$request->file("file")->store("message","public") ;
-        $requestData["id"]=auth::user()->id;
+        $requestData = $request->all();
+        $requestData['file'] = $request->file('file')->store('message', 'public');
+        $requestData['id'] = auth::user()->id;
 
         message::create($requestData);
-        return redirect("message");
+
+        return redirect('message');
         message::create($requestData);
-        return redirect("message");
+
+        return redirect('message');
         message::create($request->post());
-        return redirect()->route("message.index");
 
-
-
-
+        return redirect()->route('message.index');
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * Display the specified resource.
@@ -123,24 +98,13 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    public function groupe($groupId)
+    {
+        return view('message.groupe', [
+            'groupId' => $groupId,
+            'etudients' => etudient::all(),
+            'messages' => message::all(),
 
-public function groupe($groupId)
-{
-    return view("message.groupe",[
-        "groupId"=>$groupId,
-        "etudients"=>etudient::all(),
-        "messages"=>message::all(),
-
-    ]);
+        ]);
+    }
 }
-
-
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> d468491c8ae6fa6832ad2f5b04819c4ec1ac580c
-}
-

@@ -13,6 +13,7 @@ class ActualiteController extends Controller
      */
     public function index()
     {
+        
     }
 
     /**
