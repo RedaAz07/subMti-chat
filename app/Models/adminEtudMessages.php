@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\admin;
+use App\Models\etudient;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

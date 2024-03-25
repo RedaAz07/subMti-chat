@@ -7,6 +7,7 @@ use App\Models\filiere;
 use App\Models\etudient;
 use App\Models\formateur;
 use App\Models\messageClasse;
+use App\Models\classeFormMessage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -44,5 +45,18 @@ public function etudient(){
 public function messageClasses(){
     return $this->hasMany(messageClasse::class,'id');
 }
+
+
+
+
+
+public function classeFormMessage(){
+    return $this->hasMany(classeFormMessage::class,'id');
+}
+
+
+
+
+
 
 }

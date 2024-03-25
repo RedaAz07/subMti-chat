@@ -162,7 +162,7 @@ $newValues = [
     'email' => $utilisateurEmail,
     'password' => $utilisateurPass,
     'nom' => $request->input("nom"),
-    'prenom' => $request->input("nom"),
+    'prenom' => $request->input("prenom"),
     'prenom' => $request->input("CIN")
 
 
@@ -182,6 +182,17 @@ file_put_contents('Acc_etudients.json', $newJsonData);
 
 
 
+$niveau = new niveau();
+$niveau->niveau = $request->input("niveau");
+$niveau->id_filiere = $request->input("filiere");
+$niveau->save();
+
+
+
+$niveau = new niveau();
+$niveau->niveau = $request->input("niveau");
+$niveau->id_filiere = $request->input("filiere");
+$niveau->save();
 
 
 

@@ -75,101 +75,22 @@
             <nav>
 <!---------------------------------------------------- link homa kola formateurs bohdo ------------------------------------------------------>
 
-                <a href="" class="link">
+
+
+@foreach ($formateurs as $formateur)
+                <a href="{{ route('adminProfMessages.index', ['id_form' => $formateur->id_formateur]) }}" class="link">
                     <img src="{{ asset('img/man.png') }}" class="img-teacher">
                     <div class="discription">
-                    <span id="active-span">Elmahdi yahiaoui</span>
+                    <span id="active-span">>{{ $formateur->nom . $formateur->prenom }}</span>
                     <p>Lorem ipsum dolor sit consectetur elit.</p>
                     </div>
                 </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>reda anniz</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>reda anniz</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>reda anniz</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>reda anniz</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>reda anniz</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>ahmed sayeh</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>fahed benbali</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>chadli belkassem</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>chadli belkassem</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>chadli belkassem</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
-                <a href="" class="link">
-                    <img src="{{ asset('img/man.png') }}" class="img-teacher">
-                    <div class="discription">
-                    <span>chadli belkassem</span>
-                    <p>Lorem ipsum dolor sit consectetur elit.
-                    </p>
-                    </div>
-                </a>
+
+                @endforeach
+
+
+
+
             </nav>
         </div>
         <!---------------------------------------------------- fin left-sidebar------------------------------------------------------>
@@ -290,101 +211,18 @@
                 <nav>
     <!---------------------------------------------------- link homa kola formateurs bohdo ------------------------------------------------------>
 
-                    <a href="" class="link">
+
+
+@foreach ($etudients as $etudient)
+                    <a href="{{ route('adminEtudMessages.showEtuds', ['id_etud' => $etudient->id_etudient]) }}" class="link">
                         <img src="{{ asset('img/student.png') }}" class="img-etudiant">
                         <div class="discription">
-                        <span id="active-span">Elmahdi yahiaoui</span>
+                        <span id="active-span">{{ $etudient->nom . $etudient->prenom }}</span>
                         <p>Lorem ipsum dolor sit consectetur elit.</p>
                         </div>
-                    </a>
-                    <a href="" class="link">
-                        <img src="{{ asset('img/student.png') }}" class="img-etudiant">
-                        <div class="discription">
-                        <span>reda anniz</span>
-                        <p>Lorem ipsum dolor sit consectetur elit.
-                        </p>
-                        </div>
-                    </a>
-                    <a href="" class="link">
-                        <img src="{{ asset('img/student.png') }}" class="img-etudiant">
-                        <div class="discription">
-                        <span>reda anniz</span>
-                        <p>Lorem ipsum dolor sit consectetur elit.
-                        </p>
-                        </div>
-                    </a>
-                    <a href="" class="link">
-                        <img src="{{ asset('img/student.png') }}" class="img-etudiant">
-                        <div class="discription">
-                        <span>reda anniz</span>
-                        <p>Lorem ipsum dolor sit consectetur elit.
-                        </p>
-                        </div>
-                    </a>
-                    <a href="" class="link">
-                        <img src="{{ asset('img/student.png') }}" class="img-etudiant">
-                        <div class="discription">
-                        <span>reda anniz</span>
-                        <p>Lorem ipsum dolor sit consectetur elit.
-                        </p>
-                        </div>
-                    </a>
-                    <a href="" class="link">
-                        <img src="{{ asset('img/student.png') }}" class="img-etudiant">
-                        <div class="discription">
-                        <span>reda anniz</span>
-                        <p>Lorem ipsum dolor sit consectetur elit.
-                        </p>
-                        </div>
-                    </a>
-                    <a href="" class="link">
-                        <img src="{{ asset('img/student.png') }}" class="img-etudiant">
-                        <div class="discription">
-                        <span>ahmed sayeh</span>
-                        <p>Lorem ipsum dolor sit consectetur elit.
-                        </p>
-                        </div>
-                    </a>
-                    <a href="" class="link">
-                        <img src="{{ asset('img/student.png') }}" class="img-etudiant">
-                        <div class="discription">
-                        <span>fahed benbali</span>
-                        <p>Lorem ipsum dolor sit consectetur elit.
-                        </p>
-                        </div>
-                    </a>
-                    <a href="" class="link">
-                        <img src="{{ asset('img/student.png') }}" class="img-etudiant">
-                        <div class="discription">
-                        <span>chadli belkassem</span>
-                        <p>Lorem ipsum dolor sit consectetur elit.
-                        </p>
-                        </div>
-                    </a>
-                    <a href="" class="link">
-                        <img src="{{ asset('img/student.png') }}" class="img-etudiant">
-                        <div class="discription">
-                        <span>chadli belkassem</span>
-                        <p>Lorem ipsum dolor sit consectetur elit.
-                        </p>
-                        </div>
-                    </a>
-                    <a href="" class="link">
-                        <img src="{{ asset('img/student.png') }}" class="img-etudiant">
-                        <div class="discription">
-                        <span>chadli belkassem</span>
-                        <p>Lorem ipsum dolor sit consectetur elit.
-                        </p>
-                        </div>
-                    </a>
-                    <a href="" class="link">
-                        <img src="{{ asset('img/student.png') }}" class="img-etudiant">
-                        <div class="discription">
-                        <span>chadli belkassem</span>
-                        <p>Lorem ipsum dolor sit consectetur elit.
-                        </p>
-                        </div>
-                    </a>
+                    </a>¨
+@endforeach
+
                 </nav>
             </div>
 </div>

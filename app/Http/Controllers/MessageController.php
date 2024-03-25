@@ -11,7 +11,9 @@ use App\Models\actualite;
 use App\Models\formateur;
 use App\Models\utilisateur;
 use Illuminate\Http\Request;
+use App\Models\classeFormMessage;
 use Illuminate\Support\facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class MessageController extends Controller
 {
@@ -29,6 +31,8 @@ class MessageController extends Controller
         "classes"=>classe::all(),
         "etudients"=>etudient::all(),
         "actualites"=>actualite::all(),
+        "classeFormMessage"=>classeFormMessage::all(),
+
 
 
 
@@ -56,29 +60,27 @@ class MessageController extends Controller
 
 
 
-
     public function store(Request $request)
     {
-        $request->validate([
-            "contenu"=>"string|required",
-            "file"=>"required",
+        $requestData = $request->except('_token'); // Exclude the CSRF token
+        $requestData['id'] = auth()->id(); // Add the authenticated user's ID to the request data
 
-        ]);
-        $requestData=$request->all();
-        $requestData["file"] =$request->file("file")->store("message","public") ;
-        $requestData["id"]=auth::user()->id;
+        // Check if a file is present in the request
+        if ($request->hasFile('file')) {
+            $requestData['file'] = $request->file('file')->store('message', 'public');
+        } else {
+            $requestData['file'] = null; // Set file to null if no file is uploaded
+        }
+        if ($request->input('contenu') === null) {
 
+            $requestData['contenu'] = "";
+        }
+
+        // Create the message
         message::create($requestData);
-        return redirect("message");
-        message::create($requestData);
-        return redirect("message");
-        message::create($request->post());
-        return redirect()->route("message.index");
 
-
-
-
-
+        // Redirect back to the message index page
+        return redirect()->route('message.index');
     }
 
 
@@ -88,8 +90,11 @@ class MessageController extends Controller
 
 
 
-
-
+    public function download($filename)
+    {
+        $file = Storage::disk('public')->path($filename);
+        return response()->download($file);
+    }
 
 
 
@@ -135,12 +140,9 @@ public function groupe($groupId)
 }
 
 
-<<<<<<< HEAD
-=======
 
 
 
 
->>>>>>> d468491c8ae6fa6832ad2f5b04819c4ec1ac580c
 }
 
