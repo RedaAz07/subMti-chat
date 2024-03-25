@@ -154,28 +154,28 @@ foreach ($etudients as $etudient) {
 
 
 
-public function showLastAdminMessage($id_admin)
-{
-    $etudients = Etudient::all();
-    $messages = [];
 
-    foreach ($etudients as $etudient) {
-        if ($etudient->utilisateur->id === auth()->user()->id) {
-            // Retrieve the last message between the student and the admin
-            $last_message = AdminEtudMessages::where(function ($query) use ($id_admin, $etudient) {
-                $query->where('id_etudient', $etudient->id_etudient)
-                      ->where('id_admin', $id_admin);
-            })->orWhere(function ($query) use ($id_admin, $etudient) {
-                $query->where('id_admin', $id_admin)
-                      ->where('id_etudient', $etudient->id_etudient);
-            })->latest()->first();
+public function showLastAdminMessage($id_etud)
+    {
+        $admins = admin::all();
+        $messages = [];
 
-            $messages[] = $last_message; // Add the last message to the messages array
+        foreach ($admins as $admin) {
+            if ($admin->utilisateur->id === auth()->user()->id) {
+                $messaaa = adminEtudMessages::where(function ($query) use ($id_etud, $admin) {
+                    $query->where('id_admin', $admin->id_admin)
+                          ->where('id_etudient', $id_etud);
+                })->orWhere(function ($query) use ($id_etud, $admin) {
+                    $query->where('id_etudient', $id_etud)
+                          ->where('id_admin', $admin->id_admin);
+                })->latest()->first();
+            }
         }
+
+        return view('message.index', compact('messaaa', 'id_etud'));
     }
 
-    return view('adminEtudMessages.showLastAdminMessage', compact('messages', 'id_admin'));
-}
 
 
 }
+
