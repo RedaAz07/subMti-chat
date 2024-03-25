@@ -883,10 +883,10 @@
                 </div>
         <div class="navbar">
         <form action="" >
-            <button class="btnn" role="file">lancer une actualite</button>
-            <button class="btnn" role="button">ajouter un etudiant</button>
+            <button class="btnn" role="file">Importer les formateurs</button>
+            <button class="btnn" role="button">Importer les etudiants</button>
 
-<a href="{{route("actualites.create")}}"  class="btnn" role="button" >ajouter un actualites</a>
+<a href="{{route("actualites.create")}}"  class="btnn" role="button" >lancer un actualites</a>
         </form>
         </div>
 
