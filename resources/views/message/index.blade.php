@@ -365,7 +365,7 @@
                 <div class="right-sidebar">
                     <aside>
                         <div class="fix-groupe-container">
-                            <h2 class="groupe"><strong>Classes</strong></h2>
+                            <h2 class="groupe"><strong>Classess</strong></h2>
                             <div class="groupes">
                                 <a href="" class="links ">
                                     <img src="{{ asset('img/group.png') }}" alt="" class="img-group">
