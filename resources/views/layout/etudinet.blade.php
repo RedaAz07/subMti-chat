@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +23,9 @@
 
 
     {{--                        etudient page                  --}}
+    @auth
 
+        @if (auth()->user()->type === 'etudient')
             <header>
                 <div class="left-section">
                     <img src="{{ asset('img/vg0CZ05S.jpg') }}">
@@ -187,11 +195,11 @@
 
 
 
-                        @foreach ($messagesClasse as $mesg)
+                        @foreach ($messages as $message)
 
 
 @auth
-    @if (auth()->user()->id === $mesg->etudient->id_etudient)
+    @if (auth()->user()->id === $message->utilisateur->id )
 
 
     <div class="chat outgoing" id="outgoing">
@@ -220,42 +228,42 @@
                     </ul>
                 </div>
             </form>
-            <p>{{$mesg->contenu}}</p>
+            <p>{{$message->contenu}}</p>
 
         </div>
     </div>
     <div style="display:flex ;justify-content: end">
 
-        <iframe src="{{ asset('storage/' . $mesg->file) }}" width="100pc" height="100px"></iframe>
+        <iframe src="{{ asset('storage/' . $message->file) }}" width="100pc" height="100px"></iframe>
 
     </div>
 
 
     @else
-    <h6>{{ $mesg->etudient->nom }}</h6>
+    <h6>{{ $message->utilisateur->etudient->nom }}</h6>
 
 
     <div class="chat incoming">
 
         <div class="details">
             <p>
-                {{ $mesg->contenu }}
+                {{ $message->contenu }}
 
 
 
             </p>
             <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
-                data-dropdown-toggle="dropdown{{ $mesg->id_message }}">
+                data-dropdown-toggle="dropdown{{ $message->id_message }}">
             <!-- Dropdown menu -->
 
 
-            <div id="dropdown{{ $mesg->id_message }}"
+            <div id="dropdown{{ $message->id_message }}"
                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                     aria-labelledby="dropdownDefaultButton">
                     <li>
                         @auth
-                            @if (auth()->user()->id === $mesg->etudient->id_etudient)
+                            @if (auth()->user()->id === $message->utilisateur->id)
                                 <a href="#"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
                             @endif
@@ -276,7 +284,7 @@
             </form>
         </div>
     </div>
-    <img src="{{ asset('storage/' . $mesg->file) }}" alt="" width="300px">
+    <img src="{{ asset('storage/' . $message->file) }}" alt="" width="300px">
 
     @endif
 @endauth
@@ -301,11 +309,11 @@
 
                     <div class="message-container">
 
-                        <form action="{{ route('messageClasse.store') }}" method="POST" enctype="multipart/form-data">@csrf
+                        <form action="{{ route('message.store') }}" method="POST" enctype="multipart/form-data">@csrf
                             <label for="chat" class="sr-only">Your message</label>
                             <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
 
-<input type="hidden" name="id_classe" value="{{$id_classe}}">
+
 
 
                                 <div class="flex items-center justify-center ">
@@ -359,7 +367,7 @@
                         <div class="fix-groupe-container">
                             <h2 class="groupe"><strong>Classes</strong></h2>
                             <div class="groupes">
-                                <a href="{{route("message.index")}}" class="links ">
+                                <a href="" class="links ">
                                     <img src="{{ asset('img/group.png') }}" alt="" class="img-group">
                                     <span id="active-span">groupe SUPMTI</span>
                                 </a>
@@ -432,8 +440,3 @@
                     </aside>
                 </div>
             </div>
-
-
-
-
-

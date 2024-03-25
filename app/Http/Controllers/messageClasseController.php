@@ -2,164 +2,122 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use App\Models\messageClasse;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
-class MessageGroupeController extends Controller
-=======
+use App\Models\classe;
+use App\Models\niveau;
+use App\Models\filiere;
+use App\Models\message;
 use App\Models\etudient;
+use App\Models\actualite;
+use App\Models\formateur;
 use Illuminate\Http\Request;
 use App\Models\messageClasse;
+use App\Models\classeFormMessage;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\facades\Auth;
+use App\Models\utilisateur;
 
 class messageClasseController extends Controller
->>>>>>> d468491c8ae6fa6832ad2f5b04819c4ec1ac580c
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+
+
+
+
+    public function index($id_classe)
     {
-<<<<<<< HEAD
-        //
-=======
+       $etudiants=etudient::all();
+
+       foreach ($etudiants as $etudiant) {
+if ($etudiant->utilisateur->id === auth()->user()->id) {
 
 
 
-        
-return view("messageClasse.index",
-[
+        $messagesClasse = MessageClasse::where('id_classe', $id_classe)
+            ->get();
 
-"messageClasses"=>messageClasse::all(),
-"etudients"=>etudient::all(),
+        return view('messageClasse.index', compact('messagesClasse', 'id_classe'),[
+
+            "messages"=>message::all(),
+            "formateurs"=>formateur::all(),
+            "filieres"=>filiere::all(),
+            "niveuax"=>niveau::all(),
+            "classes"=>classe::all(),
+            "etudients"=>etudient::all(),
+            "actualites"=>actualite::all(),
+            "classeFormMessage"=>classeFormMessage::all(),
 
 
-]);
 
 
->>>>>>> d468491c8ae6fa6832ad2f5b04819c4ec1ac580c
+
+
+            "utilisateurs"=>utilisateur::all(),
+
+           ]    );
+    }}
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-<<<<<<< HEAD
-        //
-=======
-        return view("messageClasse.index");
->>>>>>> d468491c8ae6fa6832ad2f5b04819c4ec1ac580c
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-        //
+        $etudiants=etudient::all();
+
+        foreach ($etudiants as $etudiant) {
+ if ($etudiant->utilisateur->id === auth()->user()->id) {
+
+
+
+    $requestData = $request->only(['contenu', 'file', 'id_classe']);
+    $requestData['id_etudient'] = $etudient->id_etudient;
+
+    // Check if a file is present in the request
+    if ($request->hasFile('file')) {
+        $requestData['file'] = $request->file('file')->store('messageClasse', 'public');
+    } else {
+        $requestData['file'] = null; // Set file to null if no file is uploaded
     }
-
-    /**
-     * Display the specified resource.
-     */
-=======
-        $request->validate([
-            "contenu"=>"string|required",
-            "file"=>"required",
-
-        ]);
-
-        $etudients=etudient::all();
-        $requestData=$request->all();
-        $requestData["file"] =$request->file("file")->store("message","public") ;
-
-
-
-
-        foreach ($etudients as $etudient) {
-if (auth::user()->id === $etudient->id_etudient) {
-    $requestData["id_classe"]=$etudient->classe->id_classe;
-
-
-        $requestData["id_etudient"]=$etudient->id_etudient;
-
-
-
-
+    MessageClasse::create($requestData);
+}
+return redirect()->back();
 }
 
 
 
-        }
-
-
-
-
-
-
-
-
-        messageClasse::create($requestData);
-        return redirect("messageClasse");
-
-        messageClasse::create($request->post());
-        return redirect()->route("messageClasse.index");
-
-
-
 
     }
 
 
 
->>>>>>> d468491c8ae6fa6832ad2f5b04819c4ec1ac580c
+
+
+
+
+
+
+
     public function show(messageClasse $messageClasse)
     {
         //
     }
 
-<<<<<<< HEAD
-    /**
-     * Show the form for editing the specified resource.
-     */
-=======
 
 
->>>>>>> d468491c8ae6fa6832ad2f5b04819c4ec1ac580c
     public function edit(messageClasse $messageClasse)
     {
         //
     }
 
-<<<<<<< HEAD
-    /**
-     * Update the specified resource in storage.
-     */
-=======
 
 
 
->>>>>>> d468491c8ae6fa6832ad2f5b04819c4ec1ac580c
     public function update(Request $request, messageClasse $messageClasse)
     {
         //
     }
 
-<<<<<<< HEAD
-    /**
-     * Remove the specified resource from storage.
-     */
-=======
 
 
 
 
->>>>>>> d468491c8ae6fa6832ad2f5b04819c4ec1ac580c
     public function destroy(messageClasse $messageClasse)
     {
         //

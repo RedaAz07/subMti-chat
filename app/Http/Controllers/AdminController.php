@@ -21,6 +21,9 @@ class AdminController extends Controller
 
 
           // Retrieve data from the JSON file
+
+
+        // import data mn file jsone 
           $jsonData = file_get_contents(public_path('data_json/data_admins.json'));
           $adminsData = json_decode($jsonData, true);
 
@@ -52,7 +55,7 @@ class AdminController extends Controller
                 'password' => $password, // Storing password before hashing
             ];
 
-
+// create new admin  admin
             $admin = new admin();
 
             $admin->nom = $adminData['nom'];

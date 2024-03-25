@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -187,7 +190,7 @@
 
 
 
-                        @foreach ($messagesClasse as $mesg)
+                        @foreach ($messagesFormateurs as $mesg)
 
 
 @auth
@@ -301,11 +304,11 @@
 
                     <div class="message-container">
 
-                        <form action="{{ route('messageClasse.store') }}" method="POST" enctype="multipart/form-data">@csrf
+                        <form action="{{ route('messageformateur.store') }}" method="POST" enctype="multipart/form-data">@csrf
                             <label for="chat" class="sr-only">Your message</label>
                             <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
 
-<input type="hidden" name="id_classe" value="{{$id_classe}}">
+<input type="hidden" name="id_formateur" value="{{$id_for}}">
 
 
                                 <div class="flex items-center justify-center ">

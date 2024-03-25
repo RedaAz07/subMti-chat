@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class messageClasse extends Model
 {
-    protected $fillable =["file","contenu"];
+    protected $fillable =["file","contenu","id_etudient","id_classe"];
 
     use HasFactory;
 
+    protected $table = 'messageClasses';
     public function etudient(){
         return $this->belongsTo(etudient::class,'id_etudient');
 }

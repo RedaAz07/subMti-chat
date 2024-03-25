@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\admin;
 use App\Models\actualite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,9 +36,16 @@ class ActualiteController extends Controller
             'file' => 'required',
 
         ]);
+$admins=admin::all();
+
+foreach ($admins as $key) {
+    if ($key->utilisateur->id=== auth()->user()->id) {
+
+
+
         $requestData = $request->all();
         $requestData['file'] = $request->file('file')->store('actualite', 'public');
-        $requestData['id_admin'] = Auth::user()->id;
+        $requestData['id_admin'] = $key->id_admin;
 
         actualite::create($requestData);
 
@@ -48,6 +56,8 @@ class ActualiteController extends Controller
         actualite::create($request->post());
 
         return redirect()->route('actualites.create');
+    }    }
+    return redirect()->route('actualites.create');
     }
 
     /**

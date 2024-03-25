@@ -175,6 +175,7 @@
                         </svg>
                         <span class="sr-only">Upload image</span>
                     </button>
+
                     <textarea id="chat" rows="1" class="block mx-4 p-2.5 w-full text-md text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."></textarea>
                         <button type="submit" class="inline-flex justify-center p-2 text-blue-600 rounded-full cursor-pointer hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-600">
                         <svg class="w-8 h-8 rotate-90 rtl:-rotate-90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
@@ -188,6 +189,9 @@
 
 
         </div>
+
+
+<div>thi</div>
 
 
 <!-------------------------------------- right-sidebar------- hadi hya jiha limnya li fiha les groupes o les annances----------------------------------------------->
@@ -208,25 +212,41 @@
 
 
 
+                @foreach ($formateurs as $formateur)
+                @if (auth()->user()->id === $formateur->utilisateur->id)
+                    @foreach ($formateur->classes as $item)
 
-              @auth
-@foreach ($formateurs as $formateur)
-
-
-@if (->utilisateur->id === auth()->user()->id)
-
-@foreach ($formateur->classes as $class)
-
-if
+                        @foreach ($filieres as $filiere)
+                            @if ($item->niveau->id_filiere === $filiere->id_filiere)
 
 
 
-                <div>
-                    <a href="" class="links ">
-                        <img src="{{asset("img/group.png")}}" alt="" class="img-group">
-                        <span id="active-span">DD101</span>
-                    </a>
-                </div>
+
+                            <div>
+                                <a href="" class="links ">
+                                    <img src="{{asset("img/group.png")}}" alt="" class="img-group">
+                                    <span id="active-span">{{$item->num_groupe}}</span>
+                                </a>
+                            </div>
+
+
+
+
+
+
+
+
+
+                            @endif
+                        @endforeach
+                    @endforeach
+                @endif
+            @endforeach
+
+
+
+
+
 
                 @endforeach
                 @endif
@@ -242,27 +262,18 @@ if
         </div>
     <section>
         <h2 class="annance"><strong>annances</strong></h2>
+
         <div class="annances-container">
-            <a href="" class="annances ">
-                <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
-            </a>
-            <a href="" class="annances ">
-                <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
-            </a>
-            <a href="" class="annances ">
-                <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
-            </a>
-            <a href="" class="annances ">
-                <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
-            </a>
-            <a href="" class="annances ">
-                <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
-            </a>
+
+@foreach ($actualetes as $item)
+
+
             <a href="" class="annances ">
                 <span id="active-span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore non esse, itaque necessitatibus vero quam perferendis alias autem porro veniam commodi, totam delectus minus laudantium. Sed impedit minima commodi magni?</span>
             </a>
 
 
+            @endforeach
         </section>
     </aside>
 

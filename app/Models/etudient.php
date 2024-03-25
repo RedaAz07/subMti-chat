@@ -7,6 +7,7 @@ use App\Models\groupe;
 use App\Models\utilisateur;
 use App\Models\messageClasse;
 use App\Models\adminEtudMessages;
+use App\Models\classeFormMessage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -30,6 +31,12 @@ public function utilisateur(){
 
 public function messageClasse(){
     return $this->hasMany(messageClasse::class,'id');
+}
+
+
+
+public function classeFormMessage(){
+    return $this->hasMany(classeFormMessage::class,'id');
 }
 
 

@@ -26,6 +26,12 @@ class formateur extends Model
         return $this->belongsToMany(classe::class, 'classe_formateur', 'id_formateur', 'id_classe','id_formateur','id_classe');
     }
 
+
+
+
+
+
+
     public function messageformateur(){
         return $this->hasMany(messageformateur::class,'id');
 }

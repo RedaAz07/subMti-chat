@@ -11,9 +11,9 @@
     @endforeach
 </ul>
 
-<form method="post" action="{{ route('adminEtudMessages/admin.store') }}"   enctype="multipart/form-data">
+<form method="post" action="{{ route('adminEtudMessages.storeAdmin') }}" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="id_etudient" value="{{$id_etud}}">
+    <input type="hidden" name="id_admin" value="{{$id_admin}}">
 
 
     <textarea name="contenu" placeholder=""></textarea>

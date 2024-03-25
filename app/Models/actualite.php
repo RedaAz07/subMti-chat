@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class actualite extends Model
 {
     use HasFactory;
-    protected $fillable =["id_admin","contenu","file"];
-    protected $primaryKey="id_actualite";
+    protected $fillable = ["id_admin","contenu","file"];
+
 
 
     public function admin(){
