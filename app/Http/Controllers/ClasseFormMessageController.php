@@ -2,9 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\classe;
+use App\Models\niveau;
+use App\Models\filiere;
+use App\Models\message;
 use App\Models\etudient;
+
+use App\Models\actualite;
 use App\Models\formateur;
+use App\Models\utilisateur;
 use Illuminate\Http\Request;
+use App\Models\messageClasse;
+
 use App\Models\classeFormMessage;
 use App\Http\Controllers\Controller;
 
@@ -23,9 +32,27 @@ if ($formateur->utilisateur->id === auth()->user()->id) {
 
 
 
-        $messages = classeFormMessage::where('id_classe', $id_classe)->where("id_formateur",$formateur->id_formateur)->get();
+        $messageClasses = classeFormMessage::where('id_classe', $id_classe)->where("id_formateur",$formateur->id_formateur)->get();
 
-        return view('classeFormMessage.index', compact('messages', 'id_classe'));
+        return view('classeFormMessage.index', compact('messageClasses', 'id_classe'),[
+
+            "messages"=>message::all(),
+            "formateurs"=>formateur::all(),
+            "filieres"=>filiere::all(),
+            "niveuax"=>niveau::all(),
+            "classes"=>classe::all(),
+            "etudients"=>etudient::all(),
+            "actualites"=>actualite::all(),
+            "classeFormMessage"=>classeFormMessage::all(),
+
+
+
+
+
+
+            "utilisateurs"=>utilisateur::all(),
+
+           ] );
     }}
     }
 

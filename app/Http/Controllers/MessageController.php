@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\actualite;
+use App\Models\admin;
 use App\Models\classe;
-use App\Models\etudient;
-use App\Models\filiere;
-use App\Models\formateur;
-use App\Models\message;
 use App\Models\niveau;
+use App\Models\filiere;
+use App\Models\message;
+use App\Models\etudient;
+use App\Models\actualite;
+use App\Models\formateur;
 use App\Models\utilisateur;
 use Illuminate\Http\Request;
 use App\Models\classeFormMessage;
@@ -24,13 +25,15 @@ class MessageController extends Controller
     {
         return view('message.index', [
 
-        "messages"=>message::all(),
+        "messages"=>message::orderBy('created_at', 'desc')->get(),
         "formateurs"=>formateur::all(),
         "filieres"=>filiere::all(),
         "niveuax"=>niveau::all(),
         "classes"=>classe::all(),
         "etudients"=>etudient::all(),
         "actualites"=>actualite::all(),
+        "admins"=>admin::all(),
+
         "classeFormMessage"=>classeFormMessage::all(),
 
 
@@ -133,6 +136,16 @@ class MessageController extends Controller
 
         ]);
     }
+
+
+    public function destroy(message $message)
+    {
+        $message->delete();
+      
+    }
+
+
+
 }
 
 

@@ -580,11 +580,15 @@ margin-left: auto;
 max-width: calc(100% - 300px);
 display: flex;
 align-items: center;
+max-width:320px;
+
 }
 .outgoing .details p{
 background: linear-gradient(to bottom right, #e9c46a,#f4a261,#fb8500, #fa538d);
 color: #fff;
+word-wrap: break-word;
 border-radius: 18px 18px 0 18px;
+width: 100%;
 }
 .chat-container .incoming{
 display: flex;

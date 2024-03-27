@@ -52,7 +52,7 @@ Route::match(['get', 'post'], 'login.logout', [loginController::class, 'logout']
 
 Route::resource('/message', MessageController::class)->middleware('auth');
 
-Route::get('/messages', 'MessageController@fetch')->name('messages.fetch');
+Route::get('/messages', 'MessageController@fetch')->name('messages.fetch')->middleware('auth');
 
 // export the data from  etudeient _data.jsone to Acc_etudient.jsno
 //Route::get('/export-data-etud', [EtudientController::class, 'exportData'])->name('export.data');
@@ -78,99 +78,89 @@ Route::get('/import-data-formateur', [UtilisateurController::class, 'importDataf
 
 Route::get('/messages', [MessageController::class, 'fetch'])->name('messages.fetch');
 
-Route::get('/messages', [MessageController::class, 'show_classe'])->name('show_classe');
+Route::get('/messages', [MessageController::class, 'show_classe'])->name('show_classe')->middleware('auth');
 
 // message entre formateur et etudient
 
 // -----> in the page etud
-Route::get('/messageformateur/show_form/{id_for}', [MessageformateurController::class, 'show_form'])->name('messageformateur.show_form');
+Route::get('/messageformateur/show_form/{id_for}', [MessageformateurController::class, 'show_form'])->name('messageformateur.show_form')->middleware('auth');
 
-Route::match(['get', 'post'], '/messageformateur', [MessageformateurController::class, 'store'])->name('messageformateur.store');
+Route::match(['get', 'post'], '/messageformateur', [MessageformateurController::class, 'store'])->name('messageformateur.store')->middleware('auth');
 
 // -----> in the page formateur
 
-Route::get('/messageformateur/show_Etud/{id_for}', [MessageformateurController::class, 'show_Etud'])->name('messageformateur.show_Etud');
+Route::get('/messageformateur/show_Etud/{id_for}', [MessageformateurController::class, 'show_Etud'])->name('messageformateur.show_Etud')->middleware('auth');
 
-Route::match(['get', 'post'], '/messageformateur/storeEtud', [MessageformateurController::class, 'storeEtud'])->name('messageformateur.storeEtud');
+Route::match(['get', 'post'], '/messageformateur/storeEtud', [MessageformateurController::class, 'storeEtud'])->name('messageformateur.storeEtud')->middleware('auth');
 
 // message admin et etudients
 //----->  admin
 
 Route::get('/adminEtudMessages/showEtuds/{id_etud}', [AdminEtudMessagesController::class, 'showEtuds'])
-    ->name('adminEtudMessages.showEtuds');
+    ->name('adminEtudMessages.showEtuds')->middleware('auth');
 
 Route::get('/adminEtudMessages/showLastAdminMessage/{id_etud}', [AdminEtudMessagesController::class, 'showLastAdminMessage'])
-    ->name('adminEtudMessages.showLastAdminMessage');
+    ->name('adminEtudMessages.showLastAdminMessage')->middleware('auth');
 
-Route::match(['get', 'post'], '/adminEtudMessages/admin', [AdminEtudMessagesController::class, 'store'])->name('adminEtudMessages/admin.store');
+Route::match(['get', 'post'], '/adminEtudMessages/admin', [AdminEtudMessagesController::class, 'store'])->name('adminEtudMessages/admin.store')->middleware('auth');
 
 //----->  etudient
 
 Route::get('/adminEtudMessages/showAdmins/{id_admin}', [AdminEtudMessagesController::class, 'showAdmins'])
-    ->name('adminEtudMessages.showAdmins');
+    ->name('adminEtudMessages.showAdmins')->middleware('auth');
 
-Route::match(['get', 'post'], '/adminEtudMessages', [AdminEtudMessagesController::class, 'storeAdmin'])->name('adminEtudMessages.storeAdmin');
+Route::match(['get', 'post'], '/adminEtudMessages', [AdminEtudMessagesController::class, 'storeAdmin'])->name('adminEtudMessages.storeAdmin')->middleware('auth');
 
 // message admin formateur
 
 //---> admin
 Route::get('/adminProfMessages/index/{id_form}', [AdminProfMessagesController::class, 'index'])
-    ->name('adminProfMessages.index');
+    ->name('adminProfMessages.index')->middleware('auth');
 
-Route::match(['get', 'post'], '/adminProfMessages', [AdminProfMessagesController::class, 'store'])->name('adminProfMessages.store');
+Route::match(['get', 'post'], '/adminProfMessages', [AdminProfMessagesController::class, 'store'])->name('adminProfMessages.store')->middleware('auth');
 //---> formateur
 
 Route::get('/adminProfMessages/prof/{id_form}', [AdminProfMessagesController::class, 'showAdmin'])
-    ->name('adminProfMessages.prof');
+    ->name('adminProfMessages.prof')->middleware('auth');
 
-Route::match(['get', 'post'], '/adminProfMessages/prof', [AdminProfMessagesController::class, 'storeAdmin'])->name('adminProfMessages/prof.store');
+Route::match(['get', 'post'], '/adminProfMessages/prof', [AdminProfMessagesController::class, 'storeAdmin'])->name('adminProfMessages/prof.store')->middleware('auth');
 
 /////////////////////////////////////////////////////////////////
-Route::resource('/messageformateur', MessageformateurController::class);
-Route::resource('/actualites', ActualiteController::class);
+Route::resource('/messageformateur', MessageformateurController::class)->middleware('auth');
+Route::resource('/actualites', ActualiteController::class)->middleware('auth');
 
-Route::resource('/actualites', ActualiteController::class);
+Route::resource('/actualites', ActualiteController::class)->middleware('auth');
 
-Route::resource('/etudient', EtudientController::class);
+Route::resource('/etudient', EtudientController::class)->middleware('auth');
 
 //***********************criee une actualite**************************
 
 //     message  etudient et votre classe
 
-Route::match(['get', 'post'], '/messageClasse.index/{id_classe}', [messageClasseController::class, 'index'])->name('messageClasse.index');
+Route::match(['get', 'post'], '/messageClasse.index/{id_classe}', [messageClasseController::class, 'index'])->name('messageClasse.index')->middleware('auth');
 
-Route::match(['get', 'post'], '/messageClasse.store', [messageClasseController::class, 'store'])->name('messageClasse.store');
+Route::match(['get', 'post'], '/messageClasse.store', [messageClasseController::class, 'store'])->name('messageClasse.store')->middleware('auth');
 
 //     message  formateur et votre classes
-Route::match(['get', 'post'], '/classeFormMessage.index/{id_classe}', [ClasseFormMessageController::class, 'index'])->name('classeFormMessage.index');
+Route::match(['get', 'post'], '/classeFormMessage.index/{id_classe}', [ClasseFormMessageController::class, 'index'])->name('classeFormMessage.index')->middleware('auth');
 
-Route::match(['get', 'post'], '/classeFormMessage.store', [ClasseFormMessageController::class, 'store'])->name('classeFormMessage.store');
+Route::match(['get', 'post'], '/classeFormMessage.store', [ClasseFormMessageController::class, 'store'])->name('classeFormMessage.store')->middleware('auth');
 //------   show etud
 
-Route::match(['get', 'post'], '/classeFormMessage.indexEtud/{id_classe}', [ClasseFormMessageController::class, 'indexEtud'])->name('classeFormMessage.indexEtud');
+Route::match(['get', 'post'], '/classeFormMessage.indexEtud/{id_classe}', [ClasseFormMessageController::class, 'indexEtud'])->name('classeFormMessage.indexEtud')->middleware('auth');
 
 // messages  file
 
 Route::get('/download/{filename}', [MessageController::class, 'download'])->name('file.download');
 
-Route::get('/test-excel', function () {
-    $filePath = public_path('one.xlsx');
 
-    try {
-        Excel::load($filePath, function ($reader) {
-            // Access data from the Excel file
-            $data = $reader->first(); // Read the first row
-            $sheetData = $reader->sheet('Sheet1')->toArray(); // Read data from a specific sheet
+Route::match(['get', 'post'], 'message.search/for', [loginController::class, 'searchFormateur'])->name('message.searchFormateur/for')->middleware('auth');
+Route::match(['get', 'post'], 'message.search', [loginController::class, 'searchEtudient'])->name('message.searchEtudient')->middleware('auth');
 
-            // Process the data as needed
-            // ...
-        });
-    } catch (\Exception $e) {
-        // Handle potential errors
-        echo '  -: '.$e->getMessage();
-    }
 
-});
 
-Route::match(['get', 'post'], 'message.search/for', [loginController::class, 'searchFormateur'])->name('message.searchFormateur/for');
-Route::match(['get', 'post'], 'message.search', [loginController::class, 'searchEtudient'])->name('message.searchEtudient');
+
+
+
+
+Route::delete('/message/{message}', 'MessageController@destroy')->name('message.destroy')->middleware('auth');

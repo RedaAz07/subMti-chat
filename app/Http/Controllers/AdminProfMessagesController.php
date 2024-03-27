@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\admin;
+use App\Models\classe;
+use App\Models\niveau;
+use App\Models\filiere;
+use App\Models\message;
+use App\Models\etudient;
+use App\Models\actualite;
 use App\Models\formateur;
+
+use App\Models\utilisateur;
 use Illuminate\Http\Request;
 use App\Models\adminEtudMessages;
 use App\Models\adminProfMessages;
+use App\Models\classeFormMessage;
 use App\Http\Controllers\Controller;
 
 class AdminProfMessagesController extends Controller
@@ -19,11 +28,11 @@ class AdminProfMessagesController extends Controller
     public function index($id_form)
     {
         $admins = admin::all();
-        $messages = [];
+        $messageFormateur = [];
 
         foreach ($admins as $admin) {
             if ($admin->utilisateur->id === auth()->user()->id) {
-                $messages = adminProfMessages::where(function ($query) use ($id_form, $admin) {
+                $messageFormateur = adminProfMessages::where(function ($query) use ($id_form, $admin) {
                     $query->where('id_admin', $admin->id_admin)
                           ->where('id_formateur', $id_form);
                 })->orWhere(function ($query) use ($id_form, $admin) {
@@ -33,7 +42,20 @@ class AdminProfMessagesController extends Controller
             }
         }
 
-        return view('adminProfMessages.index', compact('messages', 'id_form'));
+        return view('adminProfMessages.index', compact('messageFormateur', 'id_form'),[
+
+            "messages"=>message::all(),
+            "formateurs"=>formateur::all(),
+            "filieres"=>filiere::all(),
+            "niveuax"=>niveau::all(),
+            "classes"=>classe::all(),
+            "etudients"=>etudient::all(),
+            "actualites"=>actualite::all(),
+            "classeFormMessage"=>classeFormMessage::all(),
+            "admins"=>admin::all(),
+            "utilisateurs"=>utilisateur::all(),
+
+           ]);
     }
 
 

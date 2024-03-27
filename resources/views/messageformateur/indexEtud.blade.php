@@ -23,10 +23,10 @@
 
             <header>
                 <div class="left-section">
-                    <img src="{{ asset('img/vg0CZ05S.jpg') }}">
+                    <img src="{{ asset('img/logo2.png') }}">
                 </div>
                 <div class="right-section">
-                    <img src=" {{ asset('img/ME.jpg') }}" alt="" id="me"
+                    <img src=" {{ asset('img/student.png') }}" alt="" id="me"
                         data-dropdown-toggle="dropdownInformation">
 
 
@@ -137,7 +137,7 @@
                     <!-------------------- detaills-container---- hada howa lfo9 dial chat ------------------->
                     <div class="detaills-container">
                         <div class="right-side">
-                            <img src="{{ asset('img/ME.jpg') }}" alt="">
+                            <img src="{{ asset('img/student.png') }}" alt="">
 @foreach ($etudients as $etudient)
 @if ($etudient->utilisateur->id === auth()->user()->id)
 
@@ -439,4 +439,5 @@
 
 
 
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
