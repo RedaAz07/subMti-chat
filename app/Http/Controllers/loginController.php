@@ -142,9 +142,12 @@ $etudients=etudient::all();
 
 
 
-
+public function Accueil(){
+    return view("Accueil");
+}
 
 
 
 
 }
+        

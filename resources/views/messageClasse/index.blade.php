@@ -123,18 +123,7 @@
                             @endforeach
 
 
-                            <section>
-                                <h2 class="annance"><strong>Actualites</strong></h2>
 
-
-                                @foreach ($actualites as $actualite)
-                                    <div class="annances-container">
-                                        <a href="" class="annances ">
-                                            <span id="active-span">{{ $actualite->contenu }}</span>
-                                        </a>
-                                    </div>
-                                @endforeach
-                            </section>
 
 
                         </nav>
@@ -233,13 +222,13 @@
                     </ul>
                 </div>
             </form>
-            <p>{{$mesg->contenu}}</p>
+            <p style="font-size: 20px">{{$mesg->contenu}}</p>
 
         </div>
     </div>
     <div style="display:flex ;justify-content: end">
 
-        <iframe src="{{ asset('storage/' . $mesg->file) }}" width="100pc" height="100px"></iframe>
+        <img src="{{ asset('storage/' . $mesg->file) }}" width="100pc" height="100px">
 
     </div>
 
@@ -251,7 +240,7 @@
     <div class="chat incoming">
 
         <div class="details">
-            <p>
+            <p  style="font-size: 20px">
                 {{ $mesg->contenu }}
 
 

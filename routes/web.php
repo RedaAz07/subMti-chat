@@ -164,3 +164,5 @@ Route::match(['get', 'post'], 'message.search', [loginController::class, 'search
 
 
 Route::delete('/message/{message}', 'MessageController@destroy')->name('message.destroy')->middleware('auth');
+
+Route::get('/Accueil', [loginController::class, 'Accueil'])->name('Accueil');

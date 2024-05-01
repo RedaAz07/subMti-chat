@@ -229,7 +229,7 @@
     </div>
     <div style="display:flex ;justify-content: end">
 
-        <iframe src="{{ asset('storage/' . $mesg->file) }}" width="100pc" height="100px"></iframe>
+        <img src="{{ asset('storage/' . $mesg->file) }}" width="100pc" height="100px">
 
     </div>
 
@@ -440,4 +440,5 @@
 
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
 
