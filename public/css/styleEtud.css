@@ -11,6 +11,7 @@ html {
 body{
     font-family: 'Roboto', sans-serif;
     overflow: hidden;
+    height: 100%;
 
 }
 header {
@@ -385,7 +386,7 @@ main {
         width: 320px;
         /* padding: 35px 15px; */
         background-color: #FFFFFF;
-        height: 100vh;
+        height: 100%;
         display: flex;
         flex-direction: column;
         /* overflow-y: scroll; */
@@ -414,8 +415,8 @@ main {
     height: 60px;
     background-color: #F8FAFC;
     margin-top: 597px;
-    padding: 16px 0px;
     position: absolute;
+    padding: 16px 0px;
     width: 100%;
     z-index: 999999999999;
 
@@ -574,17 +575,25 @@ box-shadow: 0 0 32px rgb(0 0 0 / 8%),
 }
 .chat-container .outgoing{
 display: flex;
+
+
+
 }
 .chat-container .outgoing .details{
 margin-left: auto;
-max-width: calc(100% - 300px);
 display: flex;
 align-items: center;
+max-width: calc(100% - 300px);
+
+
 }
 .outgoing .details p{
 background: linear-gradient(to bottom right, #e9c46a,#f4a261,#fb8500, #fa538d);
 color: #fff;
 border-radius: 18px 18px 0 18px;
+word-wrap: break-word;
+max-width: 320px;
+font-size: 13px;
 }
 .chat-container .incoming{
 display: flex;
@@ -597,7 +606,6 @@ border-radius: 50%;
 }
 .chat-container .incoming .details{
 margin-right: auto;
-margin-left: 10px;
 max-width: calc(100% - 300px);
 display: flex;
 align-items: center;
@@ -606,7 +614,9 @@ align-items: center;
 .incoming .details p{
 background: #fff;
 color: #333;
-border-radius: 18px 18px 18px 18px;
+border-radius: 0px 18px 18px 18px;
+padding: 13px;
+font-size: 13px;
 }
 .triangle {
     display: flex;
@@ -638,11 +648,10 @@ border-radius: 18px 18px 18px 18px;
     }
     header {
         padding: 0.4rem 5%;
-
     }
-        .message-container {
-            margin-top: 597px;
-            position: absolute;
+    .message-container {
+        margin-top: 597px;
+        position: absolute;
         width: 100%;
     }
 
@@ -655,11 +664,9 @@ border-radius: 18px 18px 18px 18px;
     align-items: center;
     }
     .chat-container .incoming .details {
-    margin-left: auto;
     max-width: 100%;
     display: flex;
     align-items: center;
-    padding-left: 10px;
     }
     header {
         padding: 0.4rem 3%;

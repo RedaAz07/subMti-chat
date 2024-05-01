@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\etudientImport;
 use App\Models\actualite;
 use App\Models\classe;
+use App\Models\classeFormMessage;
 use App\Models\etudient;
 use App\Models\filiere;
 use App\Models\formateur;
@@ -11,9 +13,8 @@ use App\Models\message;
 use App\Models\niveau;
 use App\Models\utilisateur;
 use Illuminate\Http\Request;
-use App\Models\classeFormMessage;
-use Illuminate\Support\facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MessageController extends Controller
 {
@@ -24,15 +25,14 @@ class MessageController extends Controller
     {
         return view('message.index', [
 
-        "messages"=>message::all(),
-        "formateurs"=>formateur::all(),
-        "filieres"=>filiere::all(),
-        "niveuax"=>niveau::all(),
-        "classes"=>classe::all(),
-        "etudients"=>etudient::all(),
-        "actualites"=>actualite::all(),
-        "classeFormMessage"=>classeFormMessage::all(),
-
+            'messages' => message::all(),
+            'formateurs' => formateur::all(),
+            'filieres' => filiere::all(),
+            'niveuax' => niveau::all(),
+            'classes' => classe::all(),
+            'etudients' => etudient::all(),
+            'actualites' => actualite::all(),
+            'classeFormMessage' => classeFormMessage::all(),
 
             'utilisateurs' => utilisateur::all(),
 
@@ -52,10 +52,6 @@ class MessageController extends Controller
         ]);
     }
 
-
-
-
-
     public function store(Request $request)
     {
         $requestData = $request->except('_token'); // Exclude the CSRF token
@@ -69,7 +65,7 @@ class MessageController extends Controller
         }
         if ($request->input('contenu') === null) {
 
-            $requestData['contenu'] = "";
+            $requestData['contenu'] = '';
         }
 
         // Create the message
@@ -85,17 +81,66 @@ class MessageController extends Controller
 
 
 
+    public function importEtudiant(Request $request)
+    {
+        $file = $request->file('file');
+
+        // Import data from Excel file
+        $import = new EtudientImport();
+        Excel::import($import, $file);
+
+        // After import, get the data for export
+        $exportData = $import->getExportData();
+
+        // Export the data to a JSON file
+        $exportFile = 'etudiants.json';
+        $export = new EtudiantExport($exportData);
+        Excel::store($export, $exportFile);
+
+        return back();
+    }
+    public function etudiantExport()
+{
+    // Retrieve all students from the database
+    $students = etudient::all();
+
+    // Prepare the export data
+    $exportData = [];
+
+    foreach ($students as $student) {
+        // Assuming $student is an instance of Etudiant model
+        $exportData[] = [
+            'email' => $student->user->email,
+            'password' => $student->user->password,
+            'name' => $student->name,
+            'CIN' => $student->CIN,
+            'prenom' => $student->prenom,
+        ];
+    }
+
+    // Create an instance of EtudiantExport and return it
+    $export = new EtudiantExport($exportData);
+
+    // Export the data to a JSON file
+    $exportFile = 'all_etudiants.json';
+    Excel::store($export, $exportFile);
+
+    return back();
+}
+
+
+
+
+
+
+
 
     public function download($filename)
     {
         $file = Storage::disk('public')->path($filename);
+
         return response()->download($file);
     }
-
-
-
-
-
 
     /**
      * Display the specified resource.
@@ -134,11 +179,3 @@ class MessageController extends Controller
         ]);
     }
 }
-
-
-
-
-
-
-
-

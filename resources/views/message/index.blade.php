@@ -234,7 +234,7 @@
     </div>
     <div style="display:flex ;justify-content: end">
 
-        <iframe src="{{ asset('storage/' . $message->file) }}" width="100pc" height="100px"></iframe>
+        <img src="{{ asset('storage/' . $message->file) }}" width="100pc" height="100px" alt='makainach'>
 
     </div>
 
@@ -244,6 +244,7 @@
 
 
     <div class="chat incoming">
+        <img src="{{asset("img/ME.jpg")}}" alt="image" >
 
         <div class="details">
             <p>
@@ -555,7 +556,7 @@
 
                         <div class="fix-container">
 
-                            <h1><strong>formateurs</strong></h1>
+                            <h1><strong>Etudiants</strong></h1>
                             <div class="mid-section">
                                 <form action="{{route("message.searchEtudient")}}" method="POST">@csrf
                                     <input type="text" placeholder="Search" name="search">
@@ -882,12 +883,22 @@
                     <img src="{{ asset('img/vg0CZ05S.jpg') }}">
                 </div>
         <div class="navbar">
-        <form action="" >
-            <button class="btnn" role="file">Importer les formateurs</button>
+
+
+
+        <form action="{{ route("message.importEtudiant") }}"  method="post" enctype="multipart/form-data">
+            @csrf
+            <input class="btnn" type="file" value='Importer les formateurs'accept=".xlsx,.xls,.csv" name='file'>
+            <button class="btnn" type="submit">Envoyer</button>
             <button class="btnn" role="button">Importer les etudiants</button>
 
 <a href="{{route("actualites.create")}}"  class="btnn" role="button" >lancer un actualites</a>
         </form>
+
+
+
+
+
         </div>
 
 
@@ -1004,7 +1015,7 @@
                 </div>
             </div>
             <div class="chat incoming">
-                <img src="{{asset("img/ME.jpg")}}" alt="" >
+                <img src="{{asset("img/ME.jpg")}}" alt="image dyspp0o9ujy" >
                     <div class="details">
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis rerum minima ipsam unde pariatur delectus impedit tempora commodi, fugiat expedita natus saepe dolorum illo illum voluptate. Enim sapiente odit molestias!</p>
                         <img src="{{asset("img/list.png")}}" alt="" id="imgList" data-dropdown-toggle="dropdown2" >
