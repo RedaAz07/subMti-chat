@@ -271,6 +271,8 @@ $niveau->save();
      */
     public function destroy(etudient $etudient)
     {
-        //
+        $etudient->delete();
+        return back();
     }
+
 }

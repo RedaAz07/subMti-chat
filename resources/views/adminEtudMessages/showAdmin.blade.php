@@ -2,7 +2,7 @@
 
 
 <ul>
-    @foreach($messages as $message)
+    @foreach($messageEtudient as $message)
         <li>
             {{$message->contenu}}
             <img src="{{ asset('storage/' . $message->file) }}" alt="" width="300px">

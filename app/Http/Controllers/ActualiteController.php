@@ -2,9 +2,19 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\admin;
+use App\Models\classe;
+use App\Models\niveau;
+use App\Models\filiere;
+use App\Models\message;
+use App\Models\etudient;
 use App\Models\actualite;
+use App\Models\formateur;
+use App\Models\utilisateur;
+
 use Illuminate\Http\Request;
+use App\Models\classeFormMessage;
 use Illuminate\Support\Facades\Auth;
 
 class ActualiteController extends Controller
@@ -14,7 +24,7 @@ class ActualiteController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -22,7 +32,20 @@ class ActualiteController extends Controller
      */
     public function create()
     {
-        return view('actualites.create', ['actualites' => actualite::all()]);
+        return view('actualites.create',[
+
+            "messages"=>message::all(),
+            "formateurs"=>formateur::all(),
+            "filieres"=>filiere::all(),
+            "niveuax"=>niveau::all(),
+            "classes"=>classe::all(),
+            "etudients"=>etudient::all(),
+            "actualites"=>actualite::all(),
+            "classeFormMessage"=>classeFormMessage::all(),
+            "admins"=>admin::all(),
+            "utilisateurs"=>utilisateur::all(),
+            'actualites' => actualite::all(),
+           ]);
 
     }
 

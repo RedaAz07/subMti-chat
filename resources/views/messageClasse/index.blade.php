@@ -20,10 +20,10 @@
 
             <header>
                 <div class="left-section">
-                    <img src="{{ asset('img/vg0CZ05S.jpg') }}">
+                    <img src="{{ asset('img/logo2.png') }}">
                 </div>
                 <div class="right-section">
-                    <img src=" {{ asset('img/ME.jpg') }}" alt="" id="me"
+                    <img src=" {{ asset('img/student.png') }}" alt="" id="me"
                         data-dropdown-toggle="dropdownInformation">
 
 
@@ -124,6 +124,8 @@
 
 
 
+
+
                         </nav>
                     </div>
                     <!---------------------------------------------------- fin left-sidebar------------------------------------------------------>
@@ -134,7 +136,7 @@
                     <!-------------------- detaills-container---- hada howa lfo9 dial chat ------------------->
                     <div class="detaills-container">
                         <div class="right-side">
-                            <img src="{{ asset('img/ME.jpg') }}" alt="">
+                            <img src="{{ asset('img/student.png') }}" alt="">
 @foreach ($etudients as $etudient)
 @if ($etudient->utilisateur->id === auth()->user()->id)
 
@@ -220,13 +222,13 @@
                     </ul>
                 </div>
             </form>
-            <p>{{$mesg->contenu}}</p>
+            <p style="font-size: 20px">{{$mesg->contenu}}</p>
 
         </div>
     </div>
     <div style="display:flex ;justify-content: end">
 
-        <iframe src="{{ asset('storage/' . $mesg->file) }}" width="100pc" height="100px"></iframe>
+        <img src="{{ asset('storage/' . $mesg->file) }}" width="100pc" height="100px">
 
     </div>
 
@@ -238,7 +240,7 @@
     <div class="chat incoming">
 
         <div class="details">
-            <p>
+            <p  style="font-size: 20px">
                 {{ $mesg->contenu }}
 
 
@@ -436,4 +438,5 @@
 
 
 
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 

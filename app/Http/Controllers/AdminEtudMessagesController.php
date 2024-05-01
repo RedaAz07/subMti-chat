@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\admin;
+use App\Models\classe;
+use App\Models\niveau;
+use App\Models\filiere;
+use App\Models\message;
 use App\Models\etudient;
+use App\Models\actualite;
+use App\Models\formateur;
+use App\Models\utilisateur;
 use Illuminate\Http\Request;
 use App\Models\adminEtudMessages;
+use App\Models\classeFormMessage;
 use App\Http\Controllers\Controller;
 
 class AdminEtudMessagesController extends Controller
@@ -14,11 +22,11 @@ class AdminEtudMessagesController extends Controller
 public function showEtuds($id_etud)
     {
         $admins = admin::all();
-        $messages = [];
+        $messageEtudient = [];
 
         foreach ($admins as $admin) {
             if ($admin->utilisateur->id === auth()->user()->id) {
-                $messages = adminEtudMessages::where(function ($query) use ($id_etud, $admin) {
+                $messageEtudient = adminEtudMessages::where(function ($query) use ($id_etud, $admin) {
                     $query->where('id_admin', $admin->id_admin)
                           ->where('id_etudient', $id_etud);
                 })->orWhere(function ($query) use ($id_etud, $admin) {
@@ -28,7 +36,20 @@ public function showEtuds($id_etud)
             }
         }
 
-        return view('adminEtudMessages.showEtuds', compact('messages', 'id_etud'));
+        return view('adminEtudMessages.showEtuds', compact('messageEtudient', 'id_etud'),[
+
+            "messages"=>message::all(),
+            "formateurs"=>formateur::all(),
+            "filieres"=>filiere::all(),
+            "niveuax"=>niveau::all(),
+            "classes"=>classe::all(),
+            "etudients"=>etudient::all(),
+            "actualites"=>actualite::all(),
+            "classeFormMessage"=>classeFormMessage::all(),
+            "admins"=>admin::all(),
+            "utilisateurs"=>utilisateur::all(),
+
+           ]);
     }
 
 
@@ -101,7 +122,20 @@ return redirect()->back();
             }
         }
 
-        return view('adminEtudMessages.showAdmin', compact('messages', 'id_admin'));
+        return view('adminEtudMessages.showAdmin', compact('messages', 'id_admin'),[
+
+            "messages"=>message::all(),
+            "formateurs"=>formateur::all(),
+            "filieres"=>filiere::all(),
+            "niveuax"=>niveau::all(),
+            "classes"=>classe::all(),
+            "etudients"=>etudient::all(),
+            "actualites"=>actualite::all(),
+            "classeFormMessage"=>classeFormMessage::all(),
+            "admins"=>admin::all(),
+            "utilisateurs"=>utilisateur::all(),
+
+           ]);
     }
 
 

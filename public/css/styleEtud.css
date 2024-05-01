@@ -583,17 +583,26 @@ display: flex;
 margin-left: auto;
 display: flex;
 align-items: center;
+<<<<<<< HEAD
 max-width: calc(100% - 300px);
 
+=======
+max-width:320px;
+>>>>>>> e0a0de95f09e654710b28a4e551cd7d40031087d
 
 }
 .outgoing .details p{
 background: linear-gradient(to bottom right, #e9c46a,#f4a261,#fb8500, #fa538d);
 color: #fff;
+word-wrap: break-word;
 border-radius: 18px 18px 0 18px;
+<<<<<<< HEAD
 word-wrap: break-word;
 max-width: 320px;
 font-size: 13px;
+=======
+width: 100%;
+>>>>>>> e0a0de95f09e654710b28a4e551cd7d40031087d
 }
 .chat-container .incoming{
 display: flex;

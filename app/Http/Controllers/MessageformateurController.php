@@ -31,7 +31,7 @@ class MessageformateurController extends Controller
      public function show_form($id_for)
      {
         $etudients = etudient::all();
-        $messages = [];
+        $messagesFormateurs = [];
 
         foreach ($etudients as $etudient) {
             if ($etudient->utilisateur->id === auth()->user()->id) {
@@ -110,21 +110,39 @@ class MessageformateurController extends Controller
 public function show_Etud($id_for)
 {
     $formateurs = formateur::all();
-    $messages = [];
+    $messageEtudient = [];
 
     foreach ($formateurs as $formateur) {
         if ($formateur->utilisateur->id === auth()->user()->id) {
-            $messages = messageformateur::where(function ($query) use ($id_for, $formateur) {
+            $messageEtudient = messageformateur::where(function ($query) use ($id_for, $formateur) {
                 $query->where('id_formateur', $formateur->id_formateur)
                       ->where('id_etudient', $id_for);
             })->orWhere(function ($query) use ($id_for, $formateur) {
                 $query->where('id_etudient', $id_for)
                       ->where('id_formateur', $formateur->id_formateur);
-            })->get();
+            })->orderBy('created_at', 'desc')->get();
         }
     }
 
-    return view('messageformateur.indexForm', compact('messages', 'id_for'));
+    return view('messageformateur.indexForm', compact('messageEtudient', 'id_for'),[
+
+        "messages"=>message::all(),
+        "formateurs"=>formateur::all(),
+        "filieres"=>filiere::all(),
+        "niveuax"=>niveau::all(),
+        "classes"=>classe::all(),
+        "etudients"=>etudient::all(),
+        "actualites"=>actualite::all(),
+        "classeFormMessage"=>classeFormMessage::all(),
+
+
+
+
+
+
+        "utilisateurs"=>utilisateur::all(),
+
+       ] );
 }
 
 

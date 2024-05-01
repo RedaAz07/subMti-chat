@@ -313,9 +313,11 @@ section .annance {
     padding:10px;
     margin-bottom: 8px;
     margin-left: 14px;
+    max-width: 320px;
     box-shadow: 0 0 17px 10px rgb(0 0 0 / 5%);
 }
 .annances span{
+    width: 100%;
 font-size: 15px;
 word-wrap: break-word;}
 .links i {
