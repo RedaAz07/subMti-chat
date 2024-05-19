@@ -411,14 +411,21 @@ main {
 .message-container {
     height: 60px;
     background-color: #F8FAFC;
-    margin-top: 597px;
+    margin-top: 38.5% ;
     padding: 16px 0px;
     position: fixed;
-    width: 840px;
+    width: 51%;
     z-index: 999999999999;
 
 
 }
+
+
+
+
+
+
+
 /* .message-container form {
     display: flex;
     justify-content: center;

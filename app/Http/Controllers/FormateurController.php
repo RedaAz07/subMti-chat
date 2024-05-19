@@ -117,7 +117,12 @@ class FormateurController extends Controller
      */
     public function create()
     {
-        //
+        return view("formateur.create",[
+            "classes"=>classe::all(),
+            "niveaux"=>niveau::all(),
+            "filieres"=>filiere::all(),
+
+        ]);
     }
 
     /**

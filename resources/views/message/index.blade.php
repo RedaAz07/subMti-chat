@@ -181,101 +181,6 @@
 
 
                         @foreach ($messages as $message)
-<<<<<<< HEAD
-
-
-@auth
-    @if (auth()->user()->id === $message->utilisateur->id )
-
-
-    <div class="chat outgoing" id="outgoing">
-        <div class="details">
-            <form action="">
-                <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
-                    data-dropdown-toggle="dropdown1">
-                <!-- Dropdown menu -->
-                <div id="dropdown1"
-                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                        aria-labelledby="dropdownDefaultButton">
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </form>
-            <p>{{$message->contenu}}</p>
-
-        </div>
-    </div>
-    <div style="display:flex ;justify-content: end">
-
-        <img src="{{ asset('storage/' . $message->file) }}" width="100pc" height="100px" alt='makainach'>
-
-    </div>
-
-
-    @else
-    <h6>{{ $message->utilisateur->etudient->nom }}</h6>
-
-
-    <div class="chat incoming">
-        <img src="{{asset("img/ME.jpg")}}" alt="image" >
-
-        <div class="details">
-            <p>
-                {{ $message->contenu }}
-
-
-
-            </p>
-            <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
-                data-dropdown-toggle="dropdown{{ $message->id_message }}">
-            <!-- Dropdown menu -->
-
-
-            <div id="dropdown{{ $message->id_message }}"
-                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                    aria-labelledby="dropdownDefaultButton">
-                    <li>
-                        @auth
-                            @if (auth()->user()->id === $message->utilisateur->id)
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
-                            @endif
-                        @endauth
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
-                    </li>
-
-                </ul>
-            </div>
-
-            </form>
-        </div>
-    </div>
-    <img src="{{ asset('storage/' . $message->file) }}" alt="" width="300px">
-
-    @endif
-@endauth
-=======
                             @auth
                                 @if (auth()->user()->id === $message->utilisateur->id)
                                     <div class="chat outgoing" id="outgoing">
@@ -286,7 +191,6 @@
                                                 <!-- Dropdown menu -->
                                                 <div id="dropdown{{ $message->id_message }}"
                                                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
->>>>>>> e0a0de95f09e654710b28a4e551cd7d40031087d
 
 
 
@@ -296,7 +200,7 @@
                                                         aria-labelledby="dropdownDefaultButton">
                                                         <li>
 
-                                                            <form action="{{ route('message.destroy', ['message' => $message->id]) }}" method="POST">
+                                                            <form action="{{ route('message.destroy', ['message' => $message->id_message]) }}" method="POST">
                                                                 @method('DELETE')
                                                                 @csrf
                                                                 <button type="submit">Delete</button>
@@ -316,14 +220,21 @@
                                                     </ul>
                                                 </div>
                                             </form>
+                                            @if (  $message->contenu !=="")
+
                                             <p style="font-size: 2rem">{{ $message->contenu }}</p>
+                                            @endif
 
                                         </div>
                                     </div>
                                     <div style="display:flex ;justify-content: end" >
+                                        @if ( $message->file !==null)
 
-                                        <img src="{{ asset('storage/' . $message->file) }}" 
-                                            >
+                                        <img src="{{ asset('storage/' . $message->file) }}"
+                                         width="300px">                                        @endif
+
+
+
 
                                     </div>
                                 @else
@@ -380,6 +291,8 @@
 
 
                     </div>
+
+                    <span    ></span>
                     <!---------------------------------------------------- fin chat-container ------------------------------------------------------>
 
 
@@ -409,7 +322,6 @@
                                         <input id="dropzone-file" type="file" class="hidden" name="file" />
                                     </label>
                                 </div>
-
 
 
 
@@ -848,30 +760,6 @@
 
             </head>
 
-<<<<<<< HEAD
-            <header>
-                <div class="left-section">
-                    <img src="{{ asset('img/vg0CZ05S.jpg') }}">
-                </div>
-        <div class="navbar">
-
-
-
-        <form action="{{ route("message.importEtudiant") }}"  method="post" enctype="multipart/form-data">
-            @csrf
-            <input class="btnn" type="file" value='Importer les formateurs'accept=".xlsx,.xls,.csv" name='file'>
-            <button class="btnn" type="submit">Envoyer</button>
-            <button class="btnn" role="button">Importer les etudiants</button>
-
-<a href="{{route("actualites.create")}}"  class="btnn" role="button" >lancer un actualites</a>
-        </form>
-
-
-
-
-
-        </div>
-=======
             <body>
                 <!---------------------------------------------------- header ------------------------------------------------------>
 
@@ -880,10 +768,23 @@
                           <img src="{{ asset('img/logo2.png') }}">
                     </div>
                     <div class="navbar">
+
+
+
+
+<form action="{{url("import")}}"  method="POST" enctype="multipart/form-data">
+@csrf
+<a href="{{route("export")}}">export</a>
+    <input type="file" name="file">
+    <button type=" submit" style="background-color: red"> arsiiil</button>
+</form>
+
+
+
+
                         <form action="">
-                            <button class="btnn" role="file">Importer les formateurs</button>
+                            <a class="btnn"     href="{{route("formateur.create")}}">Importer les formateurs</a>
                             <button class="btnn" role="button">Importer les etudiants</button>
->>>>>>> e0a0de95f09e654710b28a4e551cd7d40031087d
 
                             <a href="{{ route('actualites.create') }}" class="btnn" role="button">Poster  une
                                 actualites</a>
@@ -930,7 +831,6 @@
                         </div>
 
                     @auth
-
 
 
 
@@ -995,42 +895,8 @@
                         <!-------------------- chat-container------- hada blasa li kaikhrjo fiha les msj---------------->
                         <div class="chat-container">
 
-<<<<<<< HEAD
-                                </ul>
-                            </div>
-                    </form>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis rerum minima ipsam unde pariatur delectus impedit tempora commodi, fugiat expedita natus saepe dolorum illo illum voluptate. Enim sapiente odit molestias!</p>
-                </div>
-            </div>
-            <div class="chat incoming">
-                <img src="{{asset("img/ME.jpg")}}" alt="image dyspp0o9ujy" >
-                    <div class="details">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis rerum minima ipsam unde pariatur delectus impedit tempora commodi, fugiat expedita natus saepe dolorum illo illum voluptate. Enim sapiente odit molestias!</p>
-                        <img src="{{asset("img/list.png")}}" alt="" id="imgList" data-dropdown-toggle="dropdown2" >
-                            <!-- Dropdown menu -->
-                            <div id="dropdown2" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                                    <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
-                                    </li>
-                                    <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                                    </li>
-                                    <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!---------------------------------------------------- fin chat-container ------------------------------------------------------>
-=======
                         </div>
                         <!---------------------------------------------------- fin chat-container ------------------------------------------------------>
->>>>>>> e0a0de95f09e654710b28a4e551cd7d40031087d
 
 
                         <!---------------------------------------- message-container ----- hada l input li katkteb fiha msj dialk------------------------------------------------->

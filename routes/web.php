@@ -1,22 +1,24 @@
 <?php
 
-use App\Http\Controllers\ActualiteController;
+use App\Models\actualite;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\PersonController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\EtudientController;
+use App\Http\Controllers\ActualiteController;
+use App\Http\Controllers\FormateurController;
+use App\Http\Controllers\UtilisateurController;
+use App\Http\Controllers\importExportController;
+use App\Http\Controllers\messageClasseController;
+use App\Http\Controllers\EtudiantsImportController;
+use App\Http\Controllers\FormateursImportController;
+use App\Http\Controllers\MessageformateurController;
 use App\Http\Controllers\AdminEtudMessagesController;
 use App\Http\Controllers\AdminProfMessagesController;
 use App\Http\Controllers\ClasseFormMessageController;
-use App\Http\Controllers\EtudiantsImportController;
-use App\Http\Controllers\EtudientController;
-use App\Http\Controllers\FormateurController;
-use App\Http\Controllers\FormateursImportController;
-use App\Http\Controllers\loginController;
-use App\Http\Controllers\messageClasseController;
-use App\Http\Controllers\MessageController;
-use App\Http\Controllers\MessageformateurController;
-use App\Http\Controllers\UtilisateurController;
-use App\Models\actualite;
-use Illuminate\Support\Facades\Route;
-use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,14 +30,14 @@ use Maatwebsite\Excel\Facades\Excel;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-/*
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 
 
-
+/*
 
 Route::match(['get', 'post'], '/user/profile', function () {
 
@@ -155,37 +157,6 @@ Route::match(['get', 'post'], '/classeFormMessage.indexEtud/{id_classe}', [Class
 
 Route::get('/download/{filename}', [MessageController::class, 'download'])->name('file.download');
 
-<<<<<<< HEAD
-// Route::get('/test-excel', function () {
-//     $filePath = public_path('one.xlsx');
-
-//     try {
-//         Excel::load($filePath, function ($reader) {
-//             // Access data from the Excel file
-//             $data = $reader->first(); // Read the first row
-//             $sheetData = $reader->sheet('Sheet1')->toArray(); // Read data from a specific sheet
-
-//             // Process the data as needed
-//             // ...
-//         });
-//     } catch (\Exception $e) {
-//         // Handle potential errors
-//         echo '  -: '.$e->getMessage();
-//     }
-
-// });
-
-Route::match(['get', 'post'], 'message.search/for', [loginController::class, 'searchFormateur'])->name('message.searchFormateur/for');
-Route::match(['get', 'post'], 'message.search', [loginController::class, 'searchEtudient'])->name('message.searchEtudient');
-
-Route::match(['get', 'post'], 'message.importEtudiant', [MessageController::class, 'importEtudiant'])->name('message.importEtudiant');
-
-// import file
-
-// Route::resource('message.importEtudiant', EtudiantsImportController::class);
-
-// Route::resource('/message/index', FormateursImportController::class);
-=======
 
 Route::match(['get', 'post'], 'message.search/for', [loginController::class, 'searchFormateur'])->name('message.searchFormateur/for')->middleware('auth');
 Route::match(['get', 'post'], 'message.search', [loginController::class, 'searchEtudient'])->name('message.searchEtudient')->middleware('auth');
@@ -196,7 +167,36 @@ Route::match(['get', 'post'], 'message.search', [loginController::class, 'search
 
 
 
-Route::delete('/message/{message}', 'MessageController@destroy')->name('message.destroy')->middleware('auth');
+Route::delete('/message/{message}', [MessageController::class,"destroy"])->name('message.destroy')->middleware('auth');
 
-Route::get('/Accueil', [loginController::class, 'Accueil'])->name('Accueil');
->>>>>>> e0a0de95f09e654710b28a4e551cd7d40031087d
+Route::get('/', [loginController::class, 'Accueil']);
+
+
+// routes/web.php
+
+Route::get('/test-excel', [loginController::class, 'test'])->name('test-excel');
+
+
+
+
+//Route::get('/import', [importExportController::class, 'index'])->name('import');
+Route::post('/import', [importExportController::class, 'import'])->name('import');
+
+
+
+Route::match(["get","post"],'/export', [importExportController::class, 'export'])->name('export');
+
+
+
+
+
+//Route::post('/importFormateur', [importExportController::class, 'importFormateur'])->name('importFormateur');
+
+
+
+//Route::match(["get","post"],'/exportFormateur', [importExportController::class, 'exportFormateur'])->name('exportFormateur');
+
+
+
+
+Route::resource('formateur', FormateurController::class);

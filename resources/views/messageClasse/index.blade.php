@@ -222,13 +222,19 @@
                     </ul>
                 </div>
             </form>
-            <p style="font-size: 20px">{{$mesg->contenu}}</p>
+
+            @if ($mesg->contenu !== null)
+
+<p style="font-size: 20px">{{$mesg->contenu}}</p>
+            @endif
 
         </div>
     </div>
     <div style="display:flex ;justify-content: end">
+@if ($mesg->file !== null)
+<img src="{{ asset('storage/' . $mesg->file) }}" width="100px"  height="100px">
+@endif
 
-        <img src="{{ asset('storage/' . $mesg->file) }}" width="100pc" height="100px">
 
     </div>
 
@@ -278,7 +284,7 @@
             </form>
         </div>
     </div>
-    <img src="{{ asset('storage/' . $mesg->file) }}" alt="" width="300px">
+
 
     @endif
 @endauth
