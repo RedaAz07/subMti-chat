@@ -7,16 +7,22 @@ use App\Http\Controllers\AdminProfMessagesController;
 use App\Http\Controllers\ClasseFormMessageController;
 use App\Http\Controllers\EtudiantsImportController;
 use App\Http\Controllers\EtudientController;
+use App\Http\Controllers\EtudientsImportController;
 use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\FormateursImportController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\messageClasseController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MessageformateurController;
+use App\Http\Controllers\UsersExportController;
+use App\Http\Controllers\UsersImportController;
 use App\Http\Controllers\UtilisateurController;
 use App\Models\actualite;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -155,37 +161,6 @@ Route::match(['get', 'post'], '/classeFormMessage.indexEtud/{id_classe}', [Class
 
 Route::get('/download/{filename}', [MessageController::class, 'download'])->name('file.download');
 
-<<<<<<< HEAD
-// Route::get('/test-excel', function () {
-//     $filePath = public_path('one.xlsx');
-
-//     try {
-//         Excel::load($filePath, function ($reader) {
-//             // Access data from the Excel file
-//             $data = $reader->first(); // Read the first row
-//             $sheetData = $reader->sheet('Sheet1')->toArray(); // Read data from a specific sheet
-
-//             // Process the data as needed
-//             // ...
-//         });
-//     } catch (\Exception $e) {
-//         // Handle potential errors
-//         echo '  -: '.$e->getMessage();
-//     }
-
-// });
-
-Route::match(['get', 'post'], 'message.search/for', [loginController::class, 'searchFormateur'])->name('message.searchFormateur/for');
-Route::match(['get', 'post'], 'message.search', [loginController::class, 'searchEtudient'])->name('message.searchEtudient');
-
-Route::match(['get', 'post'], 'message.importEtudiant', [MessageController::class, 'importEtudiant'])->name('message.importEtudiant');
-
-// import file
-
-// Route::resource('message.importEtudiant', EtudiantsImportController::class);
-
-// Route::resource('/message/index', FormateursImportController::class);
-=======
 
 Route::match(['get', 'post'], 'message.search/for', [loginController::class, 'searchFormateur'])->name('message.searchFormateur/for')->middleware('auth');
 Route::match(['get', 'post'], 'message.search', [loginController::class, 'searchEtudient'])->name('message.searchEtudient')->middleware('auth');
@@ -199,4 +174,21 @@ Route::match(['get', 'post'], 'message.search', [loginController::class, 'search
 Route::delete('/message/{message}', 'MessageController@destroy')->name('message.destroy')->middleware('auth');
 
 Route::get('/Accueil', [loginController::class, 'Accueil'])->name('Accueil');
->>>>>>> e0a0de95f09e654710b28a4e551cd7d40031087d
+
+
+
+
+
+Route::resource('/etudient.import', EtudientsImportController::class);
+
+//  Route::match(['get', 'post'],'/users/import', [UsersImportController::class,'index']);
+//  Route::match(['get', 'post'],'/users/import', [UsersImportController::class,'store']);
+
+// Route::get('/', [UsersImportController::class,'index']);
+// Route::match(['get', 'post'],'/import',[EtudientsImportController::class,'store'])->name("etudient.import");
+
+// export files
+
+// import files
+// Route::post('users/export', [UsersExportController::class, 'export']);
+// Route::get('users/indexExport', [UsersExportController::class, 'indexExport']);

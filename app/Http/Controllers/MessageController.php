@@ -2,19 +2,8 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use App\Imports\etudientImport;
-use App\Models\actualite;
-use App\Models\classe;
-use App\Models\classeFormMessage;
-use App\Models\etudient;
-use App\Models\filiere;
-use App\Models\formateur;
-use App\Models\message;
-=======
 use App\Models\admin;
 use App\Models\classe;
->>>>>>> e0a0de95f09e654710b28a4e551cd7d40031087d
 use App\Models\niveau;
 use App\Models\filiere;
 use App\Models\message;
@@ -22,6 +11,7 @@ use App\Models\etudient;
 use App\Models\actualite;
 use App\Models\formateur;
 use App\Models\utilisateur;
+use App\Models\classeFormMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
@@ -35,16 +25,6 @@ class MessageController extends Controller
     {
         return view('message.index', [
 
-<<<<<<< HEAD
-            'messages' => message::all(),
-            'formateurs' => formateur::all(),
-            'filieres' => filiere::all(),
-            'niveuax' => niveau::all(),
-            'classes' => classe::all(),
-            'etudients' => etudient::all(),
-            'actualites' => actualite::all(),
-            'classeFormMessage' => classeFormMessage::all(),
-=======
         "messages"=>message::orderBy('created_at', 'desc')->get(),
         "formateurs"=>formateur::all(),
         "filieres"=>filiere::all(),
@@ -56,7 +36,6 @@ class MessageController extends Controller
 
         "classeFormMessage"=>classeFormMessage::all(),
 
->>>>>>> e0a0de95f09e654710b28a4e551cd7d40031087d
 
             'utilisateurs' => utilisateur::all(),
 
@@ -207,7 +186,7 @@ class MessageController extends Controller
     public function destroy(message $message)
     {
         $message->delete();
-      
+
     }
 
 

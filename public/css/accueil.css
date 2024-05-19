@@ -11,6 +11,11 @@
   text-transform: capitalize;
   transition: all .2s linear;
 }
+body {
+    min-height: 100vh;
+    background: url(../images) no-repeat;
+    background-size: cover;
+  }
 html {
   font-size: 62.5%;
   overflow-x: hidden;
@@ -20,7 +25,7 @@ html {
 /* **************** */
 .media-icons {
   padding-left: 8px;
-  padding-top: 2px;
+  padding-top: 9px;
   display: flex;
   flex-direction: row;
   transition: 0.5s ease;
@@ -63,6 +68,32 @@ header .links {
 .media-icons a:hover{
   transform: scale(1.6);
 }
+
+.div1 img{
+    width: 2000px;
+    height: 400px;
+}
+
+
+.services {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 70px;
+
+
+}
+.service-title h1 {
+    display: flex;
+    justify-content: center;
+    color: #ff7700;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 145%;
+    letter-spacing: 0.01em;
+    padding-bottom: 35px;
+  }
+
 
 .diver {
   width: 100%;
@@ -109,11 +140,7 @@ a {
   text-decoration: none;
 }
 
-body {
-  min-height: 100vh;
-  background: url(../images) no-repeat;
-  background-size: cover;
-}
+
 .portfolio-main {
   min-height: 100vh;
   background: linear-gradient(
@@ -581,6 +608,10 @@ input:checked + .slider:before {
 }
 
 @media (max-width: 1200px) {
+    .services {
+        display: flex;
+        flex-direction: column;
+    }
   .navigation-bar {
     display: none;
   }
@@ -596,6 +627,12 @@ input:checked + .slider:before {
     border-radius: 10px;
     text-align: center;
     z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .switch {
+    margin-left: 22px;
   }
   .navigation-bar ul {
     padding: 10px 0 20px;
@@ -606,6 +643,7 @@ input:checked + .slider:before {
     margin: 0;
     text-align: center;
   }
+
   .navigation-bar ul li.hire-btn {
     margin-left: 0 !important;
   }

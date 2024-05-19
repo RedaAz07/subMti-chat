@@ -7,10 +7,13 @@
     <title>COMMUNITY</title>
 
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url('css/accueil.css') }}">
 
 
     <link rel="stylesheet" href="https://fontawesome.com/icons/linkedin-in?f=brands&s=solid">
+
+
 
 </head>
 
@@ -35,7 +38,7 @@
                         <ul>
                             <li><a href="#" class="links">Accueil</a></li>
                             <li><a href="#about" class="links">About Us</a></li>
-                            <li><a href="#" class="links">Services</a></li>
+                            <li><a href="#services" class="links">Services</a></li>
                             <li><a href="#contact" class="links">Contacts</a></li>
                             <li ><a class="comic-button" href="{{route("login")}}">Login</a></li>
                             <li><label class="switch"><input type="checkbox"><span class="slider"></span></label></li>
@@ -75,7 +78,7 @@
 
                 <div class="diver" id="about">
                     <div class="div1">
-                        <img src="{{asset("accueilIMG/Questions.gif")}}" alt="GIF" loop id="imgg" width="420"  height="400">
+                        <img src="{{asset("accueilIMG/Questions.gif")}}" alt="GIF" loop id="imgg" width="420px"  height="400px">
                         <script>
                             // Fonction pour boucler le GIF
                             function bouclerGIF() {
@@ -89,17 +92,71 @@
                     <div class="div2">
                         <h3><strong>About Us</strong></h3>
                         <h1><strong>A dedicated Fullstack Developer</strong> </h1>
-                        <p>Notre objectif est de fournir un environnement interactif et innovant pour la communication et l'apprentissage entre les élèves et les différentes parties prenantes de l'établissement éducatif, y compris les enseignants et les responsables. Notre site est une plateforme intégrée qui réunit élèves, enseignants et responsables, facilitant ainsi l'échange de connaissances et de compétences, et guidant les étudiants vers la réussite académique et professionnelle. Grâce à nos technologies modernes et à notre équipe de support dédiée, nous nous efforçons de renforcer l'expérience d'apprentissage en ligne et de fournir un environnement sûr et stimulant pour la croissance personnelle et académique des élèves.</p>
+                        <p>Notre objectif est de fournir un environnement interactif et innovant pour la communication et lapprentissage entre les élèves et les différentes parties prenantes de létablissement éducatif, y compris les enseignants et les responsables. Notre site est une plateforme intégrée qui réunit élèves, enseignants et responsables, facilitant ainsi léchange de connaissances et de compétences, et guidant les étudiants vers la réussite académique et professionnelle. Grâce à nos technologies modernes et à notre équipe de support dédiée, nous nous efforçons de renforcer lexpérience dapprentissage en ligne et de fournir un environnement sûr et stimulant pour la croissance personnelle et académique des élèves.</p>
                 </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class='service-title' id="services"><h1><strong>Our Services</strong></h1></div>
+<div class="services" >
+
+
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="rounded-t-lg" src="{{asset("accueilIMG/Mail sent-pana.svg") }}" alt="" />
+    </a>
+    <div class="p-5">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Messagerie instantanée</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Permettre le chat direct entre les élèves et les enseignants pour des questions rapides et des clarifications.</p>
+    </div>
+</div>
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="rounded-t-lg" src="{{asset("accueilIMG/Files sent-cuate.svg") }}" alt="" />
+    </a>
+    <div class="p-5">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Partage de fichiers</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Ajouter une fonctionnalité pour partager des fichiers tels que des notes, des devoirs et des présentations.
+        </p>
+    </div>
+</div>
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="rounded-t-lg" src="{{asset("accueilIMG/Email campaign-amico.svg") }}" alt="" />
+    </a>
+    <div class="p-5">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Acctualites en temps réel</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"> Envoyer des acctualites en temps réel aux élèves concernant les devoirs, les examens ou les mises à jour importantes.</p>
+    </div>
+</div>
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="rounded-t-lg" src="{{asset("accueilIMG/Seminar-pana.svg") }}" alt="" />
+    </a>
+    <div class="p-5">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Partage d'expériences</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Créez un espace où les étudiants peuvent partager leurs expériences, conseils et ressources avec leurs pairs. Cela peut inclure des témoignages sur des cours, des stages, des projets, ou des conseils pratiques pour la réussite académique.</p>
+    </div>
+</div>
+
+</div>
+
+
+
     <footer>
         <div id="contact">
         <div class="right_side">
-            <a href="#"><img src="images/black_logo.jpg" alt="logo" width="180px"></a>
+            <a href="#"><img src="{{ asset('img/logo2.png') }}" alt="logo" width="180px"></a>
             <h1>contacter nous a:</h1>
             <a href="#">info@supmti.ac.ma</a>
             <h1>suiver nous sur:</h1>
@@ -151,6 +208,7 @@
 
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 
 
@@ -181,37 +239,37 @@
 
 
 <script src="jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $('.toggle-bar').on('click', function (event) {
-        $('this').toggleClass('open');
-        $('.navigation-bar').slideToggle('200');
-    })
+        $(this).toggleClass('open');
+        $('.navigation-bar').slideToggle("200");
+    });
 
     function ecrireTexte() {
-  const texteComplet = "SupMti Community";
-  const texteElement = document.getElementById('texte-clavier');
-  let index = 0;
-  texteElement.textContent = ''; // Efface le texte précédent
+        const texteComplet = "SupMti Community";
+        const texteElement = document.getElementById('texte-clavier');
+        let index = 0;
+        texteElement.textContent = ''; // Efface le texte précédent
 
-  function afficherLettre() {
-    if (index < texteComplet.length) {
-      texteElement.textContent += texteComplet[index];
-      index++;
-      setTimeout(afficherLettre, 150); // Délai plus long entre chaque lettre (100 ms)
+        function afficherLettre() {
+            if (index < texteComplet.length) {
+                texteElement.textContent += texteComplet[index];
+                index++;
+                setTimeout(afficherLettre, 150); // Délai plus long entre chaque lettre (150 ms)
+            }
+        }
+
+        afficherLettre();
     }
-  }
 
-  afficherLettre();
-}
+    // Appeler la fonction pour la première fois
+    ecrireTexte();
 
-// Appeler la fonction pour la première fois
-ecrireTexte();
-
-// Répéter toutes les 5 secondes
-setInterval(ecrireTexte, 6000);
-
-
-
+    // Répéter toutes les 6 secondes (6000 ms)
+    setInterval(ecrireTexte, 6000);
+    
 </script>
+
 
 </html>
