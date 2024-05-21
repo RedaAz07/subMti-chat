@@ -4,9 +4,54 @@
     <form action="{{ route('formateur.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+            <label for="name">nom:</label>
+            <input type="text" class="form-control" id="name" name="nom" required>
         </div>
+
+
+
+        <div class="form-group">
+            <label for="name">prenom:</label>
+            <input type="text" class="form-control" id="name" name="prenom" required>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="name">telephone:</label>
+            <input type="text" class="form-control" id="name" name="telephone" required>
+        </div>
+
+
+        <div class="form-group">
+            <label for="name">CIN:</label>
+            <input type="text" class="form-control" id="name" name="CIN" required>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <label for="name">addresse :</label>
+            <input type="text" class="form-control" id="name" name="addresse" required>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <label for="name">date de naissance  :</label>
+            <input type="date" class="form-control" id="name" name="dateNaissance" required>
+        </div>
+
+
+
+
+
+
+
+
+
 
         <div class="form-group">
             <label for="classes">Classes:</label>
@@ -14,14 +59,15 @@
                 @foreach($classes as $classe)
 
 
-@foreach ($classe->niveau as $item)
+<option value="{{ $classe->id_classe }}"> {{ $classe->num_groupe }} - Niveau: {{ $classe->niveau->niveau }} -
 
+@foreach ($filieres as $item)
+@if ($item->id_filiere === $classe->niveau->id_filiere  )
 
-@if ($classe->niveau->filiere->id_filiere ===$item->id_filiere )
-<option value="{{ $classe->id_classe }}"> {{ $classe->num_groupe }} - Niveau: {{ $classe->niveau->niveau }} - Filiere:{{$item->id_filiere }}
+Filiere:{{$item->nom_filiere }}
 @endif
-
 @endforeach
+
                     </option>
                 @endforeach
             </select>

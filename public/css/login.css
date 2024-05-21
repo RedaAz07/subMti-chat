@@ -11,7 +11,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background: linear-gradient(to bottom right, #e9c46a,#f4a261,#fb8500, #fa538d); */
+    background: rgb(255, 255, 255);
+
 }
 
 
@@ -67,6 +68,12 @@ body {
 
 .login h3.title {
     margin: 20px 0;
+    font-size: 25px;
+    line-height: 2em;
+font-weight: 400;
+color: #030303;
+font-family: "Poetsen One", sans-serif;
+font-style: normal;
 }
 
 .text-input {
@@ -102,8 +109,15 @@ body {
     width: 68%;
     padding: 10px;
     color: white;
-    background: linear-gradient(to right,  #e9c46a,#f4a261,#fb8500, #fa538d);
-    border: none;
+background: hsla(17, 95%, 50%, 1);
+
+background: linear-gradient(90deg, hsla(17, 95%, 50%, 1) 0%, hsla(42, 94%, 57%, 1) 100%);
+
+background: -moz-linear-gradient(90deg, hsla(17, 95%, 50%, 1) 0%, hsla(42, 94%, 57%, 1) 100%);
+
+background: -webkit-linear-gradient(90deg, hsla(17, 95%, 50%, 1) 0%, hsla(42, 94%, 57%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F74C06", endColorstr="#F9BC2C", GradientType=1 );    border: none;
     border-radius: 20px;
     cursor: pointer;
     margin-top: 15px;

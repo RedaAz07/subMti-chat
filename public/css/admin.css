@@ -60,6 +60,19 @@ object-fit: contain;
 
 
 }
+
+
+.www  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+
+
 .mid-section input{
 width: 246px;
 height: 100%;

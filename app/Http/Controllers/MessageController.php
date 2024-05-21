@@ -11,8 +11,8 @@ use App\Models\etudient;
 use App\Models\actualite;
 use App\Models\formateur;
 use App\Models\utilisateur;
-use Illuminate\Http\Request;
 use App\Models\classeFormMessage;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 

@@ -20,6 +20,9 @@ use App\Http\Controllers\AdminEtudMessagesController;
 use App\Http\Controllers\AdminProfMessagesController;
 use App\Http\Controllers\ClasseFormMessageController;
 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,9 +34,7 @@ use App\Http\Controllers\ClasseFormMessageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () { return view('welcome');});
 
 
 
@@ -184,7 +185,10 @@ Route::post('/import', [importExportController::class, 'import'])->name('import'
 
 
 
-Route::match(["get","post"],'/export', [importExportController::class, 'export'])->name('export');
+Route::match(["get","post"],'/export.user', [importExportController::class, 'export'])->name('export.user');
+
+Route::match(["get","post"],'/export.formateur', [FormateurController::class, 'export'])->name('export.formateur');
+
 
 
 

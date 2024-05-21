@@ -14,12 +14,13 @@ body{
     height: 100%;
 
 }
+
 header {
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
-    background: #FFFFFF;
+    background: #ffffff;
     padding: 0.4rem 7%;
     display: flex;
     justify-content: space-between;
@@ -50,7 +51,7 @@ object-fit: contain;
     margin-bottom: 20px;
 
 }
-.mid-section form{
+/* .mid-section form{
     display: flex;
     justify-content: start;
     align-items: center;
@@ -82,7 +83,7 @@ padding-top: 4px;
 background: #f8f8f8;
 cursor: pointer;
 
-}
+} */
 /* nav h1 {
     padding-left: 18px;
     color:#000000;
@@ -93,11 +94,16 @@ cursor: pointer;
 .fix-container h1 {
     padding-top: 10px;
     padding-left: 18px;
-    color:#000000;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    color:#007f5f;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-size: 25px;
     padding-bottom: 10px;
     background: #F8FAFC;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+
+
 }
 
 .mid-section button:hover{
@@ -122,12 +128,15 @@ cursor: pointer;
 
 }
 #nom{
-    color: rgb(0, 0, 0);
+    color: black;
     text-decoration: none;
     font-size: small;
     align-items: center;
     padding-top: 7px;
     padding-left: 7px;
+}
+#nom:hover {
+    color: #197b98;
 }
 .right-section {
     display: flex;
@@ -190,9 +199,11 @@ section{
     padding-top: 10px;
     padding-left: 18px;
     color:#000000;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     padding-bottom: 10px;
+    background: #F8FAFC;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 100;
     background: #F8FAFC;;
 }
 aside{
@@ -234,15 +245,22 @@ aside{
 
 }
 .link span{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     line-height: 2em;
-    font-weight: 400;
+    font-weight: bold;
     color: #030303;
+    font-family: "Radio Canada Big", sans-serif;
+    font-style: normal;
+    color: #030303;
+
 }
 .links span{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     line-height: 2em;
-    font-weight: 400;
+    font-weight: bold;
+    color: #030303;
+    font-family: "Radio Canada Big", sans-serif;
+    font-style: normal;
     color: #030303;
 }
 
@@ -259,16 +277,32 @@ aside{
 .fix-groupe-container .groupe {
     padding-left: 18px;
     color:#000000;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    padding-bottom: 10px;
+    background: #F8FAFC;
+    font-size: 25px;
+        line-height: 2em;
+    font-weight: 400;
+    color: #007f5f;
+    font-family: "Poetsen One", sans-serif;
+    font-style: normal;
     text-decoration: none;
+
+
+
 
 }
 section .annance {
     padding-left: 18px;
     color:#000000;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    font-size: 25px;
+    padding-bottom: 10px;
+    background: #F8FAFC;
+    font-size: 25px;
+        line-height: 2em;
+    font-weight: 400;
+    color: #007f5f;
+    font-family: "Poetsen One", sans-serif;
+    font-style: normal;
     text-decoration: none;
 
 }
@@ -293,9 +327,9 @@ section .annance {
     flex-direction: row;
     padding: 10px 16px;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: #FFFFFF;;
-    color: rgb(255, 51, 0);
+    color: #ff0000;
     align-items: center;
     padding:10px;
     margin-bottom: 8px;
@@ -304,10 +338,19 @@ section .annance {
     max-width: 320px;
 
 }
-.annances span{
+
+.annances .span{
     width: 100%;
-font-size: 15px;
+font-size: 12px;
 word-wrap: break-word;
+padding: 0 6px;
+font-size: 1.3rem;
+line-height: 2em;
+font-weight: 500;
+color: #030303;
+font-family: "Radio Canada Big", sans-serif;
+font-style: normal;
+color: #000000;
 }
 .links i {
 padding-right: 5px;
@@ -565,44 +608,44 @@ opacity: 1; /* Rendre l'image visible au survol */
 /*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  */
 
 .chat-container .chat{
-margin: 15px 15px;
+margin: 12px 15px;
 }
 .chat-container .chat p{
 word-wrap: break-word;
 padding: 8px 16px;
 box-shadow: 0 0 32px rgb(0 0 0 / 8%),
             0rem 16px 16px -16px rgb(0 0 0 / 10%);
+
 }
 .chat-container .outgoing{
 display: flex;
-
-
-
 }
 .chat-container .outgoing .details{
 margin-left: auto;
 display: flex;
 align-items: center;
-<<<<<<< HEAD
-max-width: calc(100% - 300px);
-
-=======
 max-width:320px;
->>>>>>> e0a0de95f09e654710b28a4e551cd7d40031087d
+
+}
+.cla6{
+    margin-left: 16px;
+    color: #53575c;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+
+
+
 
 }
 .outgoing .details p{
-background: linear-gradient(to bottom right, #e9c46a,#f4a261,#fb8500, #fa538d);
-color: #fff;
+/* background: linear-gradient(to bottom right, #e9c46a,#f4a261,#fb8500, #fa538d); */
+background-color: #4cc9f0;
+color: #000000;
 word-wrap: break-word;
 border-radius: 18px 18px 0 18px;
-<<<<<<< HEAD
-word-wrap: break-word;
-max-width: 320px;
-font-size: 13px;
-=======
 width: 100%;
->>>>>>> e0a0de95f09e654710b28a4e551cd7d40031087d
+
 }
 .chat-container .incoming{
 display: flex;
@@ -621,11 +664,9 @@ align-items: center;
 
 }
 .incoming .details p{
-background: #fff;
-color: #333;
+    background-color: #4cc9f0;
+    color: #000000;
 border-radius: 0px 18px 18px 18px;
-padding: 13px;
-font-size: 13px;
 }
 .triangle {
     display: flex;
@@ -687,5 +728,48 @@ font-size: 13px;
 
         width: 100%;
     }
+
+}
+
+.gif {
+    width: 100px;
+
+}
+.lock {
+    width: 30px;
+
+}
+
+.chat-container h1
+{
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    line-height: 2em;
+    font-weight: 400;
+    font-family: "Poetsen One", sans-serif;
+    font-style: normal;
+
+}
+.chat-container h2
+{
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    font-size: 13px;
+    line-height: 2em;
+    font-weight: 400;
+    font-style: normal;
+
+
+}
+
+.lock-msj{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 150px;
 
 }

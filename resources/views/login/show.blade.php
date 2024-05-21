@@ -8,6 +8,8 @@
     <title>Modern Login Page | theuicode.com</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url('css/login.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet"></head>
+
 </head>
 
 <body>
