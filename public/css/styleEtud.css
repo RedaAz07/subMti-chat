@@ -739,12 +739,7 @@ border-radius: 0px 18px 18px 18px;
     width: 30px;
 
 }
-.chat-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-}
 .chat-container h1
 {
     font-size: 2rem;

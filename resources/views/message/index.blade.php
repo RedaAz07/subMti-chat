@@ -894,7 +894,7 @@
 
                         </div>
                         <!-------------------- chat-container------- hada blasa li kaikhrjo fiha les msj---------------->
-                        <div class="chat-container">
+                        <div class="chat-container www">
                             <img class="gif" src="{{ asset('gif/chat.gif') }}" alt="Description du GIF">
                             <h1>SupMti pour windows</h1>
                             <h2>Envoyez et recevez des messages avec tes camarades ou bien tes profeseurs  avec l'utilisation de votre platform  supMtiOujda</h2>
