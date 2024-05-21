@@ -2,25 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\etudient;
-use App\Models\formateur;
-use App\Models\utilisateur;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Tests\Integration\Database\Fixtures\Post;
+
+use Maatwebsite\Excel\Writer;
+
+use Maatwebsite\Excel\Excel;
 
 
+
+
+use App\Models\admin;
 use App\Models\classe;
 use App\Models\niveau;
 use App\Models\filiere;
 use App\Models\message;
-
+use App\Models\etudient;
 use App\Models\actualite;
+use App\Models\formateur;
 
+
+use App\Models\utilisateur;
+use Illuminate\Http\Request;
 use App\Models\classeFormMessage;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Tests\Integration\Database\Fixtures\Post;
 
 class loginController extends Controller
 {
@@ -92,6 +101,8 @@ $etudients=etudient::all();
         "filieres"=>filiere::all(),
         "niveuax"=>niveau::all(),
         "classes"=>classe::all(),
+        "admins"=>admin::all(),
+
 
         "actualites"=>actualite::all(),
         "classeFormMessage"=>classeFormMessage::all(),
@@ -125,6 +136,8 @@ $etudients=etudient::all();
 
 
                         "messages"=>message::all(),
+                        "admins"=>admin::all(),
+
                         "formateurs"=>formateur::all(),
 
 
@@ -148,6 +161,37 @@ public function Accueil(){
 
 
 
+public function test()
+{
+    $excel = new Excel(
+        // First argument (writer)
+        new \PHPExcel_Writer_Excel2007(),
+
+        // Second argument (filesystem)
+        new \Illuminate\Filesystem\Filesystem(),
+
+        // Third argument (event)
+        new \Illuminate\Events\Dispatcher(),
+
+        // Fourth argument (validator)
+        new \Maatwebsite\Excel\Validators\FailureLogger()
+    );
+
+    $excel->create('test', function($excel) {
+        $excel->sheet('Sheet 1', function($sheet) {
+            $sheet->fromArray([
+                ['Data 1', 'Data 2', 'Data 3'],
+                ['Data 4', 'Data 5', 'Data 6'],
+            ]);
+        });
+    })->export('xlsx');
+}
+
+
+
+
 
 }
-        
+
+
+

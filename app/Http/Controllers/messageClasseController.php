@@ -57,33 +57,29 @@ if ($etudiant->utilisateur->id === auth()->user()->id) {
     }}
     }
 
-    public function store(Request $request)
-    {
-        $etudiants=etudient::all();
-
-        foreach ($etudiants as $etudiant) {
- if ($etudiant->utilisateur->id === auth()->user()->id) {
 
 
+        public function store(Request $request)
+        {
+            $etudiants = etudient::all();
 
-    $requestData = $request->only(['contenu', 'file', 'id_classe']);
-    $requestData['id_etudient'] = $etudient->id_etudient;
+            foreach ($etudiants as $etudiant) {
+                if ($etudiant->utilisateur->id === auth()->user()->id) {
+                    $requestData = $request->only(['contenu', 'file', 'id_classe']);
+                    $requestData['id_etudient'] = $etudiant->id_etudient;
 
-    // Check if a file is present in the request
-    if ($request->hasFile('file')) {
-        $requestData['file'] = $request->file('file')->store('messageClasse', 'public');
-    } else {
-        $requestData['file'] = null; // Set file to null if no file is uploaded
-    }
-    MessageClasse::create($requestData);
-}
-return redirect()->back();
-}
+                    // Check if a file is present in the request
+                    if ($request->hasFile('file')) {
+                        $requestData['file'] = $request->file('file')->store('messageClasse', 'public');
+                    } else {
+                        $requestData['file'] = null; // Set file to null if no file is uploaded
+                    }
+                    messageClasse::create($requestData);
+                }
+            }
 
-
-
-
-    }
+            return redirect()->back();
+        }
 
 
 

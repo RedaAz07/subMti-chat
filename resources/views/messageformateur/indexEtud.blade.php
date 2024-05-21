@@ -223,13 +223,21 @@
                     </ul>
                 </div>
             </form>
+
+            @if ( $mesg->contenu !== null)
+
             <p>{{$mesg->contenu}}</p>
+            @endif
 
         </div>
     </div>
     <div style="display:flex ;justify-content: end">
 
-        <img src="{{ asset('storage/' . $mesg->file) }}" width="100pc" height="100px">
+
+     @if ($mesg->file  !== null)
+     <iframe src="{{ asset('storage/' . $mesg->file) }}" width="300px" height=""></iframe>
+
+     @endif
 
     </div>
 

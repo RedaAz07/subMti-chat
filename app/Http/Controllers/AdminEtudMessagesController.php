@@ -157,6 +157,9 @@ foreach ($etudients as $etudient) {
         $requestData['id_etudient'] = $etudient->id_etudient;
 
         // Check if a file is present in the request
+
+
+    
         if ($request->hasFile('file')) {
             $requestData['file'] = $request->file('file')->store('message', 'public');
         } else {

@@ -6,6 +6,6 @@ darkModeToggle.addEventListener('click', () => {
     if (body.classList.contains('dark-mode')) {
         darkModeToggle.textContent = 'Activer le mode clair';
     } else {
-        darkModeToggle.textContent = 'Activer le mode sombre';
+        darkModeToggle.textCzzzontent = 'Activer le mode sombre';
     }
 });*/

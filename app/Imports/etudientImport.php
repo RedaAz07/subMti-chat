@@ -15,7 +15,7 @@ class etudientImport implements ToModel
 {
     // protected $exportData = [];
 
-    public function model(array $row)
+    public function model()
     {
         // // Rechercher l'ID de la filière en fonction du nom de filière
         // $filiere = filiere::where('nom_filiere', $row[7])->first();

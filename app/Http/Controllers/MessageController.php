@@ -13,8 +13,8 @@ use App\Models\formateur;
 use App\Models\utilisateur;
 use App\Models\classeFormMessage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class MessageController extends Controller
 {

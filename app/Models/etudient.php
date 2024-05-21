@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class etudient extends Model
 {
     use HasFactory;
-    protected $fillable =["nom","prenom","telephone","addresse","CIN","dateNaissance","id"];
+    protected $fillable =["nom","prenom","telephone","addresse","CIN","dateNaissance","id","id_classe"];
     protected $primaryKey="id_etudient";
 
 

@@ -196,6 +196,7 @@
                                 @if (auth()->user()->id === $message->utilisateur->id)
                                     <div class="chat outgoing" id="outgoing">
                                         <div class="details">
+                                            @if (  $message->contenu !=="")
                                             <form action="">
                                                 <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
                                                 data-dropdown-toggle="dropdown{{ $message->id_message }}">
@@ -211,7 +212,7 @@
                                                         aria-labelledby="dropdownDefaultButton">
                                                         <li>
 
-                                                            <form action="{{ route('message.destroy', ['message' => $message->id]) }}" method="POST">
+                                                            <form action="{{ route('message.destroy', ['message' => $message->id_message]) }}" method="POST">
                                                                 @method('DELETE')
                                                                 @csrf
                                                                 <button type="submit">Delete</button>
@@ -231,16 +232,23 @@
                                                     </ul>
                                                 </div>
                                             </form>
+
+
                                             <p style="font-size: 1.2rem">{{ $message->contenu }}</p>
+                                            @endif
 
                                         </div>
                                     </div>
-                                    {{--  <div style="display:flex ;justify-content: end" >
+                                    <div style="display:flex ;justify-content: end" >
+                                        @if ( $message->file !==null)
 
                                         <img src="{{ asset('storage/' . $message->file) }}"
-                                            >
+                                         width="300px">                                        @endif
 
-                                    </div>  --}}
+
+
+
+                                    </div>
                                 @else
 
 
@@ -295,6 +303,8 @@
 
 
                     </div>
+
+                    <span    ></span>
                     <!---------------------------------------------------- fin chat-container ------------------------------------------------------>
 
 
@@ -324,7 +334,6 @@
                                         <input id="dropzone-file" type="file" class="hidden" name="file" />
                                     </label>
                                 </div>
-
 
 
 
@@ -782,9 +791,24 @@
                           <img src="{{ asset('img/logo2.png') }}">
                     </div>
                     <div class="navbar">
+
+
+
+
+<form action="{{url("import")}}"  method="POST" enctype="multipart/form-data">
+@csrf
+<a href="{{route("export.user")}}">export</a>
+    <input type="file" name="file">
+    <button type=" submit" style="background-color: red"> arsiiil</button>
+</form>
+
+
+
+
                         <form action="">
-                            <input class="btnn" type="file">
-                            <button class="btnn" type="submit">Importer les etudiants</button>
+                            <a href="{{route("export.formateur")}}">export fromateur</a>
+                            <a class="btnn"     href="{{route("formateur.create")}}">Importer les formateurs</a>
+                            <button class="btnn" role="button">Importer les etudiants</button>
 
                             <a href="{{ route('actualites.create') }}" class="btnn" role="button">Poster  une
                                 actualites</a>
@@ -831,7 +855,6 @@
                         </div>
 
                     @auth
-
 
 
 
