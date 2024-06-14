@@ -24,10 +24,6 @@ class user implements ToCollection , WithHeadingRow
     */
     public function collection(Collection $rows)
     {
-
-
-
-
      foreach($rows as $row){
 
 //dd($row["date"]);
@@ -56,7 +52,7 @@ $hashedPassword=Hash::make($password);
 
         ]);
 
-
+//dd($row["date"]);
         $excel_date = $row["date"]; //Your row line date that is : 3/17/2022
         $uniq_date = ($excel_date - 25569) * 86400;
         $date = gmdate('Y-m-d H:i:s', $uniq_date);

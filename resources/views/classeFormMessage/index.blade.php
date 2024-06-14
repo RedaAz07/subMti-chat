@@ -73,7 +73,7 @@
 
                     @foreach ($formateurs as $formateur)
                         @if ($formateur->utilisateur->id === auth()->user()->id)
-                            <span id="nom"><strong>{{ $formateur->nom . $formateur->prenom }}</strong></span>
+                            <span id="nom"><strong>{{ $formateur->nom ." ". $formateur->prenom }}</strong></span>
                         @endif
                     @endforeach
 
@@ -90,7 +90,7 @@
 
             <div class="fix-container">
 
-                <h1><strong>formateurs</strong></h1>
+                <h1><strong>Etudiants</strong></h1>
                 <div class="mid-section">
                     <form action="{{ route('message.searchEtudient') }}" method="POST">@csrf
                         <input type="text" placeholder="Search" name="search">
@@ -120,7 +120,7 @@
                                                 <div class="discription">
                                                     <span
                                                         id="active-span">{{ $etudient->nom . '  ' . $etudient->prenom }}</span>
-                                                    <p>{{ $etudient->classe->num_groupe . ' ' . $etudient->classe->niveau->niveau . ' ' }}
+                                                    <p>{{ $etudient->classe->num_groupe . ' ' . $etudient->classe->niveau->niveau . ' ' .$etudient->classe->niveau->filiere->nom_filiere}}
                                                     </p>
                                                 </div>
                                             </a>
@@ -165,11 +165,18 @@
 
 
 
-                    @foreach ($formateurs as $formateur)
-                        @if ($formateur->utilisateur->id === auth()->user()->id)
-                            <span><strong>{{ $formateur->nom . $formateur->prenom }}</strong></span>
-                        @endif
-                    @endforeach
+                    @foreach ($classes as $classe )
+
+                    @if ($classe->id_classe ==  $id_classe)
+
+                        <span id="nom"><strong>{{ "la classe ".$classe->num_groupe   ." de la niveaux ".
+$classe->niveau->niveau . " de la filiere " . $classe->niveau->filiere->nom_filiere
+
+
+
+                            }}</strong></span>
+                    @endif
+                @endforeach
 
                 @endauth
 

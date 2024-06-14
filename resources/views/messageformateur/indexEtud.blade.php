@@ -114,8 +114,8 @@
                                                         class="link">
                                                         <img src="{{ asset('img/man.png') }}" class="img-teacher">
                                                         <div class="description">
-                                                            <span id="active-span">{{ $formateur->nom }}</span>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                            <span id="active-span">{{ $formateur->nom ." ".  $formateur->nom}}</span>
+
                                                         </div>
                                                     </a>
                                                 @endif
@@ -138,13 +138,14 @@
                     <div class="detaills-container">
                         <div class="right-side">
                             <img src="{{ asset('img/student.png') }}" alt="">
-@foreach ($etudients as $etudient)
-@if ($etudient->utilisateur->id === auth()->user()->id)
 
-<span><strong>{{ $etudient->nom ." ". $etudient->prenom }}</strong></span>
-@endif
-@endforeach
+                            @foreach ($formateurs as $formateur )
 
+                            @if ($formateur->id_formateur ==  $id_for)
+
+                                <span id="nom"><strong>{{ $formateur->nom ." ". $formateur->prenom }}</strong></span>
+                            @endif
+                        @endforeach
 
                         </div>
                         <div class="left-side">

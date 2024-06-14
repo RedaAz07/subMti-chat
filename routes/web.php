@@ -47,9 +47,9 @@ Route::match(['get', 'post'], '/user/profile', function () {
 
 */
 
-Route::match(['get', 'post'], 'login.login', [loginController::class, 'login'])->name('login.login');
+Route::match(['get', 'post'], 'login.login', [loginController::class, 'login'])->name('login.login')->middleware("guest");
 
-Route::match(['get', 'post'], 'login', [loginController::class, 'show'])->name('login');
+Route::match(['get', 'post'], 'login', [loginController::class, 'show'])->name('login')->middleware("guest");
 
 Route::match(['get', 'post'], 'etudient', [loginController::class, 'etudient'])->name('etudient');
 
@@ -168,7 +168,7 @@ Route::match(['get', 'post'], 'message.search', [loginController::class, 'search
 
 
 
-Route::delete('/message/{message}', [MessageController::class,"destroy"])->name('message.destroy')->middleware('auth');
+
 
 Route::get('/', [loginController::class, 'Accueil']);
 
@@ -204,3 +204,6 @@ Route::match(["get","post"],'/export.formateur', [FormateurController::class, 'e
 
 
 Route::resource('formateur', FormateurController::class);
+
+
+Route::delete("/message/{id}", [MessageController::class, "destroy"])->name("message.destroy");

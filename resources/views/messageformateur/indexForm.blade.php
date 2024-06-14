@@ -71,7 +71,7 @@
 
                 @foreach ($formateurs as $formateur)
                     @if ($formateur->utilisateur->id === auth()->user()->id)
-                        <span id="nom"><strong>{{ $formateur->nom . $formateur->prenom }}</strong></span>
+                        <span id="nom"><strong>{{ $formateur->nom . " ".$formateur->prenom }}</strong></span>
                     @endif
                 @endforeach
 
@@ -88,7 +88,7 @@
 
             <div class="fix-container">
 
-                <h1><strong>formateurs</strong></h1>
+                <h1><strong>Etudiants</strong></h1>
                 <div class="mid-section">
                     <form action="{{ route('message.searchEtudient') }}" method="POST">@csrf
                         <input type="text" placeholder="Search" name="search">
@@ -118,7 +118,7 @@
                                                 <div class="discription">
                                                     <span
                                                         id="active-span">{{ $etudient->nom . '  ' . $etudient->prenom }}</span>
-                                                    <p>{{ $etudient->classe->num_groupe . ' ' . $etudient->classe->niveau->niveau . ' ' }}
+                                                    <p>{{ $etudient->classe->num_groupe . ' ' . $etudient->classe->niveau->niveau . ' '. $etudient->classe->niveau->filiere->nom_filiere }}
                                                     </p>
                                                 </div>
                                             </a>
@@ -164,11 +164,13 @@
 
 
 
-                    @foreach ($formateurs as $formateur)
-                        @if ($formateur->utilisateur->id === auth()->user()->id)
-                            <span ><strong>{{ $formateur->nom . $formateur->prenom }}</strong></span>
-                        @endif
-                    @endforeach
+                    @foreach ($etudients as $etudient )
+
+                    @if ($etudient->id_etudient ==  $id_for)
+
+                        <span id="nom"><strong>{{ $etudient->nom ." ". $etudient->prenom }}</strong></span>
+                    @endif
+                @endforeach
 
                 @endauth
 
@@ -276,12 +278,6 @@
                 <div class="fix-groupe-container">
                     <h2 class="groupe"><strong>groups</strong></h2>
                     <div class="groupes">
-                        <div>
-                            <a href="" class="links ">
-                                <img src="{{ asset('img/group.png') }}" alt="" class="img-group">
-                                <span id="active-span">groupe SUPMTI</span>
-                            </a>
-                        </div>
 
 
 
@@ -299,7 +295,7 @@
                                                         class="links">
                                                         <img src="{{ asset('img/group.png') }}" alt=""
                                                             class="img-group">
-                                                        <span id="active-span">{{ $item->num_groupe }} </span>
+                                                        <span id="active-span">{{ $item->num_groupe  ." ".$item->niveau->niveau ." ".$item->niveau->filiere->nom_filiere}} </span>
                                                     </a>
                                                 </div>
                                             @endif

@@ -67,7 +67,11 @@ foreach ($admins as $key) {
 
 
         $requestData = $request->all();
-        $requestData['file'] = $request->file('file')->store('actualite', 'public');
+
+    $requestData['file'] = $request->input("file");
+
+
+
         $requestData['id_admin'] = $key->id_admin;
 
         actualite::create($requestData);

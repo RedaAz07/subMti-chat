@@ -17,7 +17,7 @@ class niveau extends Model
 
     public function filiere()
     {
-        return $this->belongsToMany(filiere::class, 'filiere_niveau', 'id_niveau', 'id_filiere','id_niveau','id_filiere')
+        return $this->belongsTo(filiere::class, 'id_filiere')
            ;
     }
 

@@ -90,7 +90,7 @@
 
                     <div class="fix-container">
 
-                        <h1><strong>Etudiants</strong></h1>
+                        <h1><strong>Formateurs</strong></h1>
                         <div class="mid-section">
 
                             <form  class="mx-auto max-w-screen-xl mx-10" style="width: 300px;" action="{{ route('message.searchFormateur/for') }}" method="POST">@csrf
@@ -158,11 +158,8 @@
                     <div class="detaills-container">
                         <div class="right-side">
                             <img src="{{ asset('img/student.png') }}" alt="">
-                            @foreach ($etudients as $etudient)
-                                @if ($etudient->utilisateur->id === auth()->user()->id)
-                                    <span><strong>{{ $etudient->nom . ' ' . $etudient->prenom }}</strong></span>
-                                @endif
-                            @endforeach
+
+                                    <span><strong> groupe SUBMTI</strong></span>
 
 
                         </div>
@@ -211,12 +208,14 @@
                                                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                                                         aria-labelledby="dropdownDefaultButton">
                                                         <li>
-
-                                                            <form action="{{ route('message.destroy', ['message' => $message->id_message]) }}" method="POST">
-                                                                @method('DELETE')
+                                                            <form action="{{ route('message.destroy', ['id' => $message->id_message]) }}" method="DELETE">
                                                                 @csrf
-                                                                <button type="submit">Delete</button>
+                                                                <button type="submit">imsaa7</button>
                                                             </form>
+
+
+
+
 
 
                                                         </li>
@@ -274,8 +273,20 @@
                                                     <li>
                                                         @auth
                                                             @if (auth()->user()->id === $message->utilisateur->id)
-                                                                <a href="#"
-                                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
+
+
+
+
+
+
+
+
+                                                            <form action="{{ route('message.destroy', ['id' => $message->id_message]) }}" method="DELETE">
+                                                                @csrf
+                                                                <button type="submit">imsaa7</button>
+                                                            </form>
+
+
                                                             @endif
                                                         @endauth
                                                     </li>
@@ -386,7 +397,7 @@
 
 
                                                 <img src="{{ asset('img/group.png') }}" alt="" class="img-group">
-                                                <span id="active-span">{{ $etudient->classe->num_groupe }} libre</span>
+                                                <span id="active-span">{{ $etudient->classe->num_groupe }} </span>
                                             </a>
                                         </div>
                                     @endif

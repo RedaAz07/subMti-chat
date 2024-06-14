@@ -19,6 +19,7 @@
     <!---------------------------------------------------- header ------------------------------------------------------>
 
     <header>
+
         <div class="left-section">
             <img src="{{ asset('img/logo2.png') }}">
         </div>
@@ -135,11 +136,18 @@
                 <div class="right-side">
                     <img src="{{ asset('img/student.png') }}" alt="">
 
-        @foreach ($admins as $admin)
-            @if ($admin->utilisateur->id === auth()->user()->id)
-                <span ><strong>{{ $admin->nom ." ". $admin->prenom }}</strong></span>
-            @endif
-        @endforeach
+
+
+                    @foreach ($formateurs as $formateur )
+
+                    @if ($formateur->id_formateur ==  $id_form)
+
+                        <span id="nom"><strong>{{ $formateur->nom ." ". $formateur->prenom }}</strong></span>
+                    @endif
+                @endforeach
+
+
+
 
 
                 </div>

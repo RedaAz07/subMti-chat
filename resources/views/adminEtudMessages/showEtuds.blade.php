@@ -135,11 +135,14 @@
                 <div class="right-side">
                     <img src="{{ asset('img/student.png') }}" alt="">
 
-        @foreach ($admins as $admin)
-            @if ($admin->utilisateur->id === auth()->user()->id)
-                <span ><strong>{{ $admin->nom ." ". $admin->prenom }}</strong></span>
-            @endif
-        @endforeach
+
+                    @foreach ($etudients as $etudient )
+
+                    @if ($etudient->id_etudient ==  $id_etud)
+
+                        <span id="nom"><strong>{{ $etudient->nom ." ". $etudient->prenom }}</strong></span>
+                    @endif
+                @endforeach
 
 
                 </div>

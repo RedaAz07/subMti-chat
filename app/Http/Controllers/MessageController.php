@@ -182,11 +182,11 @@ class MessageController extends Controller
         ]);
     }
 
-
-    public function destroy(message $message)
+    public function destroy(string $id)
     {
+        $message = message::findOrFail($id);
         $message->delete();
-
+        return back()->with('success', 'Message deleted successfully');
     }
 
 
