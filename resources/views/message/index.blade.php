@@ -155,145 +155,17 @@
                 <div class="main-content">
 
                     <!-------------------- detaills-container---- hada howa lfo9 dial chat ------------------->
-                    <div class="detaills-container">
-                        <div class="right-side">
-                            <img src="{{ asset('img/student.png') }}" alt="">
 
-                                    <span><strong> groupe SUBMTI</strong></span>
-
-
-                        </div>
-                        <div class="left-side">
-                            <img src="{{ asset('img/phone-receiver-silhouette.png') }}" alt="" id="phone">
-                            <img src="{{ asset('img/video-camera.png') }}" alt="" id="camera">
-                            <img src="{{ asset('img/list.png') }}" alt="" id="list">
-                        </div>
-                    </div>
                     <!-------------------- chat-container------- hada blasa li kaikhrjo fiha les msj---------------->
 <div class="chat-container">
-        <div class="chat outgoing" id="outgoing">
-            <div class="details">
-                <form action="">
-                    <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
-                        data-dropdown-toggle="dropdown1">
-                    <!-- Dropdown menu -->
+    <img class="gif" src="{{ asset('gif/chat.gif') }}" alt="Description du GIF">
+    <h1>SupMti pour windows</h1>
+    <h2>Envoyez et recevez des messages avec tes camarades ou bien tes profeseurs  avec lutilisation de votre platform  supMtiOujda</h2>
+    <div class='lock-msj'>
+        <img class="lock" src="{{ asset('gif/lock.gif') }}" alt="Description du GIF">
+        <span>End-to-end encrypted</span>
 
-                </form>
-
-            </div>
-        </div>
-
-
-
-
-
-
-        @foreach ($messages as $message)
-            @auth
-                @if (auth()->user()->id === $message->utilisateur->id)
-                    <div class="chat outgoing" id="outgoing">
-                        <div class="details">
-                            @if (  $message->contenu !=="")
-                            <form action="">
-                                <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
-                                data-dropdown-toggle="dropdown{{ $message->id_message }}">
-                                <!-- Dropdown menu -->
-                                <div id="dropdown{{ $message->id_message }}"
-                                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-
-
-
-
-
-                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                        aria-labelledby="dropdownDefaultButton">
-                                        <li>
-
-
-
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </form>
-
-
-                            <p style="font-size: 1.2rem">{{ $message->contenu }}</p>
-                            @endif
-
-                        </div>
-                    </div>
-                    <div style="display:flex ;justify-content: end" >
-                        @if ( $message->file !==null)
-
-                        <img src="{{ asset('storage/' . $message->file) }}"
-                            width="300px">                                        @endif
-
-
-
-
-                    </div>
-                @else
-
-
-                <h6 class='cla6'>{{ $message->utilisateur->etudient->nom }}</h6>
-                <div class="chat incoming">
-
-                        <div class="details">
-                            <p style="style="font-size: 1.2rem">
-                                {{ $message->contenu }}
-
-
-
-                            </p>
-                            <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
-                                data-dropdown-toggle="dropdown{{ $message->id_message }}">
-                            <!-- Dropdown menu -->
-
-
-                            <div id="dropdown{{ $message->id_message }}"
-                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownDefaultButton">
-                                    <li>
-                                        @auth
-                                            @if (auth()->user()->id === $message->utilisateur->id)
-                                                <a href="#"
-                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
-                                            @endif
-                                        @endauth
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                            </form>
-                        </div>
-                    </div>
-                    <img src="{{ asset('storage/' . $message->file) }}" alt="" width="300px">
-                @endif
-            @endauth
-        @endforeach
-
-
-
-
+    </div>
 </div>
 
                     <!---------------------------------------------------- fin chat-container ------------------------------------------------------>
@@ -360,7 +232,7 @@
                         <div class="fix-groupe-container">
                             <h2 class="groupe"><strong>Classes</strong></h2>
                             <div class="groupes">
-                                <a href="" class="links ">
+                                <a href="{{route("submti")}}" class="links ">
                                     <img src="{{ asset('img/group.png') }}" alt="" class="img-group">
                                     <span id="active-span">groupe SUPMTI</span>
                                 </a>

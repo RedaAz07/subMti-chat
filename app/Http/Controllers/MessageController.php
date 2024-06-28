@@ -191,4 +191,36 @@ class MessageController extends Controller
 
 
 
+
+    public function submti()
+    {
+        return view('message.submti', [
+
+        "messages"=>message::orderBy('created_at', 'desc')->get(),
+        "formateurs"=>formateur::all(),
+        "filieres"=>filiere::all(),
+        "niveuax"=>niveau::all(),
+        "classes"=>classe::all(),
+        "etudients"=>etudient::all(),
+        "actualites"=>actualite::all(),
+        "admins"=>admin::all(),
+
+        "classeFormMessage"=>classeFormMessage::all(),
+
+
+            'utilisateurs' => utilisateur::all(),
+
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
