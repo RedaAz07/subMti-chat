@@ -92,18 +92,17 @@ cursor: pointer;
     padding-bottom: 10px;
 } */
 .fix-container h1 {
-    padding-top: 10px;
     padding-left: 18px;
-    color:#007f5f;
-    /* font-family: Arial, Helvetica, sans-serif; */
-    font-size: 25px;
+    color:#000000;
     padding-bottom: 10px;
     background: #F8FAFC;
+    font-size: 25px;
+        line-height: 2em;
+    font-weight: 400;
+    color: #007f5f;
     font-family: "Poetsen One", sans-serif;
-    font-weight: 100;
     font-style: normal;
-
-
+    text-decoration: none;
 }
 
 .mid-section button:hover{
@@ -286,9 +285,6 @@ aside{
     font-family: "Poetsen One", sans-serif;
     font-style: normal;
     text-decoration: none;
-
-
-
 
 }
 section .annance {

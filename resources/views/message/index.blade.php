@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>community</title>
     <link rel="stylesheet" href="{{ url('css/styleEtud.css') }}">
-    <link rel="stylesheet"
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet"></head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
 
 <body>
 
@@ -170,152 +170,132 @@
                         </div>
                     </div>
                     <!-------------------- chat-container------- hada blasa li kaikhrjo fiha les msj---------------->
-                    <div class="chat-container">
-                        <div class="chat outgoing" id="outgoing">
-                            <div class="details">
-                                <form action="">
-                                    <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
-                                        data-dropdown-toggle="dropdown1">
-                                    <!-- Dropdown menu -->
+<div class="chat-container">
+        <div class="chat outgoing" id="outgoing">
+            <div class="details">
+                <form action="">
+                    <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
+                        data-dropdown-toggle="dropdown1">
+                    <!-- Dropdown menu -->
 
-                                </form>
+                </form>
 
-                            </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        @foreach ($messages as $message)
+            @auth
+                @if (auth()->user()->id === $message->utilisateur->id)
+                    <div class="chat outgoing" id="outgoing">
+                        <div class="details">
+                            @if (  $message->contenu !=="")
+                            <form action="">
+                                <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
+                                data-dropdown-toggle="dropdown{{ $message->id_message }}">
+                                <!-- Dropdown menu -->
+                                <div id="dropdown{{ $message->id_message }}"
+                                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+
+
+
+
+
+                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                        aria-labelledby="dropdownDefaultButton">
+                                        <li>
+
+
+
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </form>
+
+
+                            <p style="font-size: 1.2rem">{{ $message->contenu }}</p>
+                            @endif
+
                         </div>
+                    </div>
+                    <div style="display:flex ;justify-content: end" >
+                        @if ( $message->file !==null)
 
-
-
-
-
-
-                        @foreach ($messages as $message)
-                            @auth
-                                @if (auth()->user()->id === $message->utilisateur->id)
-                                    <div class="chat outgoing" id="outgoing">
-                                        <div class="details">
-                                            @if (  $message->contenu !=="")
-                                            <form action="">
-                                                <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
-                                                data-dropdown-toggle="dropdown{{ $message->id_message }}">
-                                                <!-- Dropdown menu -->
-                                                <div id="dropdown{{ $message->id_message }}"
-                                                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-
-
-
-
-
-                                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                                        aria-labelledby="dropdownDefaultButton">
-                                                        <li>
-                                                            <form action="{{ route('message.destroy', ['id' => $message->id_message]) }}" method="DELETE">
-                                                                @csrf
-                                                                <button type="submit">imsaa7</button>
-                                                            </form>
-
-
-
-
-
-
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"
-                                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"
-                                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
-                                                        </li>
-
-                                                    </ul>
-                                                </div>
-                                            </form>
-
-
-                                            <p style="font-size: 1.2rem">{{ $message->contenu }}</p>
-                                            @endif
-
-                                        </div>
-                                    </div>
-                                    <div style="display:flex ;justify-content: end" >
-                                        @if ( $message->file !==null)
-
-                                        <img src="{{ asset('storage/' . $message->file) }}"
-                                         width="300px">                                        @endif
-
-
-
-
-                                    </div>
-                                @else
-
-
-                                <h6 class='cla6'>{{ $message->utilisateur->etudient->nom }}</h6>
-                                <div class="chat incoming">
-
-                                        <div class="details">
-                                            <p style="style="font-size: 1.2rem">
-                                                {{ $message->contenu }}
-
-
-
-                                            </p>
-                                            <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
-                                                data-dropdown-toggle="dropdown{{ $message->id_message }}">
-                                            <!-- Dropdown menu -->
-
-
-                                            <div id="dropdown{{ $message->id_message }}"
-                                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                                    aria-labelledby="dropdownDefaultButton">
-                                                    <li>
-                                                        @auth
-                                                            @if (auth()->user()->id === $message->utilisateur->id)
-
-
-
-
-
-
-
-
-                                                            <form action="{{ route('message.destroy', ['id' => $message->id_message]) }}" method="DELETE">
-                                                                @csrf
-                                                                <button type="submit">imsaa7</button>
-                                                            </form>
-
-
-                                                            @endif
-                                                        @endauth
-                                                    </li>
-                                                    <li>
-                                                        <a href="#"
-                                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#"
-                                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
-                                                    </li>
-
-                                                </ul>
-                                            </div>
-
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <img src="{{ asset('storage/' . $message->file) }}" alt="" width="300px">
-                                @endif
-                            @endauth
-                        @endforeach
+                        <img src="{{ asset('storage/' . $message->file) }}"
+                            width="300px">                                        @endif
 
 
 
 
                     </div>
+                @else
 
-                    <span    ></span>
+
+                <h6 class='cla6'>{{ $message->utilisateur->etudient->nom }}</h6>
+                <div class="chat incoming">
+
+                        <div class="details">
+                            <p style="style="font-size: 1.2rem">
+                                {{ $message->contenu }}
+
+
+
+                            </p>
+                            <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
+                                data-dropdown-toggle="dropdown{{ $message->id_message }}">
+                            <!-- Dropdown menu -->
+
+
+                            <div id="dropdown{{ $message->id_message }}"
+                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                    aria-labelledby="dropdownDefaultButton">
+                                    <li>
+                                        @auth
+                                            @if (auth()->user()->id === $message->utilisateur->id)
+                                                <a href="#"
+                                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
+                                            @endif
+                                        @endauth
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <img src="{{ asset('storage/' . $message->file) }}" alt="" width="300px">
+                @endif
+            @endauth
+        @endforeach
+
+
+
+
+</div>
+
                     <!---------------------------------------------------- fin chat-container ------------------------------------------------------>
 
 
@@ -788,10 +768,9 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>community</title>
                 <link rel="stylesheet" href="{{ url('css/admin.css') }}">
-                <link rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-                <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet"></head>
             </head>
 
             <body>
@@ -806,25 +785,26 @@
 
 
 
-<form action="{{url("import")}}"  method="POST" enctype="multipart/form-data">
-@csrf
-<a href="{{route("export.user")}}">export</a>
-    <input type="file" name="file">
-    <button type=" submit" style="background-color: red"> arsiiil</button>
-</form>
+                    <form action="{{url("import")}}"  method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <a class="btnn" href="{{route("export.user")}}">export etudiant</a>
+                        <input type="file" name="file">
+                        <button  type=" submit" style="background-color: red"> arsiiil</button>
+                    </form>
 
 
 
 
                         <form action="">
-                            <a href="{{route("export.formateur")}}">export fromateur</a>
+                            <a class="btnn" href="{{route("export.formateur")}}">export fromateur</a>
                             <a class="btnn"     href="{{route("formateur.create")}}">Importer les formateurs</a>
                             <button class="btnn" role="button">Importer les etudiants</button>
 
-                            <a href="{{ route('actualites.create') }}" class="btnn" role="button">Poster  une
-                                actualites</a>
+
                         </form>
                     </div>
+                        <a href="{{ route('actualites.create') }}" class="btnn" role="button">Poster  une
+                            actualites</a>
 
 
 
@@ -891,9 +871,17 @@
 
                             <h1><strong>formateurs</strong></h1>
                             <div class="mid-section">
-                                <form action="{{ route('message.searchFormateur/for') }}">
-                                    <input type="text" placeholder="Search" name="search">
-                                    <button type="submit"><span class="material-symbols-outlined">search</span></button>
+                                <form  class="mx-auto max-w-screen-xl mx-10" style="width: 300px;" action="{{ route('message.searchFormateur/for') }}" method="POST">@csrf
+                                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                            </svg>
+                                        </div>
+                                        <input type="search" id="default-search" name='search' class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search formateur..." required />
+                                        <button type="submit" style="background: #f48c06; " class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                                    </div>
                                 </form>
                             </div>
 
@@ -962,9 +950,17 @@
 
                             <h1><strong>Etudiants</strong></h1>
                             <div class="mid-section">
-                                <form action="{{ route('message.searchEtudient') }}" method="POST">@csrf
-                                    <input type="text" placeholder="Search" name="search">
-                                    <button type="submit"><span class="material-symbols-outlined">search</span></button>
+                                <form  class="mx-auto max-w-screen-xl mx-10" style="width: 300px;" action="{{ route('message.searchEtudient') }}" method="POST">@csrf
+                                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                            </svg>
+                                        </div>
+                                        <input type="search" id="default-search" name='search' class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search etudiants..." required />
+                                        <button type="submit" style="background: #f48c06; " class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                                    </div>
                                 </form>
                             </div>
 
@@ -987,7 +983,7 @@
                                             <span id="active-span">{{ $etudient->nom . $etudient->prenom }}</span>
                                             <p>Lorem ipsum dolor sit consectetur elit.</p>
                                         </div>
-                                    </a>¨
+                                    </a>
                                 @endforeach
 
                             </nav>
