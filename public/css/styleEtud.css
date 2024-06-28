@@ -14,7 +14,37 @@ body{
     height: 100%;
 
 }
-
+.www  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#hiddenDiv {
+    display: none;
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-top: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 50px;
+    top: 50px;
+}
+#mainDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+#toggleImage{
+    width: 15px;
+    height: 15px;
+}
 header {
     position: sticky;
     top: 0;

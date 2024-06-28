@@ -234,7 +234,7 @@
 
             @if ($mesg->contenu !== null)
 
-<p style="font-size: 20px">{{$mesg->contenu}}</p>
+<p >{{$mesg->contenu}}</p>
             @endif
 
         </div>
