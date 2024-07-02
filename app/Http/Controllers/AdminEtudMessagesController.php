@@ -159,7 +159,7 @@ foreach ($etudients as $etudient) {
         // Check if a file is present in the request
 
 
-    
+
         if ($request->hasFile('file')) {
             $requestData['file'] = $request->file('file')->store('message', 'public');
         } else {
@@ -214,5 +214,26 @@ public function showLastAdminMessage($id_etud)
 
 
 
+    public function destroy($id)
+    {
+        $etudiant = etudient::find($id);
+
+        if ($etudiant) {
+            $utilisateur = $etudiant->utilisateur;
+            $etudiant->delete();
+            if ($utilisateur) {
+                // Delete related messages
+                $utilisateur->message()->delete();
+
+                // Delete the utilisateur
+                $utilisateur->delete();
+            }
+
+            // Delete the etudiant
+
+        }
+
+        return redirect()->route('message.index');
+    }
 }
 

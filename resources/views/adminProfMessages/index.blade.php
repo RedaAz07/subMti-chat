@@ -159,6 +159,16 @@
 
 
                 </div>
+
+                <div>
+                    <form action="{{ route('formateurs.destroy', $id_form) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this formateur?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+
+
                 <div class="left-side">
                     <img src="{{ asset('img/phone-receiver-silhouette.png') }}" alt=""
                         id="phone">
@@ -211,10 +221,10 @@
 
             <div class="message-container">
 
-                <form action="{{ route('message.store') }}" method="POST" enctype="multipart/form-data">@csrf
+                <form action="{{ route('adminProfMessages.store') }}" method="POST" enctype="multipart/form-data">@csrf
                     <label for="chat" class="sr-only">Your message</label>
                     <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
-
+<input type="text" name="id_formateur" value="{{$id_form}}" hidden>
 
 
 

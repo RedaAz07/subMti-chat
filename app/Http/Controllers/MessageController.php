@@ -25,7 +25,7 @@ class MessageController extends Controller
     {
         return view('message.index', [
 
-        "messages"=>message::orderBy('created_at', 'desc')->get(),
+        "messages"=>message::all(),
         "formateurs"=>formateur::all(),
         "filieres"=>filiere::all(),
         "niveuax"=>niveau::all(),

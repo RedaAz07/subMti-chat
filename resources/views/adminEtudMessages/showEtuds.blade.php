@@ -146,9 +146,14 @@
 
 
                 </div>
-                <form action="{{route("etudient.destroy",["etudient"=>$id_etud])}}">@csrf
-                    <button type="submit">dellete</button>
+
+                <div>
+                    <form action="{{ route('etudiants.destroy', $id_etud) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this etudiant?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
                     </form>
+                </div>
                 <div class="left-side">
                     <img src="{{ asset('img/phone-receiver-silhouette.png') }}" alt=""
                         id="phone">

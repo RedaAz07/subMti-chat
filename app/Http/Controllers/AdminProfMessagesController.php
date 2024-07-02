@@ -158,7 +158,6 @@ if ($formateur->utilisateur->id=== auth()->user()->id) {
 
     adminProfMessages::create($requestData);
 }
-return redirect()->back();
 
 }
 
@@ -169,13 +168,37 @@ return redirect()->back();
 
 
 
+return redirect()->to_route("adminEtudMessages.showAdmins");
 }
 
 
 
 
+    public function destroy($id)
+    {
+        $formateur = formateur::find($id);
 
+        if ($formateur) {
+            $utilisateur = $formateur->utilisateur;
 
+            $formateur->delete();
+            if ($utilisateur) {
+                // Delete related messages
+                $utilisateur->message()->delete();
+
+                // Delete the utilisateur
+                $utilisateur->delete();
+            }
+
+            // Detach from classes
+            $formateur->classes()->detach();
+
+            // Delete the formateur
+
+        }
+
+        return redirect()->route("message.index");
+    }
 
 
 

@@ -72,7 +72,23 @@ if ($etudient->utilisateur->id === auth()->user()->id) {
             ->get();
 
         return view('classeFormMessage.indexEtud', compact('messages', 'id_classe'),[
+
+            "messages"=>message::all(),
             "formateurs"=>formateur::all(),
+            "filieres"=>filiere::all(),
+            "niveuax"=>niveau::all(),
+            "classes"=>classe::all(),
+            "etudients"=>etudient::all(),
+            "actualites"=>actualite::orderBy("created_at","desc")->get(),
+            "classeFormMessage"=>classeFormMessage::all(),
+
+
+
+
+
+
+            "utilisateurs"=>utilisateur::all(),
+
         ]);
     }}
     }
@@ -98,7 +114,7 @@ if ($etudient->utilisateur->id === auth()->user()->id) {
 
 
 
-}
+
 
 $requestData = $request->only(['contenu', 'file', 'id_classe']);
 $requestData['id_formateur'] = $formateur->id_formateur;
@@ -110,12 +126,12 @@ if ($request->hasFile('file')) {
     $requestData['file'] = null; // Set file to null if no file is uploaded
 }
 classeFormMessage::create($requestData);
-}
+
 return redirect()->back();
 }
+}
 
-
-
+}
 
 
 
