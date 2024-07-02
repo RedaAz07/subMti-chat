@@ -22,69 +22,96 @@
     <header>
         <div class="left-section">
             <img src="{{ asset('img/logo2.png') }}">        </div>
-        <div class="navbar">
-            <form action="">
-                <button class="btnn" role="file">Importer les formateurs</button>
-                <button class="btnn" role="button">Importer les etudiants</button>
-
-                <a href="{{ route('actualites.create') }}" class="btnn" role="button">lancer un
-                    actualites</a>
-            </form>
-        </div>
+            <div class="navbar">
 
 
 
-        <div class="right-section">
-            <img src=" {{ asset('img/student.png') }}" alt="" id="me"
-                data-dropdown-toggle="dropdownInformation">
 
 
 
-            <!-- Dropdown menu -->
-            <div id="dropdownInformation"
-                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-70 dark:bg-gray-700 dark:divide-gray-600">
-                <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+
+                <div class="right-section">
+                    <img src=" {{ asset('img/student.png') }}" alt="" id="me"
+                        data-dropdown-toggle="dropdownInformation">
 
 
-                    <div class="font-medium truncate text-xl">{{auth()->user()->email}}</div>
+
+                    <!-- Dropdown menu -->
+                    <div id="dropdownInformation"
+                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-70 dark:bg-gray-700 dark:divide-gray-600">
+                        <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+
+
+                            <div class="font-medium truncate text-xl">{{auth()->user()->email}}</div>
+                        </div>
+                        <ul class="py-2 text-xl text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownInformationButton">
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profil</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                            </li>
+
+                        </ul>
+                        <div class="py-2">
+                            <form action="{{ route('login.logout') }}" method="post"
+                                class="block px-4 py-2 text-xl text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                @csrf
+
+                                <button type="submit">log out</button>
+
+                            </form>
+                        </div>
+                    </div>
+
+                @auth
+
+
+
+                @foreach ($admins as $admin)
+                    @if ($admin->utilisateur->id === auth()->user()->id)
+                        <span id="nom"><strong>{{ $admin->nom ." ". $admin->prenom }}</strong></span>
+                    @endif
+                @endforeach
+
+            @endauth
+
                 </div>
-                <ul class="py-2 text-xl text-gray-700 dark:text-gray-200"
-                    aria-labelledby="dropdownInformationButton">
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profil</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                    </li>
-
-                </ul>
-                <div class="py-2">
-                    <form action="{{ route('login.logout') }}" method="post"
-                        class="block px-4 py-2 text-xl text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                        @csrf
-
-                        <button type="submit">log out</button>
-
-                    </form>
+                <div id="mainDiv">
+                    <button id="toggleDivButton"><img id="toggleImage" src="{{ asset('img/arrow-up.png') }}" alt="" ></button>
+                    <div id="hiddenDiv" style="display: none;">
+                        <form id="fileUploadForm" action="{{url('import')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="file" onchange="document.getElementById('fileUploadForm').submit()">
+                            <a class="btnn" href="{{route('export.user')}}">export etudiant</a>
+                            <a class="btnn" href="{{route("formateur.create")}}">Importer les formateurs</a>
+                            <a class="btnn" href="{{route("export.formateur")}}">export formateur</a>
+                            <a href="{{ route('actualites.create') }}" class="btnn" role="button">Poster une actualites</a>
+                        </form>
+                    </div>
                 </div>
-            </div>
 
-        @auth
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var toggleDivButton = document.getElementById("toggleDivButton");
+                        var toggleImage = document.getElementById("toggleImage");
+                        var hiddenDiv = document.getElementById("hiddenDiv");
 
-
-
-
-        @foreach ($admins as $admin)
-            @if ($admin->utilisateur->id === auth()->user()->id)
-                <span id="nom"><strong>{{ $admin->nom ." ". $admin->prenom }}</strong></span>
-            @endif
-        @endforeach
-
-    @endauth
-
-        </div>
+                        toggleDivButton.addEventListener("click", function() {
+                            if (hiddenDiv.style.display === "none" || hiddenDiv.style.display === "") {
+                                hiddenDiv.style.display = "block";
+                                toggleImage.src = "{{ asset('img/down-arrow.png') }}"; // Change this to the path of the image you want to show when the div is visible
+                            } else {
+                                hiddenDiv.style.display = "none";
+                                toggleImage.src = "{{ asset('img/arrow-up.png') }}"; // Change this to the path of the image you want to show when the div is hidden
+                            }
+                        });
+                    });
+                </script>
+                    </div>
     </header>
     <!----------------------------------------------------fin header ------------------------------------------------------>
 
@@ -98,9 +125,17 @@
 
                 <h1><strong>formateurs</strong></h1>
                 <div class="mid-section">
-                    <form action="{{ route('message.searchFormateur/for') }}">
-                        <input type="text" placeholder="Search" name="search">
-                        <button type="submit"><span class="material-symbols-outlined">search</span></button>
+                    <form  class="mx-auto max-w-screen-xl mx-10" style="width: 300px;" action="{{ route('message.searchFormateur/for') }}" method="POST">@csrf
+                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="search" id="default-search" name='search' class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search formateur..." required />
+                            <button type="submit" style="background: #f48c06; " class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                        </div>
                     </form>
                 </div>
 
@@ -186,11 +221,10 @@
                     </ul>
                 </div>
             </form>
-            <!--    hhhhhhhhhhhhhhhhhhhhhh        -->
 
             @if (  $item->contenu !==null)
 
-    <p style="font-size: 2rem">{{ $item->contenu }}</p>
+    <p >{{ $item->contenu }}</p>
             @endif
 <br/>
     <div style="display:flex ;justify-content: end" >
@@ -204,13 +238,6 @@
 
     </div>
 
-
-
-
-
-
-
-            <!--    hhhhhhhhhhhhhhhhhhhhhh        -->
         </div>
 
     </div>
@@ -278,9 +305,17 @@
 
                 <h1><strong>Etudiants</strong></h1>
                 <div class="mid-section">
-                    <form action="{{ route('message.searchEtudient') }}" method="POST">@csrf
-                        <input type="text" placeholder="Search" name="search">
-                        <button type="submit"><span class="material-symbols-outlined">search</span></button>
+                    <form  class="mx-auto max-w-screen-xl mx-10" style="width: 300px;" action="{{ route('message.searchEtudient') }}" method="POST">@csrf
+                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="search" id="default-search" name='search' class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search formateur..." required />
+                            <button type="submit" style="background: #f48c06; " class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                        </div>
                     </form>
                 </div>
 

@@ -244,7 +244,7 @@
                 @else
 
 
-                <h6 class='cla6'>{{ $message->utilisateur->etudient->nom }}</h6>
+                {{--  <h6 class='cla6'>{{ $message->utilisateur->etudient->nom }}</h6>  --}}
                 <div class="chat incoming">
 
                         <div class="details">

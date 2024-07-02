@@ -256,7 +256,7 @@
                             </svg>
                             <span class="sr-only">Upload image</span>
                         </button>
-    <input type="hidden" name="id_etudient" value="{{$id_for}}">
+                            <input type="hidden" name="id_etudient" value="{{$id_for}}">
 
                         <textarea id="chat" rows="1" name="contenu"
                             class="block mx-4 p-2.5 w-full text-md text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

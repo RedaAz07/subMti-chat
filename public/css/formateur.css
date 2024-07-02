@@ -541,6 +541,40 @@ background: transparent;
     color: #53575c;
 
 }
+.chat-container{
+    display: flex;
+    flex-direction: column;
+    justify-self: start;
+    padding-top: 6px;
+    background-color: #FFFFFF;
+    height: 538px;
+    z-index: 1;
+    overflow-y: scroll;
+
+
+}
+
+
+/* Adjust the width and other styles as needed */
+.chat-container::-webkit-scrollbar {
+    width: 7px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    margin-top: 100%;
+}
+
+.box-chat-container{
+    display: flex;
+    align-items: center;
+}
+
+.chat-container span{
+    margin-left: 16px;
+    color: #53575c;
+
+}
 .chat-container #imgList {
     margin-left: 16px;
     color: #53575c;
@@ -569,27 +603,44 @@ opacity: 1; /* Rendre l'image visible au survol */
 /*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  */
 
 .chat-container .chat{
-margin: 15px 15px;
+margin: 12px 15px;
 }
 .chat-container .chat p{
 word-wrap: break-word;
 padding: 8px 16px;
 box-shadow: 0 0 32px rgb(0 0 0 / 8%),
             0rem 16px 16px -16px rgb(0 0 0 / 10%);
+
 }
 .chat-container .outgoing{
 display: flex;
 }
 .chat-container .outgoing .details{
 margin-left: auto;
-max-width: calc(100% - 300px);
 display: flex;
 align-items: center;
+max-width:320px;
+
+}
+.cla6{
+    margin-left: 16px;
+    color: #53575c;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+
+
+
+
 }
 .outgoing .details p{
-background: linear-gradient(to bottom right, #e9c46a,#f4a261,#fb8500, #fa538d);
-color: #fff;
+/* background: linear-gradient(to bottom right, #e9c46a,#f4a261,#fb8500, #fa538d); */
+background-color: #4cc9f0;
+color: #000000;
+word-wrap: break-word;
 border-radius: 18px 18px 0 18px;
+width: 85%;
+
 }
 .chat-container .incoming{
 display: flex;
@@ -602,16 +653,15 @@ border-radius: 50%;
 }
 .chat-container .incoming .details{
 margin-right: auto;
-margin-left: 10px;
 max-width: calc(100% - 300px);
 display: flex;
 align-items: center;
 
 }
 .incoming .details p{
-background: #fff;
-color: #333;
-border-radius: 18px 18px 18px 18px;
+    background-color: #4cc9f0;
+    color: #000000;
+border-radius: 0px 18px 18px 18px;
 }
 .triangle {
     display: flex;
