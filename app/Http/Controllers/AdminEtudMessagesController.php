@@ -44,7 +44,8 @@ public function showEtuds($id_etud)
             "niveuax"=>niveau::all(),
             "classes"=>classe::all(),
             "etudients"=>etudient::all(),
-            "actualites"=>actualite::all(),
+            "actualites"=>actualite::orderBy("created_at","desc")->get(),
+
             "classeFormMessage"=>classeFormMessage::all(),
             "admins"=>admin::all(),
             "utilisateurs"=>utilisateur::all(),
@@ -130,7 +131,7 @@ return redirect()->back();
             "niveuax"=>niveau::all(),
             "classes"=>classe::all(),
             "etudients"=>etudient::all(),
-            "actualites"=>actualite::all(),
+            "actualites"=>actualite::orderBy("created_at","desc")->get(),
             "classeFormMessage"=>classeFormMessage::all(),
             "admins"=>admin::all(),
             "utilisateurs"=>utilisateur::all(),

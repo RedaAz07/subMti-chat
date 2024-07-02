@@ -42,7 +42,7 @@ if ($formateur->utilisateur->id === auth()->user()->id) {
             "niveuax"=>niveau::all(),
             "classes"=>classe::all(),
             "etudients"=>etudient::all(),
-            "actualites"=>actualite::all(),
+            "actualites"=>actualite::orderBy("created_at","desc")->get(),
             "classeFormMessage"=>classeFormMessage::all(),
 
 

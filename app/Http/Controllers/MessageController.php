@@ -31,7 +31,7 @@ class MessageController extends Controller
         "niveuax"=>niveau::all(),
         "classes"=>classe::all(),
         "etudients"=>etudient::all(),
-        "actualites"=>actualite::all(),
+        "actualites"=>actualite::orderBy("created_at","desc")->get(),
         "admins"=>admin::all(),
 
         "classeFormMessage"=>classeFormMessage::all(),
@@ -75,7 +75,7 @@ class MessageController extends Controller
         message::create($requestData);
 
         // Redirect back to the message index page
-        return redirect()->route('message.index');
+        return redirect()->route('submti');
     }
 
 
@@ -202,7 +202,8 @@ class MessageController extends Controller
         "niveuax"=>niveau::all(),
         "classes"=>classe::all(),
         "etudients"=>etudient::all(),
-        "actualites"=>actualite::all(),
+        "actualites"=>actualite::orderBy("created_at","desc")->get(),
+
         "admins"=>admin::all(),
 
         "classeFormMessage"=>classeFormMessage::all(),

@@ -29,8 +29,9 @@
                     <img src="{{ asset('img/logo2.png') }}">
                 </div>
 
+
                 <div>
-                    
+
                     <a href="{{route("adminEtudMessages.showAdmins",1)}}"><h1>admin</h1> </a></div>
                 <div class="right-section">
                     <img src=" {{ asset('img/student.png') }}" alt="" id="me"
@@ -323,7 +324,9 @@
                     </div>
 
 
-
+                    <div>
+                        <a href="{{route("adminProfMessages.prof",1)}}">Admin </a>
+                     </div>
 
                     <div class="right-section">
                         <img src=" {{ asset('img/student.png') }}" alt="" id="me"
@@ -505,12 +508,7 @@
                             <div class="fix-groupe-container">
                                 <h2 class="groupe"><strong>groups</strong></h2>
                                 <div class="groupes">
-                                    <div>
-                                        <a href="" class="links ">
-                                            <img src="{{ asset('img/group.png') }}" alt="" class="img-group">
-                                            <span id="active-span">groupe SUPMTI</span>
-                                        </a>
-                                    </div>
+
 
 
 
@@ -528,7 +526,7 @@
                                                                     class="links">
                                                                     <img src="{{ asset('img/group.png') }}" alt=""
                                                                         class="img-group">
-                                                                    <span id="active-span">{{ $item->num_groupe }} </span>
+                                                                    <span id="active-span">{{ $item->num_groupe }}  | {{ $item->niveau->niveau }}|   {{ $item->niveau->filiere->nom_filiere  }}</span>
                                                                 </a>
                                                             </div>
                                                         @endif

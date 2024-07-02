@@ -23,6 +23,10 @@
                 <div class="left-section">
                     <img src="{{ asset('img/logo2.png') }}">
                 </div>
+
+                <div>
+
+                    <a href="{{route("adminEtudMessages.showAdmins",1)}}"><h1>admin</h1> </a></div>
                 <div class="right-section">
                     <img src=" {{ asset('img/student.png') }}" alt="" id="me"
                         data-dropdown-toggle="dropdownInformation">

@@ -23,7 +23,7 @@ class AdminProfMessagesController extends Controller
 
 
 
-
+// view d Admin
 
     public function index($id_form)
     {
@@ -50,7 +50,7 @@ class AdminProfMessagesController extends Controller
             "niveuax"=>niveau::all(),
             "classes"=>classe::all(),
             "etudients"=>etudient::all(),
-            "actualites"=>actualite::all(),
+            "actualites"=>actualite::orderBy("created_at","desc")->get(),
             "classeFormMessage"=>classeFormMessage::all(),
             "admins"=>admin::all(),
             "utilisateurs"=>utilisateur::all(),
@@ -104,7 +104,7 @@ foreach ($admins as $admin) {
 
 
 
-// -> formateur
+// -> le view de formateur
 
 
 
@@ -125,7 +125,33 @@ public function showAdmin($id_admin)
         }
     }
 
-    return view('adminProfMessages.prof', compact('messages', 'id_admin'));
+    return view('adminProfMessages.prof', compact('messages', 'id_admin'),[
+
+
+
+
+        "messages"=>message::all(),
+        "formateurs"=>formateur::all(),
+        "filieres"=>filiere::all(),
+        "niveuax"=>niveau::all(),
+        "classes"=>classe::all(),
+        "etudients"=>etudient::all(),
+        "actualites"=>actualite::orderBy("created_at","desc")->get(),
+        "classeFormMessage"=>classeFormMessage::all(),
+        "admins"=>admin::all(),
+        "utilisateurs"=>utilisateur::all(),
+
+
+    ]
+
+
+
+
+
+
+
+
+);
 }
 
 
@@ -168,7 +194,7 @@ if ($formateur->utilisateur->id=== auth()->user()->id) {
 
 
 
-return redirect()->to_route("adminEtudMessages.showAdmins");
+return  redirect()->back();
 }
 
 

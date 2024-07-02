@@ -206,10 +206,19 @@
                     </ul>
                 </div>
             </form>
+            @if ($item->contenu !== null)
+
             <p>{{$item->contenu}}</p>
+            @endif
         </div>
     </div>
+    <div style="display:flex ;justify-content: end">
 
+        @if ($item->file !== null)
+            <img src="{{ asset('storage/' . $item->file) }}" width="300px" height="300px">
+        @endif
+
+    </div>
 
     @endforeach
 </div>

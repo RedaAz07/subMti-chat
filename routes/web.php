@@ -128,7 +128,7 @@ Route::match(['get', 'post'], '/adminProfMessages', [AdminProfMessagesController
 Route::get('/adminProfMessages/prof/{id_form}', [AdminProfMessagesController::class, 'showAdmin'])
     ->name('adminProfMessages.prof')->middleware('auth');
 
-Route::match(['get', 'post'], '/adminProfMessages/prof', [AdminProfMessagesController::class, 'storeAdmin'])->name('adminProfMessages/prof.store')->middleware('auth');
+Route::match(['get', 'post'], '/adminProfMessages/prof', [AdminProfMessagesController::class, 'storeAdmin'])->name('adminProfMessages.profStore')->middleware('auth');
 
 /////////////////////////////////////////////////////////////////
 Route::resource('/messageformateur', MessageformateurController::class)->middleware('auth');

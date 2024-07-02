@@ -197,17 +197,8 @@
 
     <p style="font-size: 2rem">{{ $item->contenu }}</p>
             @endif
-<br/>
-    <div style="display:flex ;justify-content: end" >
-        @if ( $item->file !==null)
-
-        <img src="{{ asset('storage/' . $item->file) }}"
-         width="300px">
-         @endif
 
 
-
-    </div>
 
 
 
@@ -220,7 +211,16 @@
 
     </div>
 
+    <div style="display:flex ;justify-content: end" >
+        @if ( $item->file !==null)
 
+        <img src="{{ asset('storage/' . $item->file) }}"
+         width="300px">
+         @endif
+
+
+
+    </div>
     @endforeach
             </div>
             <!---------------------------------------------------- fin chat-container ------------------------------------------------------>

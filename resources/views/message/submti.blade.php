@@ -26,6 +26,10 @@
                 <div class="left-section">
                       <img src="{{ asset('img/logo2.png') }}">
                 </div>
+
+                <div>
+
+                    <a href="{{route("adminEtudMessages.showAdmins",1)}}"><h1>admin</h1> </a></div>
                 <div class="right-section">
                     <img src=" {{ asset('img/student.png') }}" alt="" id="me"
                         data-dropdown-toggle="dropdownInformation">
@@ -242,9 +246,15 @@
 
                     </div>
                 @else
+@foreach ($etudients as $item)
 
 
-                <h6 class='cla6'>{{ $message->utilisateur->etudient->nom }}</h6>
+@if ( $message->utilisateur->id === $item->id_etudient)
+
+<h6 class='cla6'>{{ $item->nom}}</h6>
+@endif
+@endforeach
+
                 <div class="chat incoming">
 
                         <div class="details">
@@ -844,3 +854,6 @@
 
             @endif
 @endauth
+
+
+
