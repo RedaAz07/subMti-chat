@@ -25,7 +25,7 @@ class MessageController extends Controller
     {
         return view('message.index', [
 
-        "messages"=>message::orderBy('created_at', 'desc')->get(),
+        "messages"=>message::all(),
         "formateurs"=>formateur::all(),
         "filieres"=>filiere::all(),
         "niveuax"=>niveau::all(),
@@ -188,6 +188,38 @@ class MessageController extends Controller
         $message->delete();
         return back()->with('success', 'Message deleted successfully');
     }
+
+
+
+
+    public function submti()
+    {
+        return view('message.submti', [
+
+        "messages"=>message::orderBy('created_at', 'desc')->get(),
+        "formateurs"=>formateur::all(),
+        "filieres"=>filiere::all(),
+        "niveuax"=>niveau::all(),
+        "classes"=>classe::all(),
+        "etudients"=>etudient::all(),
+        "actualites"=>actualite::all(),
+        "admins"=>admin::all(),
+
+        "classeFormMessage"=>classeFormMessage::all(),
+
+
+            'utilisateurs' => utilisateur::all(),
+
+        ]);
+    }
+
+
+
+
+
+
+
+
 
 
 

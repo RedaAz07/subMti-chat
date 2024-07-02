@@ -186,6 +186,16 @@
 
 
                 </div>
+
+                <div>
+                    <form action="{{ route('formateurs.destroy', $id_form) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this formateur?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+
+
                 <div class="left-side">
                     <img src="{{ asset('img/phone-receiver-silhouette.png') }}" alt=""
                         id="phone">
@@ -199,30 +209,6 @@
 
     <div class="chat outgoing" id="outgoing">
         <div class="details">
-            <form action="">
-                <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
-                    data-dropdown-toggle="dropdown1">
-                <!-- Dropdown menu -->
-                <div id="dropdown1"
-                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                        aria-labelledby="dropdownDefaultButton">
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </form>
             <p>{{$item->contenu}}</p>
         </div>
     </div>
@@ -238,10 +224,10 @@
 
             <div class="message-container">
 
-                <form action="{{ route('message.store') }}" method="POST" enctype="multipart/form-data">@csrf
+                <form action="{{ route('adminProfMessages.store') }}" method="POST" enctype="multipart/form-data">@csrf
                     <label for="chat" class="sr-only">Your message</label>
                     <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
-
+<input type="text" name="id_formateur" value="{{$id_form}}" hidden>
 
 
 

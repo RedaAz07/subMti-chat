@@ -241,7 +241,7 @@
     </div>
     <div style="display:flex ;justify-content: end">
 @if ($mesg->file !== null)
-<img src="{{ asset('storage/' . $mesg->file) }}" width="100px"  height="100px">
+<img src="{{ asset('storage/' . $mesg->file) }}" width="300px">
 @endif
 
 
@@ -392,7 +392,7 @@
 
 
                                                 <img src="{{ asset('img/group.png') }}" alt="" class="img-group">
-                                                <span id="active-span">{{ $etudient->classe->num_groupe }} libre</span>
+                                                <span id="active-span">classe{{ $etudient->classe->num_groupe }} </span>
                                             </a>
                                         </div>
                                     @endif
@@ -402,30 +402,25 @@
 {{--                groupe formateur                                     --}}
 
 
-
 @foreach ($etudients as $etudient)
 @auth
-
     @if ($etudient->utilisateur->id === auth()->user()->id)
-    @foreach ($classeFormMessage as $item)
-@if ($etudient->id_classe === $item->id_classe)
-
-
-        <div class="groupes">
-
-            <a href="{{route("classeFormMessage.indexEtud",["id_classe"=>$item->classe->id_classe])}}" class="links">
-
-
-                <img src="{{ asset('img/group.png') }}" alt="" class="img-group">
-                <span id="active-span">{{ $item->classe->num_groupe }} prive</span>
-            </a>
-        </div>
-
-        @endif
+        @foreach ($classeFormMessage as $item)
+            @if ($etudient->id_classe === $item->id_classe)
+                <div class="groupes">
+                    <a href="{{ route('classeFormMessage.indexEtud', ['id_classe' => $item->classe->id_classe]) }}" class="links">
+                        <img src="{{ asset('img/group.png') }}" alt="" class="img-group">
+                        <span id="active-span">salone prive  de formateurs  </span>
+                    </a>
+                </div>
+                @break
+            @endif
         @endforeach
+        @break
     @endif
 @endauth
 @endforeach
+
 
 
 

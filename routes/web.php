@@ -207,3 +207,12 @@ Route::resource('formateur', FormateurController::class);
 
 
 Route::delete("/message/{id}", [MessageController::class, "destroy"])->name("message.destroy");
+Route::get("/submti", [MessageController::class, "submti"])->name("submti");
+
+
+
+
+
+
+Route::delete('/formateurs/{id}', [AdminProfMessagesController::class, 'destroy'])->name('formateurs.destroy');
+Route::delete('/etudiants/{id}', [AdminEtudMessagesController::class, 'destroy'])->name('etudiants.destroy');
