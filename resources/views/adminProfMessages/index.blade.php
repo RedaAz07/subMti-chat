@@ -191,7 +191,7 @@
                     <form action="{{ route('formateurs.destroy', $id_form) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this formateur?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Delete</button>
+                        <button class="btnn" type="submit">Delete</button>
                     </form>
                 </div>
 
@@ -212,7 +212,13 @@
             <p>{{$item->contenu}}</p>
         </div>
     </div>
+    <div style="display:flex ;justify-content: end">
 
+        @if ($item->file !== null)
+            <img src="{{ asset('storage/' . $item->file) }}" width="300px" height="300px">
+        @endif
+
+    </div>
 
     @endforeach
 </div>

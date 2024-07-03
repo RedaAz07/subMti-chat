@@ -26,6 +26,9 @@
         </div>
 
 
+        <div id="admin">
+            <a class="btnn" href="{{route("adminProfMessages.prof",1)}}">Discuter avec l'Administartion </a>
+         </div>
 
 
         <div class="right-section">
@@ -228,10 +231,20 @@ $classe->niveau->niveau . " de la filiere " . $classe->niveau->filiere->nom_fili
                                 </ul>
                             </div>
                         </form>
-                        <p>{{$item->contenu}}</p>
+@if ($item->contenu !== null)
+
+                    <p>{{$item->contenu}}</p>
+
+                    @endif
                     </div>
                 </div>
+                <div style="display:flex ;justify-content: end">
 
+                    @if ($item->file !== null)
+                        <img src="{{ asset('storage/' . $item->file) }}" width="300px" height="300px">
+                    @endif
+
+                </div>
 
 @endforeach
 
@@ -242,8 +255,7 @@ $classe->niveau->niveau . " de la filiere " . $classe->niveau->filiere->nom_fili
             <!---------------------------------------- message-container ----- hada l input li katkteb fiha msj dialk------------------------------------------------->
 
             <div class="message-container">
-
-                <form action="{{ route('message.store') }}" method="POST" enctype="multipart/form-data">@csrf
+                <form action="{{ route('classeFormMessage.store') }}" method="POST" enctype="multipart/form-data">@csrf
                     <label for="chat" class="sr-only">Your message</label>
                     <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
 
@@ -286,6 +298,8 @@ $classe->niveau->niveau . " de la filiere " . $classe->niveau->filiere->nom_fili
                         </button>
                     </div>
                 </form>
+
+
             </div>
 
 
@@ -318,7 +332,7 @@ $classe->niveau->niveau . " de la filiere " . $classe->niveau->filiere->nom_fili
                                                         class="links">
                                                         <img src="{{ asset('img/group.png') }}" alt=""
                                                             class="img-group">
-                                                        <span id="active-span">{{ $item->num_groupe }} </span>
+                                                        <span id="active-span">{{ $item->num_groupe }}  | {{ $item->niveau->niveau }}|   {{ $item->niveau->filiere->nom_filiere  }}</span>
                                                     </a>
                                                 </div>
                                             @endif
@@ -342,26 +356,27 @@ $classe->niveau->niveau . " de la filiere " . $classe->niveau->filiere->nom_fili
 
                 </div>
                 <section>
-                    <h2 class="annance"><strong>Actualites</strong></h2>
+                    <section>
+                        <h2 class="annance"><strong>Actualites</strong></h2>
 
 
-                    @foreach ($actualites as $actualite)
-                        <div class="annances-container">
-                            <div id="alert-border-2" class=" annances font-semibold flex items-center p-4 mb-4 text-yellow-800 border-t-4 border-yellow-300 bg-yellow-50 dark:text-yellow-300 dark:bg-gray-800 dark:border-yellow-800" role="alert">
-                                <svg class="flex-shrink-0 w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                                </svg>
-                                <div class="span" class="ms-3 font-semibold">{{ $actualite->contenu }}</div>
+                        @foreach ($actualites as $actualite)
+                            <div class="annances-container">
+                                <div id="alert-border-2" class=" annances font-semibold flex items-center p-4 mb-4 text-yellow-800 border-t-4 border-yellow-300 bg-yellow-50 dark:text-yellow-300 dark:bg-gray-800 dark:border-yellow-800" role="alert">
+                                    <svg class="flex-shrink-0 w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                    </svg>
+                                    <div class="span" class="ms-3 font-semibold">{{ $actualite->contenu }}</div>
 
+                                </div>
                             </div>
-                        </div>
 
 
 
 
 
-                    @endforeach
-                </section>
+                        @endforeach
+                    </section>
             </aside>
 
         </div>

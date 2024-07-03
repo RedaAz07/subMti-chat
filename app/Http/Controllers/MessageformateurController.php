@@ -57,7 +57,7 @@ class MessageformateurController extends Controller
             "niveuax"=>niveau::all(),
             "classes"=>classe::all(),
             "etudients"=>etudient::all(),
-            "actualites"=>actualite::all(),
+            "actualites"=>actualite::orderBy("created_at","desc")->get(),
             "classeFormMessage"=>classeFormMessage::all(),
 
 
@@ -132,7 +132,7 @@ public function show_Etud($id_for)
         "niveuax"=>niveau::all(),
         "classes"=>classe::all(),
         "etudients"=>etudient::all(),
-        "actualites"=>actualite::all(),
+        "actualites"=>actualite::orderBy("created_at","desc")->get(),
         "classeFormMessage"=>classeFormMessage::all(),
 
 

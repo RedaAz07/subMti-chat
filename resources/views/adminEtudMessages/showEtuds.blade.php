@@ -196,7 +196,7 @@
                         onsubmit="return confirm('Are you sure you want to delete this etudiant?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Delete</button>
+                        <button class="btnn" type="submit">Delete</button>
                     </form>
                 </div>
                 <div class="left-side">
@@ -207,26 +207,65 @@
             </div>
             <!-------------------- chat-container------- hada blasa li kaikhrjo fiha les msj---------------->
             <div class="chat-container">
-                @foreach ($messageEtudient as $item)
-                    <div class="chat outgoing" id="outgoing">
-                        <div class="details">
-                            @if ($item->contenu !== null)
-                                <p style="font-size: 1.2rem">{{ $item->contenu }}</p>
-                            @endif
-                            <br />
-                            <div style="display:flex ;justify-content: end">
-                                @if ($item->file !== null)
-                                    <img src="{{ asset('storage/' . $item->file) }}" width="300px">
-                                @endif
+    @foreach ($messageEtudient as $item)
+
+    <div class="chat outgoing" id="outgoing">
+        <div class="details">
+            <form action="">
+                <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
+                    data-dropdown-toggle="dropdown1">
+                <!-- Dropdown menu -->
+                <div id="dropdown1"
+                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        aria-labelledby="dropdownDefaultButton">
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </form>
+            <!--    hhhhhhhhhhhhhhhhhhhhhh        -->
+
+            @if (  $item->contenu !==null)
+
+    <p style="font-size: 1.2rem">{{ $item->contenu }}</p>
+            @endif
 
 
 
-                            </div>
 
-                        </div>
 
-                    </div>
-                @endforeach
+
+
+
+
+            <!--    hhhhhhhhhhhhhhhhhhhhhh        -->
+        </div>
+
+    </div>
+
+    <div style="display:flex ;justify-content: end" >
+        @if ( $item->file !==null)
+
+        <img src="{{ asset('storage/' . $item->file) }}"
+         width="300px">
+         @endif
+
+
+
+    </div>
+    @endforeach
             </div>
             <!---------------------------------------------------- fin chat-container ------------------------------------------------------>
 
