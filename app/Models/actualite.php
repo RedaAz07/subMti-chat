@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class actualite extends Model
 {
+    protected $primaryKey="id_actualite";
+
     use HasFactory;
     protected $fillable = ["id_admin","contenu","file"];
 

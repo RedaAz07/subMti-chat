@@ -31,8 +31,9 @@
 
 
                 <div>
+                    <a class="btnn" href="{{route("adminProfMessages.prof",1)}}">Discuter avec lAdministartion </a>
+                 </div>
 
-                    <a href="{{route("adminEtudMessages.showAdmins",1)}}"><h1>admin</h1> </a></div>
                 <div class="right-section">
                     <img src=" {{ asset('img/student.png') }}" alt="" id="me"
                         data-dropdown-toggle="dropdownInformation">
@@ -323,7 +324,7 @@
 
 
                     <div>
-                        <a class="btnn" href="{{route("adminProfMessages.prof",1)}}">Discuter avec l'Administartion </a>
+                        <a class="btnn" href="{{route("adminProfMessages.prof",1)}}">Discuter avec lAdministartion </a>
                      </div>
 
                     <div class="right-section">
@@ -795,7 +796,6 @@
                                         <img src="{{ asset('img/man.png') }}" class="img-teacher">
                                         <div class="discription">
                                             <span id="active-span">{{ $formateur->nom . ' ' . $formateur->prenom }}</span>
-                                            <p></p>
                                         </div>
                                     </a>
                                 @endforeach
@@ -889,7 +889,6 @@
                                         <img src="{{ asset('img/student.png') }}" class="img-etudiant">
                                         <div class="discription">
                                             <span id="active-span">{{ $etudient->nom . $etudient->prenom }}</span>
-                                            <p>Lorem ipsum dolor sit consectetur elit.</p>
                                         </div>
                                     </a>
                                 @endforeach

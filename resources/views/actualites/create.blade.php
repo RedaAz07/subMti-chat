@@ -201,25 +201,23 @@
 
     <div class="chat outgoing" id="outgoing">
         <div class="details">
-            <form action="">
+            <form action="{{ route("actualites.destroy",["actualite"=>$actualite->id_actualite]) }}" method="post">@csrf
+                @method("DELETE")
                 <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
-                    data-dropdown-toggle="dropdown1">
+                    data-dropdown-toggle="{{ $actualite->id_actualite}}">
                 <!-- Dropdown menu -->
-                <div id="dropdown1"
+                <div id="{{ $actualite->id_actualite }}"
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                         aria-labelledby="dropdownDefaultButton">
                         <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
+                            <button type="submit" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</button>
                         </li>
                         <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
                         </li>
                         <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
                         </li>
 
                     </ul>
@@ -338,7 +336,6 @@
                             <img src="{{ asset('img/student.png') }}" class="img-etudiant">
                             <div class="discription">
                                 <span id="active-span">{{ $etudient->nom . $etudient->prenom }}</span>
-                                <p>Lorem ipsum dolor sit consectetur elit.</p>
                             </div>
                         </a>
                     @endforeach

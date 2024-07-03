@@ -319,7 +319,6 @@
                             <img src="{{ asset('img/student.png') }}" class="img-etudiant">
                             <div class="discription">
                                 <span id="active-span">{{ $etudient->nom . $etudient->prenom }}</span>
-                                <p>Lorem ipsum dolor sit consectetur elit.</p>
                             </div>
                         </a>
                     @endforeach
