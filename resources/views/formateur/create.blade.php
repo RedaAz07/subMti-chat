@@ -10,6 +10,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
 <body>
+@auth
+@if (auth()->user()->type === 'admin')
 <div class="container">
 
 
@@ -75,6 +77,7 @@
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-
+@endif
+@endauth
 </body>
 </html>

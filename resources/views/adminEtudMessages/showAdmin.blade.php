@@ -18,7 +18,8 @@
 <body>
     <!---------------------------------------------------- header ------------------------------------------------------>
 
-
+    @auth
+    @if (auth()->user()->type === 'etudient')
     {{--                        etudient page                  --}}
 
             <header>
@@ -28,9 +29,11 @@
 
 
                 <div>
+                    <a class="btnn" href="{{route("adminProfMessages.prof",1)}}">Discuter avec lAdministartion </a>
+                 </div>
+                <div>
 
-                    <a href="{{route("adminEtudMessages.showAdmins",1)}}"><h1>admin</h1> </a></div>
-                <div class="right-section">
+                    <div class="right-section">
                     <img src=" {{ asset('img/student.png') }}" alt="" id="me"
                         data-dropdown-toggle="dropdownInformation">
 
@@ -466,5 +469,6 @@
 
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-
+            @endif
+            @endauth
 

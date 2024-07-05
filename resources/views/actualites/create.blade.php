@@ -14,17 +14,13 @@
 
 <body>
     <!---------------------------------------------------- header ------------------------------------------------------>
-
+@auth
+@if (auth()->user()->type === 'admin')
     <header>
         <div class="left-section">
             <img src="{{ asset('img/vg0CZ05S.jpg') }}">
         </div>
         <div class="navbar">
-
-
-
-
-
 
 
             <div class="right-section">
@@ -351,7 +347,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 
-
+@endif
+@endauth
 </body>
 
 

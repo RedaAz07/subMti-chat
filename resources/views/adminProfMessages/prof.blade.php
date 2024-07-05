@@ -19,7 +19,8 @@
 
 <body>
     <!---------------------------------------------------- header ------------------------------------------------------>
-
+    @auth
+    @if (auth()->user()->type === 'formateur')
     <header>
         <div class="left-section">
             <img src="{{ asset('img/logo2.png') }}">
@@ -27,8 +28,8 @@
 
 
         <div>
-            <a class="btnn" href="{{route("adminProfMessages.prof",1)}}">Discuter avec l'Administartion </a>
-         </div>
+            <a class="btnn" href="{{route("adminEtudMessages.showAdmins",1)}}">Discuter avec l'Administartion </a>
+          </div>
 
 
         <div class="right-section">
@@ -385,6 +386,8 @@
 
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        @endif
+@endauth
 </body>
 
 </html>

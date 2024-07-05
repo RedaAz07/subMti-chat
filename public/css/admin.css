@@ -617,7 +617,7 @@ opacity: 1; /* Rendre l'image visible au survol */
         color: #000000;
         word-wrap: break-word;
         border-radius: 18px 18px 0 18px;
-        max-width: 85%;
+        max-width: 100%;
 
         }
 

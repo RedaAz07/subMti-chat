@@ -19,7 +19,8 @@
 
 <body>
     <!---------------------------------------------------- header ------------------------------------------------------>
-
+    @auth
+    @if (auth()->user()->type === 'formateur')
     <header>
         <div class="left-section">
             <img src="{{ asset('img/logo2.png') }}">
@@ -27,14 +28,13 @@
 
 
         <div id="admin">
-            <a class="btnn" href="{{route("adminProfMessages.prof",1)}}">Discuter avec l'Administartion </a>
+            <a class="btnn" href="{{route("adminProfMessages.prof",1)}}">Discuter avec l Administartion </a>
          </div>
 
 
         <div class="right-section">
             <img src=" {{ asset('img/student.png') }}" alt="" id="me"
                 data-dropdown-toggle="dropdownInformation">
-
 
 
             <!-- Dropdown menu -->
@@ -275,6 +275,7 @@ $classe->niveau->niveau . " de la filiere " . $classe->niveau->filiere->nom_fili
 
                                 </div>
                                 <input id="dropzone-file" type="file" class="hidden" name="file" />
+                                <input id="dropzone-file" type="number" class="hidden" name="id_classe" value="{{ $id_classe }}" hidden  />
                             </label>
                         </div>
 
@@ -381,6 +382,8 @@ $classe->niveau->niveau . " de la filiere " . $classe->niveau->filiere->nom_fili
 
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        @endif
+@endauth
 </body>
 
 </html>
