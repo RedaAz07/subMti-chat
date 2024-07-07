@@ -382,7 +382,7 @@
                         <div class="fix-groupe-container">
                             <h2 class="groupe"><strong>Classes</strong></h2>
                             <div class="groupes">
-                                <a href="{{route("message.index")}}" class="links ">
+                                <a href="{{ route('submti') }}" class="links ">
                                     <img src="{{ asset('img/group.png') }}" alt="" class="img-group">
                                     <span id="active-span">groupe SUPMTI</span>
                                 </a>

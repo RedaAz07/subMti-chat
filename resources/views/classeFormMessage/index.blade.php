@@ -259,7 +259,7 @@ $classe->niveau->niveau . " de la filiere " . $classe->niveau->filiere->nom_fili
                     <label for="chat" class="sr-only">Your message</label>
                     <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
 
-
+<input type="number" name="id_classe" value="{{$id_classe}}" hidden>
 
 
                         <div class="flex items-center justify-center ">

@@ -30,7 +30,7 @@ class importExportController extends Controller
     ]);
 Excel::import(new user,$request->file("file") );
 
- return redirect()->back()->with("status","imported secccccf");
+ return redirect()->back()->with('success','Le fichier Excel a été importé avec succès');
     }
 
     /**

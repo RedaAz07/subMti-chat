@@ -24,9 +24,12 @@
                     <img src="{{ asset('img/logo2.png') }}">
                 </div>
 
-                <div>
 
-                    <a href="{{route("adminEtudMessages.showAdmins",1)}}"><h1>admin</h1> </a></div>
+                <div>
+                    <a class="btnn" href="{{route("adminEtudMessages.showAdmins",1)}}">Discuter avec l'Administartion </a>
+                 </div>
+
+
                 <div class="right-section">
                     <img src=" {{ asset('img/student.png') }}" alt="" id="me"
                         data-dropdown-toggle="dropdownInformation">
@@ -380,7 +383,7 @@
                         <div class="fix-groupe-container">
                             <h2 class="groupe"><strong>Classes</strong></h2>
                             <div class="groupes">
-                                <a href="{{route("message.index")}}" class="links ">
+                                <a href="{{ route('submti') }}" class="links ">
                                     <img src="{{ asset('img/group.png') }}" alt="" class="img-group">
                                     <span id="active-span">groupe SUPMTI</span>
                                 </a>
