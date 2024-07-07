@@ -14,17 +14,13 @@
 
 <body>
     <!---------------------------------------------------- header ------------------------------------------------------>
-
+@auth
+@if (auth()->user()->type === 'admin')
     <header>
         <div class="left-section">
             <img src="{{ asset('img/vg0CZ05S.jpg') }}">
         </div>
         <div class="navbar">
-
-
-
-
-
 
 
             <div class="right-section">
@@ -201,6 +197,24 @@
 
     <div class="chat outgoing" id="outgoing">
         <div class="details">
+            <form action="{{ route("actualites.destroy",["actualite"=>$actualite->id_actualite]) }}" method="post">@csrf
+                @method("DELETE")
+                <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
+                    data-dropdown-toggle="{{ $actualite->id_actualite}}">
+                <!-- Dropdown menu -->
+                <div id="{{ $actualite->id_actualite }}"
+                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        aria-labelledby="dropdownDefaultButton">
+                        <li>
+                            <button type="submit" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</button>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
+                        </li>
 
                 <img src="{{ asset('img/list.png') }}" alt="" id="imgList"
                     data-dropdown-toggle="{{$actualite->id_actualite}}">
@@ -216,7 +230,7 @@
 </form>
 
                 </div>
-            
+
             <p>{{$actualite->contenu}}</p>
         </div>
     </div>
@@ -330,7 +344,6 @@
                             <img src="{{ asset('img/student.png') }}" class="img-etudiant">
                             <div class="discription">
                                 <span id="active-span">{{ $etudient->nom . $etudient->prenom }}</span>
-                                <p>Lorem ipsum dolor sit consectetur elit.</p>
                             </div>
                         </a>
                     @endforeach
@@ -346,7 +359,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 
-
+@endif
+@endauth
 </body>
 
 

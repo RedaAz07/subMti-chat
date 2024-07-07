@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class actualite extends Model
 {
+    protected $primaryKey="id_actualite";
+
     use HasFactory;
     protected $fillable = ["id_admin","contenu","file"];
 
-    protected $primaryKey="id_actualite";
 
     public function admin(){
         return $this->belongsTo(admin::class,'id_admin');

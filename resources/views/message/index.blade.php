@@ -30,8 +30,13 @@
                 </div>
 
                 <div>
+<<<<<<< HEAD
                     <a class="btnn" href="{{route("adminEtudMessages.showAdmins",1)}}">Discuter avec l'Administartion </a>
                  </div>
+=======
+                    <a class="btnn" href="{{route("adminEtudMessages.showAdmins",1)}}">Discuter avec l Administartion </a>
+       </div>
+>>>>>>> 15065c5d946303ee605584d68664327141eea53d
 
                 <div class="right-section">
                     <img src=" {{ asset('img/student.png') }}" alt="" id="me"
@@ -323,7 +328,7 @@
 
 
                     <div>
-                        <a class="btnn" href="{{route("adminProfMessages.prof",1)}}">Discuter avec l'Administartion </a>
+                        <a class="btnn" href="{{route("adminProfMessages.prof",1)}}">Discuter avec lAdministartion </a>
                      </div>
 
                     <div class="right-section">
@@ -807,7 +812,6 @@
                                         <img src="{{ asset('img/man.png') }}" class="img-teacher">
                                         <div class="discription">
                                             <span id="active-span">{{ $formateur->nom . ' ' . $formateur->prenom }}</span>
-                                            <p></p>
                                         </div>
                                     </a>
                                 @endforeach
@@ -901,7 +905,6 @@
                                         <img src="{{ asset('img/student.png') }}" class="img-etudiant">
                                         <div class="discription">
                                             <span id="active-span">{{ $etudient->nom . $etudient->prenom }}</span>
-                                            <p>Lorem ipsum dolor sit consectetur elit.</p>
                                         </div>
                                     </a>
                                 @endforeach

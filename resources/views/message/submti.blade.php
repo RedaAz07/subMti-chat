@@ -29,8 +29,7 @@
 
                 <div>
                     <a class="btnn" href="{{route("adminEtudMessages.showAdmins",1)}}">Discuter avec l'Administartion </a>
-                 </div>
-
+       </div>
                 <div class="right-section">
                     <img src=" {{ asset('img/student.png') }}" alt="" id="me"
                         data-dropdown-toggle="dropdownInformation">

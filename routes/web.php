@@ -63,12 +63,12 @@ Route::get('/messages', 'MessageController@fetch')->name('messages.fetch')->midd
 //Route::get('/export-data-etud', [EtudientController::class, 'exportData'])->name('export.data');
 
 // import  the data from  etudeient _data.jsone to tables utilisateur and etudeint
-Route::get('/exportDataTOtableEtudient', [EtudientController::class, 'exportDataTOtableEtudient']);
+Route::get('/exportDataTOtableEtudient', [EtudientController::class, 'exportDataTOtableEtudient'])->middleware('auth');
 
 // export   the data from  etudeient _data.jsone to tables utilisateur and formateur and Acc fornateur .json
-Route::get('/exportDataformateur', [FormateurController::class, 'exportDataformateur']);
+Route::get('/exportDataformateur', [FormateurController::class, 'exportDataformateur'])->middleware('auth');
 //the same things for the asmin
-Route::get('/exportDataadmin', [AdminController::class, 'exportDataadmin']);
+Route::get('/exportDataadmin', [AdminController::class, 'exportDataadmin'])->middleware('auth');
 
 /*
 
@@ -81,7 +81,7 @@ Route::get('/import-data-etud', [UtilisateurController::class, 'importData'])->n
 Route::get('/import-data-formateur', [UtilisateurController::class, 'importDataf'])->name('import.data');
 */
 
-Route::get('/messages', [MessageController::class, 'fetch'])->name('messages.fetch');
+Route::get('/messages', [MessageController::class, 'fetch'])->name('messages.fetch')->middleware('auth');
 
 Route::get('/messages', [MessageController::class, 'show_classe'])->name('show_classe')->middleware('auth');
 
@@ -156,7 +156,7 @@ Route::match(['get', 'post'], '/classeFormMessage.indexEtud/{id_classe}', [Class
 
 // messages  file
 
-Route::get('/download/{filename}', [MessageController::class, 'download'])->name('file.download');
+Route::get('/download/{filename}', [MessageController::class, 'download'])->name('file.download')->middleware('auth');
 
 
 Route::match(['get', 'post'], 'message.search/for', [loginController::class, 'searchFormateur'])->name('message.searchFormateur/for')->middleware('auth');
@@ -172,47 +172,25 @@ Route::match(['get', 'post'], 'message.search', [loginController::class, 'search
 
 Route::get('/', [loginController::class, 'Accueil']);
 
-
 // routes/web.php
 
 Route::get('/test-excel', [loginController::class, 'test'])->name('test-excel');
 
-
-
-
 //Route::get('/import', [importExportController::class, 'index'])->name('import');
-Route::post('/import', [importExportController::class, 'import'])->name('import');
+Route::post('/import', [importExportController::class, 'import'])->name('import')->middleware('auth');
 
+Route::match(["get","post"],'/export.user', [importExportController::class, 'export'])->name('export.user')->middleware('auth');
 
-
-Route::match(["get","post"],'/export.user', [importExportController::class, 'export'])->name('export.user');
-
-Route::match(["get","post"],'/export.formateur', [FormateurController::class, 'export'])->name('export.formateur');
-
-
-
-
-
+Route::match(["get","post"],'/export.formateur', [FormateurController::class, 'export'])->name('export.formateur')->middleware('auth');
 
 //Route::post('/importFormateur', [importExportController::class, 'importFormateur'])->name('importFormateur');
 
-
-
 //Route::match(["get","post"],'/exportFormateur', [importExportController::class, 'exportFormateur'])->name('exportFormateur');
 
+Route::resource('formateur', FormateurController::class)->middleware('auth');
 
+Route::delete("/message/{id}", [MessageController::class, "destroy"])->name("message.destroy")->middleware('auth');
+Route::get("/submti", [MessageController::class, "submti"])->name("submti")->middleware('auth');
 
-
-Route::resource('formateur', FormateurController::class);
-
-
-Route::delete("/message/{id}", [MessageController::class, "destroy"])->name("message.destroy");
-Route::get("/submti", [MessageController::class, "submti"])->name("submti");
-
-
-
-
-
-
-Route::delete('/formateurs/{id}', [AdminProfMessagesController::class, 'destroy'])->name('formateurs.destroy');
-Route::delete('/etudiants/{id}', [AdminEtudMessagesController::class, 'destroy'])->name('etudiants.destroy');
+Route::delete('/formateurs/{id}', [AdminProfMessagesController::class, 'destroy'])->name('formateurs.destroy')->middleware('auth');
+Route::delete('/etudiants/{id}', [AdminEtudMessagesController::class, 'destroy'])->name('etudiants.destroy')->middleware('auth');

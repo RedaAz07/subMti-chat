@@ -10,14 +10,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
 <body>
-
-
+@auth
+@if (auth()->user()->type === 'admin')
 <div class="container">
+
+
     <div class="col-left">
         <img src="{{ asset('img/Doit-on taire nos émotions au bureau _ (1).jpeg') }}" alt="" width="100%">
     </div>
     <div class="col-right">
-
+<form   action="{{ route("formateur.store") }}" method="post">
+    @csrf
 <form class="w-md mx-auto" action="{{ route('formateur.store') }}" method="POST">
 <h1 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Ajouter Formateur</h1>
 <div class="grid md:grid-cols-2 md:gap-6">
@@ -67,12 +70,14 @@
 </select><br>
 
 
-<button>Submit <span>⟶</span></button>  </form>
+<button type="submit">Submit <span>⟶</span></button>  </form>
+</form>
 
     </div>
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-
+@endif
+@endauth
 </body>
 </html>

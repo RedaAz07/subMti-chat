@@ -117,6 +117,6 @@ foreach ($admins as $key) {
     public function destroy(actualite $actualite)
     {
         $actualite->delete();
-        return redirect()->back();
+        return  redirect()->back();
     }
 }
