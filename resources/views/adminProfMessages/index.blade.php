@@ -118,10 +118,10 @@
     </header>
 
     @if(session()->has('success'))
-    <div x-data="{ show: true }" x-show="show" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+    <div id="kkkkkkkkkkkk" x-data="{ show: true }" x-show="show" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
         {{-- <strong class="font-bold"></strong> --}}
         <span class="block sm:inline ml-3">{{ session('success') }}</span>
-        <span @click="show = false" class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer">
+        <span @click="show = false" class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer" id="ddddddr">
             <svg class="fill-current h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <title>Close</title>
                 <path d="M14.348 5.652a.5.5 0 0 0-.707 0L10 9.293 6.359 5.652a.5.5 0 0 0-.708.708L9.293 10l-3.64 3.641a.5.5 0 0 0 .708.707L10 10.707l3.641 3.641a.5.5 0 0 0 .707-.707L10.707 10l3.641-3.641a.5.5 0 0 0 0-.707z"/>
@@ -129,6 +129,13 @@
         </span>
     </div>
     @endif
+
+    <!-- Add this script tag if Alpine.js is not included in your project -->
+    <script>
+        document.getElementById("ddddddr").onclick = () => {
+            document.getElementById("kkkkkkkkkkkk").style.display = "none";
+        };
+    </script>
     <!----------------------------------------------------fin header ------------------------------------------------------>
 
     <!----------------------------- container li jam3 la page kamla mn ghir lheader howa had  content-area------------------------------------------------------>
