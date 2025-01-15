@@ -41,16 +41,14 @@ npm install
 onfigure the environment:
 
 Copy the .env.example file to .env:
-نسخ الكود
+ 
 cp .env.example .env
 Update the .env file with your database and other configuration settings.
 Run the database migrations and seeders:
 
-نسخ الكود
 php artisan migrate --seed
 Start the development server:
 
-نسخ الكود
 php artisan serve
 
 Usage
