@@ -34,4 +34,44 @@ SubmtiChat is a communication platform designed for students, professors, and ad
    ```bash
    git clone https://github.com/yourusername/submtichat.git
    cd submtichat
+   Install dependencies:نسخ الكود
+composer install
+npm install
 
+onfigure the environment:
+
+Copy the .env.example file to .env:
+نسخ الكود
+cp .env.example .env
+Update the .env file with your database and other configuration settings.
+Run the database migrations and seeders:
+
+نسخ الكود
+php artisan migrate --seed
+Start the development server:
+
+نسخ الكود
+php artisan serve
+
+Usage
+Access the platform at http://localhost:8000/.
+Admin, professor, and student roles can log in with their respective credentials to access their functionalities.
+
+Directory Structure
+The project follows the standard Laravel structure with additional directories for Bootstrap assets and database seeds. Below is a brief overview of the main directories:
+
+.github/workflows: Contains GitHub Actions workflows.
+app: The core application code, including models, controllers, and middleware.
+bootstrap: Bootstrap framework integration.
+config: Configuration files for various services and packages.
+database: Migration and seeding files.
+public: Public assets such as images, scripts, and stylesheets.
+resources: Views, language files, and raw assets like CSS and JavaScript.
+routes: Web, API, and console routes.
+storage: Compiled views, file-based sessions, file caches, and other storage files.
+tests: Unit and feature tests.
+
+Contributors
+Reda
+Mehdi
+Ahmed
